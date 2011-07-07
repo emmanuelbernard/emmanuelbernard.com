@@ -1,0 +1,16 @@
+title: Emmanuel Bernard
+
+profiles:
+  development:
+  staging:
+    base_url: http://test.emmanuelbernard.com/
+    deploy:
+      host: emmanue2@emmanuelbernard.com
+      path: /home1/emmanue2/public_html/test
+  production:
+    base_url: http://emmanuelbernard.com/
+    deploy:
+      host: emmanue2@emmanuelbernard.com
+      path: /home1/emmanue2/public_html/test
+
+google_analytics: UA-3479508-6

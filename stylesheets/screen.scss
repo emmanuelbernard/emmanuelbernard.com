@@ -1,0 +1,117 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding";
+
+@import "compass/typography/lists";
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// If you are doing a lot of stylesheet concatenation, it is suggested
+// that you scope your blueprint styles, so that you can better control
+// what pages use blueprint when stylesheets are concatenated together.
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+}
+
+form.bp {
+  @include blueprint-form;
+  // You'll probably want to remove the scaffolding once you start styling your site.
+  @include blueprint-scaffolding; 
+}
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body.bp {
+  #container {
+    @include container; 
+  }
+}
+  
+//  #header, #footer {
+//    @include column($blueprint-grid-columns); }
+//  #sidebar {
+//    // One third of the grid columns, rounding down. With 24 cols, this is 8.
+//    $sidebar-columns: floor($blueprint-grid-columns / 3);
+//    @include column($sidebar-columns); }
+//  #content {
+    // Two thirds of the grid columns, rounding up.
+    // With 24 cols, this is 16.
+//    $content-columns: ceil(2 * $blueprint-grid-columns / 3);
+    // true means it's the last column in the row
+//    @include column($content-columns, true); } }
+   
+   
+#nav-wrapper {
+  padding-top: 1ex;
+  ul#top-nav {
+    @include horizontal-list(1ex);
+    font-size: 110%;
+    font-weight: bold;
+    clear: both;
+    margin-bottom: 1ex;
+    a {
+      text-decoration: none;
+    }
+  }
+} 
+    
+
+#two-column {
+  padding-top: 1em;
+  #left-column {
+    @include column(6);
+    @include append(1);
+    padding-top: 1em;
+    #logo {
+       padding-bottom: 1em;
+       width: 240px;
+       -webkit-box-reflect: below -30 -webkit-gradient(linear,0 0,0 100%,from(transparent),color-stop(.85,transparent),to(rgba(255, 255, 255, 0.9)));
+    }
+    #microbio {
+    	font-size: 120%;
+    } 
+    #logo-copyright {
+    	font-size: 70%;
+    }
+  }
+  #right-column {
+    @include prepend(1);
+    @include column(16);
+    @include last;
+    #main-text {
+		font-size: 140%;
+	}    
+  }
+}
+
+//Global error
+#error-404 {
+  @include prepend(4);
+  @include column(16);
+  @include append(4);
+  padding-top: 2em;
+  font-size: 200%;
+}
+
+//Per page specifics
+#hsia-home {
+    float: right;
+}
+//Per page specifics
+#hsia-details {
+    float: left;
+}
