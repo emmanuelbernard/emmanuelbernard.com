@@ -12,6 +12,8 @@
 
 @import "compass/typography/lists";
 
+@import "compass/typography/links/link-colors";
+
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
 // @include blueprint
@@ -58,12 +60,15 @@ body.bp {
 #nav-wrapper {
   padding-top: 1ex;
   ul#top-nav {
-    @include horizontal-list(1ex);
-    font-size: 110%;
+    @include horizontal-list(2ex);
+    font-size: 140%;
     font-weight: bold;
+    background-color:#555555;
+    color:#cccccc;
     clear: both;
     margin-bottom: 1ex;
     a {
+      @include link-colors(#dddddd,#ffffff,#dddddd,#dddddd);
       text-decoration: none;
     }
   }
