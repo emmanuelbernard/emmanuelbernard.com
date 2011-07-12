@@ -92,6 +92,11 @@ body.bp {
     #logo-copyright {
     	font-size: 70%;
     }
+    #flattr_button {
+        text-align: center;
+        //margin-left: 2em;
+        margin-top: 2em;
+    }
   }
   #right-column {
     @include prepend(1);
