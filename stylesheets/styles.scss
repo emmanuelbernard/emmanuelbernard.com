@@ -1,0 +1,78 @@
+// I gather this file is a starting point for the project.
+
+
+
+@import "bootstrap";
+
+//generic and menu
+.small {
+  font-size: 70%;
+}
+
+.menu-button {
+	color:#ffffff;
+}
+
+//main elements
+body {
+	padding-top:60px;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size:105%
+}
+
+#logo {
+  padding-bottom: 1em;
+  width: 240px;
+  -webkit-box-reflect: below -30 -webkit-gradient(linear,0 0,0 100%,from(transparent),color-stop(.85,transparent),to(rgba(255, 255, 255, 0.9)));
+}
+
+p {
+	margin-bottom: 1.5em;
+}
+
+h1 {
+	margin-bottom: 0.50em;
+}
+
+#footer {
+	text-align:center;
+}
+
+#main-text {
+	h1,h2 {
+		font-weight:normal;
+		padding-bottom:15px;
+	}
+	h1 {
+		font-size: 3em;	
+	}
+	h2 {
+		font-size: 1.5em;
+	}
+	h3 {
+		font-size: 1em;
+	}
+	p {
+		font-size: 100%;
+	}
+}
+
+//left sidebar
+#flattr_button {
+  text-align: center;
+  //margin-left: 2em;
+  margin-top: 2em;
+}
+
+//Per page specifics
+#hsia-home {
+	float: right;
+	margin-left: 5px;
+}
+//Per page specifics
+#hsia-details {
+	float: left;
+}
+
+// Include responsive Bootstrap styles
+@import "bootstrap-responsive";
