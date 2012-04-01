@@ -18,6 +18,10 @@ body {
 	font-size:105%;
 }
 
+h1 {
+	line-height: 1;
+}
+
 p {
 	margin-bottom: 1.5em;
 	font-size:100%;
@@ -71,6 +75,22 @@ h1, h2, h3, h4, h5, strong {
 	   vertical-align: middle;
 	}
 }
+
+.project-block {
+	background-color: #FFF6E0;// #F2FFEA;
+	margin: 2%;
+	padding: 5%;
+	padding-top: 2%;
+	padding-bottom: 1%;
+	margin-bottom: 6%;
+	p {
+		font-size: 90%;
+	}
+	strong {;
+		line-height: 2.5;
+	}
+}
+
 
 //left sidebar
 #flattr_button {
