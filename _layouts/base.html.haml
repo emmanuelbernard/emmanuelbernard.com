@@ -21,10 +21,12 @@
             %ul.nav
               %li{:class=>(page.tab == 'home' ? 'active' : nil)}
                 %a{ :href=>'/' } Home
-              %li{:class=>(page.tab == 'blog' ? 'active' : nil)}
-                %a{ :href=>'//blog.emmanuelbernard.com' } Blog
+              %li{:class=>(page.tab == 'projects' ? 'active' : nil)}
+                %a{ :href=>'/projects' } Projects
               %li{:class=>(page.tab == 'books' ? 'active' : nil)}
                 %a{ :href=>'/books' } Books
+              %li{:class=>(page.tab == 'blog' ? 'active' : nil)}
+                %a{ :href=>'//blog.emmanuelbernard.com' } Blog
     .container
       ~ content
 
