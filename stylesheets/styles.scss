@@ -21,7 +21,12 @@ $navbarLinkColorHover: #fff;
 body {
 	padding-top:70px;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-size:105%
+	font-size:105%;
+}
+
+p {
+	margin-bottom: 1.5em;
+	font-size:100%;
 }
 
 .navbar-refine {
@@ -32,10 +37,6 @@ body {
   padding-bottom: 1em;
   width: 240px;
   -webkit-box-reflect: below -30 -webkit-gradient(linear,0 0,0 100%,from(transparent),color-stop(.85,transparent),to(rgba(255, 255, 255, 0.9)));
-}
-
-p {
-	margin-bottom: 1.5em;
 }
 
 h1 {
@@ -66,6 +67,14 @@ h1, h2, h3, h4, h5, strong {
 	}
 	p {
 		font-size: 100%;
+	}
+}
+
+.bar {
+    text-align: center;
+    vertical-align: middle;
+	img, p {
+	   vertical-align: middle;
 	}
 }
 
