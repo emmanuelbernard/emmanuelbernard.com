@@ -2,6 +2,7 @@
 title: Biography
 author: Emmanuel Bernard
 layout: constant-sidebar
+tab: home
 ---
   
 # #{page.title}
