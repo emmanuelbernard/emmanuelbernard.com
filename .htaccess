@@ -1,0 +1,12 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+IndexIgnore *
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteCond %{HTTP_HOST} ^www.emmanuelbernard.com$ [OR]
+RewriteCond %{HTTP_HOST} ^emmanuelbernard.com$
+
+RewriteRule ^books$ /books/hsia$1
+RewriteRule ^books/$ /books/hsia$1
