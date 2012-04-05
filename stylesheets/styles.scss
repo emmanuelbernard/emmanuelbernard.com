@@ -114,6 +114,32 @@ h1, h2, h3, h4, h5, strong {
 	}
 }
 
+.feed {
+    text-align: center;
+    vertical-align: middle;
+	img, p {
+	   vertical-align: middle;
+	}
+}
+
+//pagination
+.pagination-links {
+  margin-bottom: 1em;
+  a {
+    text-decoration: none;
+  }
+  a, .current-page, .slip {
+    padding: .5ex;
+    margin-right: .5ex;
+  }
+  a.page-link, .current-page, .previous-link, .next-link {
+    border: 1px solid #999;
+  }
+  .current-page {
+    font-weight: bold;
+  }
+}
+
 
 //left sidebar
 #flattr_button {
