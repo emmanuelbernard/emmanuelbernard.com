@@ -1,0 +1,27 @@
+---
+title: No Relation To Blog
+author: Emmanuel Bernard
+layout: constant-sidebar
+tab: blog
+---
+.page-header
+  %h1 No Relation To Blog
+
+- for post in page.posts
+  .blogpost
+    %h2
+      %a{:href=>post.url}= post.title
+    .blogtagbar
+      #{post.date.strftime( '%Y-%m-%d' )}
+      &nbsp;|&nbsp;
+      = page.flattr_compact_counter(:url=>"http://emmanuelbernard.com" + post.url, 
+                                    :title=>post.title, 
+                                    :tags=>post.tags.join(',')) 
+      &nbsp;|&nbsp;
+      - post.tags.each do |tag|
+        %a.label{:href=>tag.primary_page.url}
+          = tag
+        &nbsp;
+    %p
+      ~ post.content
+    %hr

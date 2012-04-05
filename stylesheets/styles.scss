@@ -87,8 +87,30 @@ h1, h2, h3, h4, h5, strong {
 	p {
 		font-size: 90%;
 	}
-	strong {;
+	strong {
 		line-height: 2.5;
+	}
+}
+
+.blogpost {
+	h2 {
+		padding-bottom: 0;
+	}
+}
+.blogtagbar {
+	display: inline;
+    vertical-align: bottom;
+    font-size:90%;
+    color: #555555;
+    a {
+		text-decoration:none;
+	}
+	.label:hover {
+		background-color:#555555;
+	}
+	iframe {
+		position:relative;
+		top:7px;
 	}
 }
 
