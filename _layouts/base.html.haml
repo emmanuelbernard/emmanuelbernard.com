@@ -26,7 +26,11 @@
               %li{:class=>(page.tab == 'books' ? 'active' : nil)}
                 %a{ :href=>'/books/hsia' } Book
               %li{:class=>(page.tab == 'blog' ? 'active' : nil)}
-                %a{ :href=>'//blog.emmanuelbernard.com' } Blog
+                %a{ :href=>'/blog' } Blog
+            %ul.nav.pull-right
+              %li
+                %a{:href=>'/blog/blog.atom'}
+                  %img{:src=>'/images/services/rss_16.png'}
     .container
       ~ content
 
