@@ -1,16 +1,9 @@
 ---
 title: No Relation To Blog
 author: Emmanuel Bernard
-layout: constant-sidebar
+layout: blog
 tab: blog
 ---
-.page-header
-  %h1 No Relation To Blog
-  %small.feed
-    %a{:href=>'/blog/blog.atom'}
-      %img{:src=>'/images/services/rss_32.png'}
-    %a{:href=>'/blog/blog.atom'}
-    Subscribe to the blog feed
 - for post in page.posts
   .blogpost
     %h2

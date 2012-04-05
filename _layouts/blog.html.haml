@@ -1,41 +1,14 @@
 ---
 layout: constant-sidebar
-tab: blog
+tabl: blog
 ---
 .page-header
-  %h1 No Relation To Blog
-  %small.feed
-    %a{:href=>'/blog/blog.atom'}
-      %img{:src=>'/images/services/rss_32.png'}
-    %a{:href=>'/blog/blog.atom'}
-      Subscribe to the blog feed
-%ul.pager
-  - if page.previous_post
-    %li.previous
-      %a{:href=>page.previous_post.url}
-        &larr; 
-        = page.previous_post.title
-  - if page.next_post
-    %li.next
-      %a{:href=>page.next_post.url}
-        = page.next_post.title 
-        &rarr;
-  
-%hr
-.blogpost
-  %h2
-    = page.title
-  .blogtagbar
-    #{page.date.strftime( '%Y-%m-%d' )}
-    &nbsp;|&nbsp;
-    = page.flattr_compact_counter(:url=>"http://emmanuelbernard.com" + page.url, 
-                                  :title=>page.title, 
-                                  :tags=>page.tags.join(',')) 
-    &nbsp;|&nbsp;
-    - page.tags.each do |tag|
-      %a.label{:href=>tag.primary_page.url}
-        = tag
-      &nbsp;
-  %p
-    ~ content
-  %hr
+  %h1
+    No Relation To Blog
+    %br
+    %small.feed
+      %a{:href=>'/blog/blog.atom'}
+        %img{:src=>'/images/services/rss_32.png'}
+      %a{:href=>'/blog/blog.atom'}
+        Subscribe to the personal musing of Emmanuel Bernard
+~ content
