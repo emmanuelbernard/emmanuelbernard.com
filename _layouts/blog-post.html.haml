@@ -7,11 +7,19 @@ tab: blog
     %li.previous
       %a{:href=>page.previous_post.url}
         &larr; 
-        = page.previous_post.title
+        - text = page.previous_post.title
+        - if text.size < 25
+          = text
+        - else
+          = text.split(//).first(25).to_s  << "..."
   - if page.next_post
     %li.next
       %a{:href=>page.next_post.url}
-        = page.next_post.title 
+        - text = page.next_post.title
+        - if text.size < 25
+          = text
+        - else
+          = text.split(//).first(25).to_s << "..."
         &rarr;
   
 %hr
