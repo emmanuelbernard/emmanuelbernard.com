@@ -6,6 +6,7 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Atomizer.new( :posts, '/blog/blog.atom', :num_entries=>10000 )
   extension Awestruct::Extensions::Flattr.new
   extension Awestruct::Extensions::Indexifier.new
+  extension Awestruct::Extensions::Disqus.new
   helper Awestruct::Extensions::Partial
   helper Awestruct::Extensions::GoogleAnalytics
 end

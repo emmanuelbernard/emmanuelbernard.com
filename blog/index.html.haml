@@ -21,5 +21,7 @@ tab: blog
         &nbsp;
     %p
       ~ post.content
+    .disqus-short
+      = post.disqus_comments_link
     %hr
 = page.posts.links
