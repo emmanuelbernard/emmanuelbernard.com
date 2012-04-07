@@ -1,12 +1,14 @@
 Options +FollowSymlinks
-RewriteEngine on
-
 IndexIgnore *
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+
+RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^www.emmanuelbernard.com$ [OR]
 RewriteCond %{HTTP_HOST} ^emmanuelbernard.com$
 
 RewriteRule ^books$ /books/hsia$1
 RewriteRule ^books/$ /books/hsia$1
+RewriteRule ^\@$ "https\:\/\/twitter\.com\/emmanuelbernard" [R=302,L]
+RewriteRule ^\+$ "https\:\/\/plus\.google\.com\/u\/0\/114288822031825705031" [R=302,L]
