@@ -1,0 +1,27 @@
+---
+title: 'Customize titles of your terminal window'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ Mac OS X, tool ]
+---
+<p>If you are like me, you use many many tabs in your command line terminal. By the way, <a href='http://www.iterm2.com'>iTerm2</a> is a very nice improvement over the vanilla OS X Terminal app.
+</p>
+<p>To recognize tabs, I like to display the name of the current directory and add the directory it is contained in if more space are left. Open your <code>.bash_profile</code> or <code>.profile</code> file and add the following
+</p>
+<blockquote>function local_dir_and_within {
+<p>__LAST=&quot;${PWD##*/}&quot;
+</p>
+<p>__IN=&quot;${PWD%/*}&quot;
+</p>
+<p>__IN=&quot;${__IN/#$HOME/~}&quot;
+</p>
+<p>TITLE_TAB=&quot;$__LAST in $__IN&quot;
+</p>
+<p>echo -n $TITLE_TAB
+</p>
+<p>}
+</p>
+<p>export PROMPT_COMMAND=&#39;echo -ne &quot;\033]0;$(local_dir_and_within)\007&quot;&#39;
+</p>
+</blockquote>
+<p>Your tab title will now look like <code>hibernate-search in ~/code</code>.</p>

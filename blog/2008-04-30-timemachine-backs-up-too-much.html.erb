@@ -1,0 +1,7 @@
+---
+title: 'TimeMachine backs up too much?'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ Mac OS X ]
+---
+<p>I just discovered the reason why TimeMachine was backing up so much data. I forgot to exclude my Maven and Ivy repositories :o)<br/><br/>Here is a good tip to discover which files are backed up. You need to have the Developer Tools installed.<br/><br/>When TimeMachine backs up<br/><ul><li>Launch /Developer/Applications/Instruments</li><li>Select File Activity</li><li>Open the default target combo box and attach the backupd process.</li><li>Start recording</li><li>Enjoy the list.</li></ul><br/>I wish there were a less geeky solution.</p>

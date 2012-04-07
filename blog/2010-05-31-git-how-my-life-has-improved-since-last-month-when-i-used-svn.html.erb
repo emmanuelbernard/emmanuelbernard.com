@@ -1,0 +1,172 @@
+---
+title: 'Git: how my life has improved since last month when I used SVN'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ git, svn, tool ]
+---
+<p>I've switched from SVN to Git (more git-svn actually) close to a month ago and that had to be a leap of faith. Rationally convincing someone that a DVCS is better is pretty hard because overall the life in SVN land is not that bad or does not appear to be. Note that I am using git-svn so I don't benefit from all the power of DVCSes. While nothing replace actually trying it, I thought it was worth the time to explain what I like about this new tool to help people jump too.
+</p>
+<p>This is not a post on why merging is superior in Git compared to SVN (this is something you need to experience), it's a post on how Git is making my life easier.
+</p>
+<p>This post is split is a few sections:
+</p>
+<ul>
+	<li>some intro</li>
+	<li>how to import a SVN repo into Git (feel free to skip this tutorial of you are interested in what I liked in Git compared to SVN)</li>
+	<li>use case: multitasking in isolation</li>
+	<li>use case: backporting bug fixes</li>
+	<li>use case: writing better commits and commit histories</li>
+	<li>resources</li>
+</ul>
+<strong>General</strong>
+<p>If I had to summarize, Git gives me more freedom than SVN. I am not constrained by the tool in any way:
+</p>
+<ul>
+	<li>it can follow whatever workflow I want</li>
+	<li>it is fast</li>
+	<li>as a net result my commits are clearer</li>
+</ul>
+<p>I't hard for me to say that but since the move I do enjoy committing stuffs (I know, that's pretty scary).
+</p>
+<strong>The bootstrap</strong>
+<p>Here is a small tutorial section for people willing to import a project from SVN to Git and keep a bridge between the two. Due to a bug in git-svn for https imports, I am using Git 1.6.5.1 and not the 1.7.1 version.
+</p>
+<pre>mkdir project; cd project;
+git svn init --trunk=my/svn/repo/project/trunk/ \
+             --tags=my/svn/repo/project/tags \
+             --branches=my/svn/repo/project/branches \
+             my/svn/repo/project
+</pre>
+<p>You can optionally create a file containing a conversion between SVN logins and the committers names and email addresses
+</p>
+<pre>jdoe = John Doe &lt;jdoe@foo.com&gt;
+agaulois = Asterix &lt;asterix@gaule.fr&gt;
+</pre>
+<p>In the logs, every time git-svn finds agaulois, it converts it to Asterix &lt;asterix@gaule.fr&gt;. If you want to do that, you need to create this file. Don't be afraid to miss a couple of logins, if you do, git-svn will stop and ask you to add it. In your Git repository directory, run
+</p>
+<pre>git config svn.authorsfile ~/dir/myauthors.txt</pre>
+<p>The next step is to fetch all the information. This is long, very long. The good news is that you can stop it and restart later.
+</p>
+<pre>git svn fetch</pre>
+<p>Once that is done, you are good to go. To update your Git repo with the new commits from SVN do
+</p>
+<pre>git svn rebase</pre>
+<p>To commit your set of local commits to SVN, do
+</p>
+<pre>git svn dcommit</pre>
+<p>Many people, especially in the open source community, consider DVCS as a bad thing because it encourages committers to keep their work locally and not share with others. In reality, it does not. People who share frequently will continue to do so, people who don't still don't and should be fired. Same as usual. In practice for me, I dcommit every 4 to 6 hours.
+</p>
+<p>I do recommend to import one SVN project per Git repository. You will typically get several Git repos per SVN repo. The rule is import the biggest unit that you tag / branch in isolation in SVN. For example, for Hibernate, I've several Git repos:
+</p>
+<ul>
+	<li>Hibernate Core (which contains all the modules)</li>
+	<li>Hibernate Validator</li>
+	<li>Hibernate Search</li>
+	<li>JPA API</li>
+	<li>Bean Validation API</li>
+	<li>Bean Validation TCK</li>
+</ul>
+<p>All of these have generally independent release cycles and version numbers. Apparently it is possible to aggregate Git repositories via the notion of superproject but I have not tried.
+</p>
+<p>One golden rule: you cannot share a Git repository and pull changes back with someone else AND use it to commit in a SVN repository. That will be a mess because git-svn rewrites the commit unique identifiers. Forget sharing repos when you use git-svn unless you are abandoning SVN and are doing a one time import.
+</p>
+<strong>Multitasking in Isolation</strong>
+<p>The absolute coolest feature is the ability to work in total isolation on a given topic for very cheap. I am not necessarily talking about the ability to work offline on an island (though that's nice). I am talking about the ability to work on several subjects in parallel without complex settings.
+</p>
+<p>Let's take an example. I was working on a new feature for Hibernate Search's query DSL. I branched <em>master</em> to <em>dsl</em> and started to work, including committing small chunks of work (more on this later). While working on it, I found a bug in the existing query engine. No problem, I literally stopped working on the new feature, put stuff aside (git stash). created a new branch off <em>master</em> named <em>bug123</em> and fixed the bug. When I was done with the bug fix, I applied it on <em>master</em> and the <em>dsl</em> branch and resumed my work there. There is the workflow:
+</p>
+<pre>git checkout -b dsl #create the dsl branch and move to it
+#work work commit work commit work
+git stash #put not yet committed stuff aside
+git checkout master
+
+git checkout -b bug123 #create bug fix branch
+#work work #fix bug 123
+git commit
+git rebase master #apply commits of master on bug123 (not necessary in this case as I did nothing in master)
+
+git checkout master
+git merge bug123 #merge bug123 and master
+git branch -d bug123 #delete the useless branch
+
+git checkout dsl
+git rebase master # apply commits of bug123
+git stash pop #reapply uncommitted changes
+#work
+</pre>
+<p>It looks like a lot of operations but, it's very fluid and very fast!
+</p>
+<p>What's the benefit? I've fixed a bug in isolation of my new feature even if the same files where impacted. I've committed the bug fix isolated: I can easily reapply it to maintenance branches (see below). Had I used SVN, I would have fixed the bug and committed "new feature + bug fix 123". I would not have backported the fix to our maintenance branch nor would have my co-workers because of the complexity to separate the new feature from the bug fix. In Git the process is so smooth that I even use it to bug fix typos in comments in isolation from my main work.
+</p>
+<p>I should point out that switching branch is super fast and done in the same directory. You IDE quickly refreshes and you are ready to work in the same IDE window. For me that's a big plus over having to checkout a maintenance branch in a separate directory, set up my IDE and open a second IDE window to work in a different context of the same project: I work on five different projects on average, I can't afford a proliferation of IDE windows. With Git, the context switching comes with much less friction and saves me a lot of time.
+</p>
+<strong>Backporting bug fixes</strong>
+<p>In SVN land, to backport a bug, I either:
+</p>
+<ul>
+	<li>generate the patch off of the SVN commit, and apply it on a checkout of the maintenance branch</li>
+	<li>manually read the commit diff and select which change I want to apply (generally because somebody has committed the fix alongside a new feature or because it has committed the feature in 7 isolated commits)</li>
+</ul>
+<p>In the first scenario (the easiest), it involves
+</p>
+<ul>
+	<li>generating the patch</li>
+	<li>saving it as a file</li>
+	<li>optionally checking out the maintenance branch (ie get a coffee)</li>
+	<li>opening my new IDE window</li>
+	<li>apply the patch</li>
+	<li>commit the change with a log message</li>
+</ul>
+<p>In Git, you:
+</p>
+<ul>
+	<li>checkout the maintenance branch (2s)</li>
+	<li>run the cherry-pick command (git cherry-pich sha1) over the commit or commits you want to copy from the main branch (logs are copied automatically though you can change them if needed)</li>
+</ul>
+<p>So easy you actually do it :)
+</p>
+<strong>Writing better commits and commit histories
+</strong>
+<p>A feature I do like is the ability to uncommit things and rewrite / rearrange them. This is something you only do on the commits you have not yet shared (in my case not yet pushed to SVN). That looks like a stupid and useless feature but it turns out I use it all the time:
+</p>
+<ul>
+	<li>I can commit an unstable work, explore a couple of approaches and come back if needed</li>
+	<li>I can fix a typo or bad log message</li>
+	<li>I can simplify the commit history by merging two or more commits (I typically merge commits I used as unstable checkpoints)</li>
+	<li>These operations typically require 5 seconds or less</li>
+</ul>
+<p>The net effect of being able to do that is:
+</p>
+<ul>
+	<li>I write better log messages</li>
+	<li>I commit more often / in smaller pieces, making my changes more readable</li>
+	<li>If the pieces happen to be too small I merge them before synching with SVN</li>
+</ul>
+<p>You can also do some more micro surgery. If you are changing code and realize that these are really two or three sets of changes and should be committed separately (changes from the the same file potentially). You can literally select which file / which line to commit. The tool GitX let's you do that very easily.
+</p>
+<p>Git can do that because it does not track files, it tracks changes. You can stage some changes for commit (two new files and changes in three files), continue working on the same set of files and commit the state as defined when you initially staged it. Your subsequent changes can then be committed later. This is a subtle difference of approach (content management vs file management) but now that I have used it, I like it better. As a consequence, if you change a file, these changes won't be committed automatically next time you commit. You need to include them (that's what the <em>-a</em> option is for when you run <em>git commit</em>).
+</p>
+<strong>Resources</strong>
+<p>I absolutely recommend you to read Pro Git:
+</p>
+<ul>
+	<li>that's a top quality book</li>
+	<li>use case oriented</li>
+	<li>and it's also available for free online <a href='http://progit.org'>http://progit.org</a> (though go buy it too, it's well deserved)</li>
+</ul>
+<p>Aside from that, I do use
+</p>
+<pre>git help <em>command</em></pre>
+<p>very often, their documentation is pretty good. Otherwise, Google is your friend, there are many resources out there.
+</p>
+<p>I don't need / miss additional tools to work with Git. The command line is good enough and often less confusing (IntelliJ's integration confused me, so I don't use it unless I need to compare files). I do like to use <a href='http://gitx.frim.nl/'>GitX</a> a graphical tool for two purposes:
+</p>
+<ul>
+	<li>it displays branches and commits graphically</li>
+	<li>it lets you easily stage specific lines of a file for later commit (the micro surgery tool)</li>
+</ul>
+<p>That's it folks,
+</p>
+<p>I hope you enjoyed the read and that I've encouraged you to give it a try. git-svn made the try a no brainer really. I've lost probably 16 hours to learn, try and understand Git. I'm confident I will get them back within the next three to four months (my ROI is covered :) ). You can also try it on any directory, I am now using Git to keep a revision history of all my presentations. Remember, no need to set up a server or anything complex. Run <em>git init</em> and you are good to go.
+</p>
+<p>Disclaimer: this is not a thorough comparison, just the feedback of a one month old user.</p>

@@ -1,0 +1,30 @@
+---
+title: 'Mac OS X and IntelliJ crashes'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ apple, ide, tool ]
+---
+<div id='_mcePaste'>I've struggled in the past several weeks with repeated crashes from IntelliJ IDEA on Mac OS X. I suspect it started right after the upgrade to 1.6.5 and the latest Java VM update.</div>
+<p>It seems it was cause by a couple of things.
+</p>
+<strong>Job scheduler crash </strong>
+<div id='_mcePaste'>If your crash report shows something like</div>
+<pre>Thread 55 Crashed: Java: JobScheduler pool 1/2</pre>
+<div id='_mcePaste'>This is a bug in the garbage collector. You need to pass an additional VM option to fix it</div>
+<pre>-XX:-ReduceInitialCardMarks</pre>
+<div id='_mcePaste'>Open <em>/Applications/IntelliJ IDEA x.y.z.app/Contents/Info.plist</em> and update the <em>VMOption</em> key</div>
+<pre>&lt;key&gt;VMOptions&lt;/key&gt;
+&lt;string&gt;-XX:-ReduceInitialCardMarks -Xms128m -Xmx512m -XX:MaxPermSize=250m -ea -Xbootclasspath/a:../lib/boot.jar&lt;/string&gt;
+</pre>
+<strong>Font corrupted </strong>
+<div id='_mcePaste'>Not sure if that was related to the previous issue but I initially had crashes with a different report involving directly the Garbage Collector (GC). My IntelliJ IDEA was using the <em>Inconsolata</em> font which apparently was somehow corrupted.</div>
+<p>Removing fonts from <em>~/Library/Fonts</em> solved the issue. What you can do is move them to a different directory and slowly re-inject them to find the culprit.
+</p>
+<p>I am quite happy all this is behind me. I chose:
+</p>
+<ul>
+	<li>A Java VM</li>
+	<li>On Mac OS X</li>
+	<li>with IntelliJ IDEA</li>
+</ul>
+<p>to precisely avoid this kind of bad experience and time waste :) Back to normal.</p>

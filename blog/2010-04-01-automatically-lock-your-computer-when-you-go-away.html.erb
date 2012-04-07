@@ -1,0 +1,34 @@
+---
+title: 'Automatically lock your computer when you go away'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ apple, Mac OS X ]
+---
+<p>If you are like me, your colleagues like to pown you when you leave your laptop unlocked. Here is a super easy solution to lock your Mac automatically when you leave it: if your cellphone is out of bluetooth range, lock your computer. Easy, efficient.
+</p>
+<p>Here is how to do it:
+</p>
+<ul>
+	<li>Download <a href='http://code.google.com/p/reduxcomputing-proximity/'>Proximity</a>: this application does detect bluetooth devices and lets you launch scripts upon detection or absence of detection (download page <a href='http://code.google.com/p/reduxcomputing-proximity/downloads/list'>here</a>).</li>
+	<li>Copy Proximity.app in /Applications</li>
+	<li>Start the Proximity.app and open its preference panel (the application adds itself to the menu bar next to your clock)</li>
+	<li>Reduce the device monitoring to 30s or so (less time for your colleagues to mess around)</li>
+	<li>Add the device (the device needs to be linked with your computer bluetooth, you can do that in System Preference)</li>
+	<li>Add an AppleScript that will be run when your cellphone goes out of range (see below)</li>
+	<li>Optionally add an AppleScript that will be run when your cellphone goes back in range</li>
+</ul>
+<p>The AppleScript to lock your computer is pretty simple. Create a file name out-of-range.scpt and add:
+</p>
+<pre>-- out-of-range.scpt
+
+tell application "ScreenSaverEngine" to activate
+</pre>
+<p>You can do many more things in these AppleScripts like:
+</p>
+<ul>
+	<li>change your Adium and Skype status</li>
+	<li>unlock your screen when you come back in range</li>
+</ul>
+<p>This <a href='http://www.technocrat.ca/?p=44'>other blog entry</a> has a fairly compete setting example. I personally purposely do not unlock the screen when I come back in range. It's safer to ask for the password explicitly incase someone... borrows your cellphone.
+</p>
+<p>Unlike some more complex apps, Proximity is pretty simple and does not let you decide at which range a bluetooth device is considered out-of-range. The good thing is that it is pretty soft on your cellphone battery.</p>

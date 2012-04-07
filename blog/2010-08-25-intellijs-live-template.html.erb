@@ -1,0 +1,31 @@
+---
+title: 'IntelliJ&#039;s Live Template'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ ide, java, tool ]
+---
+<p>If you remember, I like to write my getters this way (<a href='http://blog.emmanuelbernard.com/2010/03/getter-setter-generation-in-java/'>long story here</a>)
+</p>
+<pre>public String getName() { return this.name; }
+public void setName(String name) { this.name = name; }
+private String name;
+</pre>
+<p>I have been doing it manually for a while but it turns out IntelliJ has a super nice feature for that: Live Templating which allows you to use parameterized and contextual templates to generate code.
+</p>
+<p>Go to your Settings-&gt;Live Templating and create a new one.
+</p>
+<p>Add this template:
+</p>
+<pre>public $TYPE$ get$UpperName$() { return $lowername$; }
+public void set$UpperName$($TYPE$ $lowername$) { this.$lowername$ = $lowername$; }
+private $TYPE$ $lowername$;
+</pre>
+<p>Then edit the variables:
+</p>
+<ul>
+	<li><em>TYPE</em>: the expression should be <em>classNameComplete(</em>) to refer to the class name context</li>
+	<li><em>lowername</em>: the expression should be <em>decapitalize(UpperName).</em> Also tick <em>skip if defined</em> to not have to validate the computed value (this saves you one key stroke).</li>
+</ul>
+<p>I've named my Live Template "get". When I type "get" and TAB, I am asked to type the property type (which is suggested). The second variable asked is the capitalized property name. Then the Live Template infers the rest (decapitalize my property name to fill up <em>lowername</em>).
+</p>
+<p>Pretty nice feature!</p>

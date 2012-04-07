@@ -1,0 +1,71 @@
+---
+title: 'Migrating from Blogger (esp FTP) to Wordpress'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ meta ]
+---
+<p>I am one of the "few" that have been <a href='http://blogger-ftp.blogspot.com/2010/01/deprecating-ftp.html'>let down</a> by Blogger. They no longer support FTP export which makes it a no go for me.
+</p>
+<p>I've decided to move over to a self hosted Wordpress. It was a very easy process overall, this blog summarizes the few steps needed.
+</p>
+<strong>1. Install Wordpress</strong>
+<p>The first step is to install Wordpress. My provider offers a very easy install via SimpleScript.
+</p>
+<p>I have personally installed Wordpress in a subdirectory of my blog site to avoid messing with the existing files.
+</p>
+<strong>2. Find a theme you like</strong>
+<p>Moving along, nothing to see here. Pick and chose from the theme explorer in the admin console of Wordpress.
+</p>
+<strong>3. Move your Blogger blog from FTP publishing to</strong> <em><strong>myrandomblog</strong></em><strong>.blogspot.com publishing</strong>
+<p>For the import to work, you need to expose your Blogger blog as a blogger hosted website. Don't worry, since your blog is already published, your users will still be able to access it while you are messing around.
+</p>
+<strong>4. Create a user (optionally)</strong>
+<p>By default, the user is <em>admin</em> but you can create a dedicated user (in my case <em>emmanuel</em>).
+</p>
+<strong>5. Import your posts and comments</strong>
+<p>In the Wordpress admin console, go to Tools, select import, Blogger, the specific blog you want to import (in this case <em>myrandomblog</em>), and click. You can optionally associate your posts to a user in Wordpress ( hence step 4. :) )
+</p>
+<strong>6. Adjust the .htaccess (if in a subdirectory)</strong>
+<p>In the root directory of your website create an .htaccess file if you don't have one already and add the following rule.
+</p>
+<blockquote>DirectoryIndex index.php wordpress/index.php
+<p>&lt;IfModule mod_rewrite.c&gt;
+</p>
+<p>RewriteEngine On
+</p>
+<p>#point to the wordpress directory
+</p>
+<p>RewriteBase /wordpress/
+</p>
+<p>RewriteCond %{REQUEST_FILENAME} !-f
+</p>
+<p>RewriteCond %{REQUEST_FILENAME} !^atom.xml$
+</p>
+<p>RewriteCond %{REQUEST_FILENAME} !^feed$
+</p>
+<p>RewriteRule . /wordpress/index.php [L]
+</p>
+<p>&lt;/IfModule&gt;
+</p>
+</blockquote>
+<strong>7. Adjust your feed to point to Feedburner (optional)</strong>
+<p>If you use feedburner and want your feeds to point to the feedburner feed, install FD Feedburner Plugin (from the Wordpress admin console, select Plugins-&gt; add new
+</p>
+<p>Then burn your feed in feedburner (or reburn it if you already have a feedburner feed). The URL to burn is typically blog.mywebsite.com/feed
+</p>
+<p>Copy your feedburner feed URL in the Feedburner plugin configuration (you can reach it form the Plugins menu).
+</p>
+<p>Note, you can also burn your comments feed using the same solution.
+</p>
+<strong>8. Redirect your old feed to the Wordpress feed</strong>
+<p>Blogger publishes your feed in <em>atom.xml</em> by default (unless you have overridden that in the publishing panel). Let's redirect the old feed to the new feed, you don't want to lose your existing followers, do you?
+</p>
+<p>In your <em>.htaccess</em> file, add the following line
+</p>
+<blockquote>Redirect permanent /atom.xml /feed</blockquote>
+<p>You might have noticed that one of the RewriteCond rules is about the <em>atom.xm</em>l file. If your feed is publicly available to a different file, change that as well.
+</p>
+<strong>9. Do not delete your old .html files (optional)</strong>
+<p>I've decided not to delete the old .html files that were pushed by Blogger. My reason was to let old references to still work. It's up to you.
+</p>
+<p>And you are done. Happy blogging :)</p>

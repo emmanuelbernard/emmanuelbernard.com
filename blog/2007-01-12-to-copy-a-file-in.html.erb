@@ -1,0 +1,7 @@
+---
+title: 'To copy a file in ...'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ groovy ]
+---
+<p>... Java<br/><blockquote><pre>private static void copyFile(File srcFile, File destFile) <br/>       throws IOException {<br/>   FileInputStream is = null;<br/>   FileOutputStream os = null;<br/>   try {<br/>       is = new FileInputStream(srcFile);<br/>       FileChannel iChannel = is.getChannel();<br/>       os = new FileOutputStream( destFile, false );<br/>       FileChannel oChannel = os.getChannel();<br/>       oChannel.transferFrom( iChannel, 0, srcFile.length() );<br/>   }<br/>   finally {<br/>       if (is != null) is.close();<br/>       if (os != null) os.close();<br/>   }<br/>}</pre></blockquote><br/>... Groovy<br/><blockquote><pre>static void copyFile(File source, File destination) {<br/>   def reader = source.newReader()<br/>   destination.withWriter { writer -><br/>       writer &lt;&lt; reader<br/>   }<br/>   reader.close()<br/>}</pre></blockquote><br/>... Groovy with a salt of Ant<blockquote><pre>static void copyFile(File source, File destination) {<br/>   new AntBuilder().copy(file:'$source.canonicalPath', <br/>                         tofile:'$destination.canonicalPath')<br/>}</pre></blockquote><br/>... in shell<br/><blockquote><pre>cp source destination</pre><br/></blockquote></p>

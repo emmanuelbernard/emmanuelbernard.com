@@ -1,0 +1,169 @@
+---
+title: 'What to do when Gradle raises unexpected NoClassDefFoundException'
+author: 'Emmanuel Bernard'
+layout: blog-post
+tags: [ groovy, java, tool ]
+---
+<p>I have just lost an hour thanks to some obscure bug in Gradle caching mechanism.
+</p>
+<p>If all of the sudden, Gradle raises Frankenstein errors at you like
+</p>
+<blockquote>$ gradle clean build
+<p>:buildSrc:compileJava UP-TO-DATE
+</p>
+<p>:buildSrc:compileGroovy
+</p>
+<p>Note: /Users/manu/projects/notbackedup/git/core/buildSrc/src/main/groovy/org/hibernate/gradle/testing/database/DatabaseMatrixPlugin.java uses unchecked or unsafe operations.
+</p>
+<p>Note: Recompile with -Xlint:unchecked for details.
+</p>
+<p>&gt;&gt;&gt; a serious error occurred: hudson/util/DBAllocation
+</p>
+<p>&gt;&gt;&gt; stacktrace:
+</p>
+<p>java.lang.NoClassDefFoundError: hudson/util/DBAllocation
+</p>
+<p>at java.lang.Class.getDeclaredMethods0(Native Method)
+</p>
+<p>at java.lang.Class.privateGetDeclaredMethods(Class.java:2427)
+</p>
+<p>at java.lang.Class.getDeclaredMethods(Class.java:1791)
+</p>
+<p>at org.codehaus.groovy.vmplugin.v5.Java5.configureClassNode(Java5.java:318)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.lazyClassInit(ClassNode.java:263)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.getInterfaces(ClassNode.java:341)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.declaresInterface(ClassNode.java:929)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.implementsInterface(ClassNode.java:909)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.isDerivedFromGroovyObject(ClassNode.java:899)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.isGroovyObject(AsmClassGenerator.java:2752)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitPropertyExpression(AsmClassGenerator.java:2728)
+</p>
+<p>at org.codehaus.groovy.ast.expr.PropertyExpression.visit(PropertyExpression.java:55)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitAndAutoboxBoolean(AsmClassGenerator.java:4122)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.makeCallSite(AsmClassGenerator.java:2182)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.makeCall(AsmClassGenerator.java:2019)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.makeCall(AsmClassGenerator.java:2005)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.makeInvokeMethodCall(AsmClassGenerator.java:1990)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitMethodCallExpression(AsmClassGenerator.java:2342)
+</p>
+<p>at org.codehaus.groovy.ast.expr.MethodCallExpression.visit(MethodCallExpression.java:75)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitBooleanExpression(AsmClassGenerator.java:1959)
+</p>
+<p>at org.codehaus.groovy.ast.expr.BooleanExpression.visit(BooleanExpression.java:40)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitIfElse(AsmClassGenerator.java:913)
+</p>
+<p>at org.codehaus.groovy.ast.stmt.IfStatement.visit(IfStatement.java:41)
+</p>
+<p>at org.codehaus.groovy.ast.CodeVisitorSupport.visitBlockStatement(CodeVisitorSupport.java:35)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitBlockStatement(ClassCodeVisitorSupport.java:165)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitBlockStatement(AsmClassGenerator.java:738)
+</p>
+<p>at org.codehaus.groovy.ast.stmt.BlockStatement.visit(BlockStatement.java:69)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitIfElse(AsmClassGenerator.java:921)
+</p>
+<p>at org.codehaus.groovy.ast.stmt.IfStatement.visit(IfStatement.java:41)
+</p>
+<p>at org.codehaus.groovy.ast.CodeVisitorSupport.visitBlockStatement(CodeVisitorSupport.java:35)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitBlockStatement(ClassCodeVisitorSupport.java:165)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitBlockStatement(AsmClassGenerator.java:738)
+</p>
+<p>at org.codehaus.groovy.ast.stmt.BlockStatement.visit(BlockStatement.java:69)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitClassCodeContainer(ClassCodeVisitorSupport.java:101)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitConstructorOrMethod(ClassCodeVisitorSupport.java:112)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitStdMethod(AsmClassGenerator.java:626)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitConstructorOrMethod(AsmClassGenerator.java:601)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitMethod(ClassCodeVisitorSupport.java:123)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitMethod(AsmClassGenerator.java:696)
+</p>
+<p>at org.codehaus.groovy.ast.ClassNode.visitContents(ClassNode.java:1039)
+</p>
+<p>at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitClass(ClassCodeVisitorSupport.java:50)
+</p>
+<p>at org.codehaus.groovy.classgen.AsmClassGenerator.visitClass(AsmClassGenerator.java:276)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit$12.call(CompilationUnit.java:748)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit.applyToPrimaryClassNodes(CompilationUnit.java:942)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit.doPhaseOperation(CompilationUnit.java:519)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:497)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:474)
+</p>
+<p>at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:453)
+</p>
+<p>at org.codehaus.groovy.tools.FileSystemCompiler.compile(FileSystemCompiler.java:67)
+</p>
+<p>at org.codehaus.groovy.tools.FileSystemCompiler.doCompilation(FileSystemCompiler.java:180)
+</p>
+<p>at org.codehaus.groovy.tools.FileSystemCompiler.commandLineCompile(FileSystemCompiler.java:148)
+</p>
+<p>at org.codehaus.groovy.tools.FileSystemCompiler.main(FileSystemCompiler.java:162)
+</p>
+<p>Caused by: java.lang.ClassNotFoundException: hudson.util.DBAllocation
+</p>
+<p>at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+</p>
+<p>at java.security.AccessController.doPrivileged(Native Method)
+</p>
+<p>at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+</p>
+<p>at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+</p>
+<p>at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:696)
+</p>
+<p>at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:793)
+</p>
+<p>at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+</p>
+<p>... 52 more
+</p>
+<p>FAILURE: Build failed with an exception.
+</p>
+<p>* What went wrong:
+</p>
+<p>Execution failed for task ':compileGroovy'.
+</p>
+<p>Cause: Forked groovyc returned error code: 1
+</p>
+<p>* Try:
+</p>
+<p>Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+</p>
+<p>BUILD FAILED
+</p>
+</blockquote>
+<p>Simply nuke the Gradle cache from your project. I don't know if they are supposed to be in a standard location but for Hibernate the following commands did the trick
+</p>
+<blockquote>rm -fR .gradle
+<p>rm -fR buildSrc/.gradle
+</p>
+</blockquote>
+<p>I wonder what will happen first, tools just working or world peace :)</p>
