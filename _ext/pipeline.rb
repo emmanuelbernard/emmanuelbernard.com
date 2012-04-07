@@ -8,7 +8,7 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Tagger.new( :posts, '/blog/index', '/blog/tags', :per_page=>10 )
   extension Awestruct::Extensions::Atomizer.new( 
     :posts, 
-    '/blog/blog.atom', 
+    '/blog/feed-private.atom', 
     :num_entries=>10000,
     :blog_id=>'http://emmanuelbernard.com/blog',
     :blog_title=> 'No Relation To' )
