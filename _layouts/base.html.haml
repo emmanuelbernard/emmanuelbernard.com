@@ -32,6 +32,14 @@
               %li
                 %a{:href=>'/blog/feed.atom'}
                   %img{:src=>'/images/services/rss_16.png'}
+            :javascript
+              function get_results()
+              {
+                location.href = "/results/?q=" + escape(document.searchbox.query.value);
+                return false;
+              }
+            %form.navbar-search.pull-right{:name=>'searchbox', :onsubmit=>"return get_results();;"}
+              %input#query.search-query{:name=>'query', :type=>'text'}
     .container
       ~ content
 

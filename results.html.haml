@@ -1,0 +1,47 @@
+---
+title: Home
+author: Emmanuel Bernard
+layout: constant-sidebar
+tab: home
+---
+.page-header
+  %h1 
+    Search results
+    %br
+    %small
+      Results for 
+      :javascript
+        document.write(unescape(location.search.substring(3))); //ignores ?q=
+/Google Search Custom code
+#cse{:style=>'width: 100%;'}
+  Loading
+%script{ :type=>'text/javascript', :src=>'http://www.google.com/jsapi' }
+:javascript
+  google.load('search', '1', {language : 'en', style : google.loader.themes.ESPRESSO});
+  google.setOnLoadCallback(function() {
+    var customSearchOptions = {};  var customSearchControl = new google.search.CustomSearchControl(
+      '018253261901023049979:ezvp_djs0wy', customSearchOptions);
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchResultsOnly(); 
+    customSearchControl.draw('cse', options);
+    function parseParamsFromUrl() {
+      var params = {};
+      var parts = window.location.search.substr(1).split('\x26');
+      for (var i = 0; i < parts.length; i++) {
+        var keyValuePair = parts[i].split('=');
+        var key = decodeURIComponent(keyValuePair[0]);
+        params[key] = keyValuePair[1] ?
+            decodeURIComponent(keyValuePair[1].replace(/\+/g, ' ')) :
+            keyValuePair[1];
+      }
+      return params;
+    }
+
+    var urlParams = parseParamsFromUrl();
+    var queryParamName = "q";
+    if (urlParams[queryParamName]) {
+      customSearchControl.execute(urlParams[queryParamName]);
+    }
+  }, true);
+ 
