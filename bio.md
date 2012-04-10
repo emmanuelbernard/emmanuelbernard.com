@@ -22,7 +22,7 @@ Hibernate Validator and the newcomer Hibernate OGM.
 
 Emmanuel is a member of the JPA 2.1 expert group and the spec lead of Bean Validation. He is a 
 regular speaker at various conferences and JUGs, including JavaOne, JBoss World and Devoxx and 
-the co-author of [Hibernate Search in Action](/books/hsia) published by Manning. He is also founder 
+the co-author of [Hibernate Search in Action](/books/hsia/) published by Manning. He is also founder 
 and co-host of two podcasts: [JBoss Community Asylum](http://asylum.jboss.org) and 
 [Les Cast Codeurs Podcast](http://lescastcodeurs.com).
 
@@ -41,7 +41,7 @@ Hibernate Validator et le petit nouveau Hibernate OGM.
 
 Emmanuel est membre de l'expert group JPA 2.1 et spec lead de Bean Validation. Il intervient 
 régulièrement dans diverses conférences et JUGs, dont JavaOne, JBoss World, Devoxx et est 
-le co-auteur d'[Hibernate Search in Action](/books/hsia) publié par Manning. Il est aussi le 
+le co-auteur d'[Hibernate Search in Action](/books/hsia/) publié par Manning. Il est aussi le 
 fondateur et co-hôte de deux podcasts: [Les Cast Codeurs](http://lescastcodeurs.com) (Français) 
 et [JBoss Community Asylum](http://asylum.jboss.org) (Anglais).
 

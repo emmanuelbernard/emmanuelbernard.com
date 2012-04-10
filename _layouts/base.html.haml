@@ -23,11 +23,11 @@
               %li{:class=>(page.tab == 'home' ? 'active' : nil)}
                 %a{ :href=>'/' } Home
               %li{:class=>(page.tab == 'projects' ? 'active' : nil)}
-                %a{ :href=>'/projects' } Projects
+                %a{ :href=>'/projects/' } Projects
               %li{:class=>(page.tab == 'books' ? 'active' : nil)}
-                %a{ :href=>'/books/hsia' } Book
+                %a{ :href=>'/books/hsia/' } Book
               %li{:class=>(page.tab == 'blog' ? 'active' : nil)}
-                %a{ :href=>'/blog' } Blog
+                %a{ :href=>'/blog/' } Blog
             %ul.nav.pull-right
               %li
                 %a{:href=>'/blog/feed.atom'}
@@ -40,7 +40,7 @@
       %p#footer
         - year = Time.now.year
         Copyright 2007-#{year} Emmanuel Bernard -
-        %a{:href=>'/readme'} Acknowledgments
+        %a{:href=>'/readme/'} Acknowledgments
 
 
   = google_analytics
