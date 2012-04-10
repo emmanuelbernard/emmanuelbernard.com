@@ -5,7 +5,7 @@ Awestruct::Extensions::Pipeline.new do
   # extension Awestruct::Extensions::Posts.new( '/news' ) 
   extension Awestruct::Extensions::Posts.new('/blog', :posts)
   extension Awestruct::Extensions::Paginator.new( :posts, '/blog/index', :per_page=>10 )
-  extension Awestruct::Extensions::Tagger.new( :posts, '/blog/index', '/blog/tags', :per_page=>10 )
+  extension Awestruct::Extensions::Tagger.new( :posts, '/blog/index', '/blog/tags', :per_page=>10, :sanitize=>true )
   extension Awestruct::Extensions::Atomizer.new( 
     :posts, 
     '/blog/feed-private.atom', 

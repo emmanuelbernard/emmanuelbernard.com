@@ -26,11 +26,12 @@ module Awestruct
         end
       end
 
-      def initialize(tagged_items_property, input_path, output_path='tags', pagination_opts={})
+      def initialize(tagged_items_property, input_path, output_path='tags', opts={})
         @tagged_items_property = tagged_items_property
         @input_path  = input_path
         @output_path = output_path
-        @pagination_opts = pagination_opts
+        @sanitize = opts[:sanitize] || false
+        @pagination_opts = opts
       end
 
       def execute(site)
@@ -83,7 +84,7 @@ module Awestruct
         end
 
         @tags.values.each do |tag|
-          ## change to sanitize tag URL
+          ## Optionally sanitize tag URL
           output_prefix = File.join( @output_path, sanitize(tag.to_s) )
           options = { :remove_input=>false, :output_prefix=>output_prefix, :collection=>tag.pages }.merge( @pagination_opts )
           
@@ -97,7 +98,11 @@ module Awestruct
 
       def sanitize(string)
         #replace accents with unaccented version, go lowercase and replace and space with dash
-        string.to_s.urlize({:convert_spaces=>true})
+        if @sanitize
+          string.to_s.urlize({:convert_spaces=>true})
+        else
+          string
+        end
       end
     end
   end
