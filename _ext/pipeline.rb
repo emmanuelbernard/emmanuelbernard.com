@@ -6,6 +6,7 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Posts.new('/blog', :posts)
   extension Awestruct::Extensions::Paginator.new( :posts, '/blog/index', :per_page=>10 )
   extension Awestruct::Extensions::Tagger.new( :posts, '/blog/index', '/blog/tags', :per_page=>10, :sanitize=>true )
+  extension Awestruct::Extensions::Indexifier.new
   extension Awestruct::Extensions::Atomizer.new( 
     :posts, 
     '/blog/feed-private.atom', 
@@ -13,7 +14,6 @@ Awestruct::Extensions::Pipeline.new do
     :blog_url=>'http://emmanuelbernard.com/blog',
     :blog_title=> 'No Relation To' )
   extension Awestruct::Extensions::Flattr.new
-  extension Awestruct::Extensions::Indexifier.new
   extension Awestruct::Extensions::Disqus.new
   helper Awestruct::Extensions::Partial
   helper Awestruct::Extensions::GoogleAnalytics

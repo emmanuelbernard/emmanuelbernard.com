@@ -20,11 +20,11 @@
     %link{:rel=>"alternate", :type=>"text/html",            :href=>"#{page.blog_url}/" }
     - for entry in page.entries
       %entry
-        %id #{site.base_url}#{entry.url.sub(/\.html$/,'')}
+        %id #{site.base_url}#{entry.url}
         %title= escape_once( entry.title )
         %published= entry.date.xmlschema
         %updated= entry.date.xmlschema
-        %link{:rel=>"alternate", :type=>"text/html", :href=>"#{site.base_url}#{entry.url.sub(/\.html$/,'')}" }
+        %link{:rel=>"alternate", :type=>"text/html", :href=>"#{site.base_url}#{entry.url}" }
         - if ( defined?( entry.author ) )
           %author
             - if ( defined?( entry.author.name ) )
