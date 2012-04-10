@@ -6,7 +6,7 @@ module Awestruct
         @entries_name = entries_name
         @output_path = output_path
         @num_entries = opts[:num_entries] || 50
-        @blog_id = opts[:blog_id]
+        @blog_url = opts[:blog_url]
         @blog_title = opts[:blog_title]
       end
 
@@ -35,7 +35,7 @@ module Awestruct
         page.output_path = @output_path
         page.entries = atom_pages
         page.title = @blog_title || site.title || site.base_url
-        page.blog_id = @blog_id || site.base_url
+        page.blog_url = @blog_url || site.base_url
         site.pages << page
       end
 
