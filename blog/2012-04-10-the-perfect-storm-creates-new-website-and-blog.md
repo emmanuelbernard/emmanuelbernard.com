@@ -5,7 +5,7 @@ layout: blog-post
 tags: [ website ]
 ---
 I have been fed up with Wordpress for a while now. Having to upgrade the core 
-plus an average of 4 plugins everytime I went to blog was too much. And I
+plus an average of 4 plugins every time I went to blog was too much. And I
 am not even mentioning the security risk or the fact that some services
 flag wordpress installs as malicious websites...
  
@@ -27,7 +27,7 @@ in a later post. But let me tell you, the actual content migration was the
 easy part. Realizing after the fact that a couple of 301 redirects were
 mandatory for Google to be happy was an interesting experience :)
 
-Awyways, let me know what you think of [the website and blog refresh][website].
+Anyways, let me know what you think of [the website and blog refresh][website].
 
 [awestruct]: http://awestruct.org
 [bootstrap]: http://twitter.github.com/bootstrap/
