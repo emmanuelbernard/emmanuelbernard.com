@@ -1,0 +1,31 @@
+---
+layout: base
+tab: blog
+---
+//copied form constant-sidebar
+.row
+  .span8
+    .main-text
+      ~ content
+
+  .offset1.span3
+    .hidden-phone
+      %img#logo{:src=>"/images/emmanuel-conf.jpg"}
+    #flattr_button
+      = page.flattr_large_counter(:url=>"http://emmanuelbernard.com", 
+        :title=>"Emmanuel Bernard", 
+        :tags=>"emmanuelbernard,french,oss,java,hibernate,jboss")
+    
+    #microbio
+      :markdown
+        __Name:__ Emmanuel Bernard  
+        __Bio tags:__ French, Open Source actor, Hibernate, (No)SQL, JCP, JBoss, Snowboard, Economy  
+        __Employer:__ [JBoss](http://jboss.org) by Red Hat  
+        __Resume__: [LinkedIn](http://www.linkedin.com/in/emmanuelbernard)  
+        __Team blog:__ [in.relation.to](http://in.relation.to)  
+        __Personal blog:__ [No relation to](/blog/)  
+        __Microblog:__ [Twitter](http://emmanuelbernard.com/@), [Google+](http://emmanuelbernard.com/+)  
+        __Geoloc:__ Paris, France
+
+    %h2 Tags
+    = site.posts_tag_cloud
