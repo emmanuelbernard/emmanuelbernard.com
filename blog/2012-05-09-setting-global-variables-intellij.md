@@ -26,7 +26,14 @@ Go to `Preferences` and search for `Path Variables`.
 Set your global environment variables here and you are good to go. Note that you can ask a test not to
 inherit these global variables if you want to - in the test configuration.
 
+- - -
+__Update:__  
+It turns out I was wrong. Paths Variables is not where global environment variables can be set. If you
+know where, please let me know.
+- - -
+
 Notes to JetBrains:
 
 - your environment variable UI is plain counter productive: either give us a text free area or make tabs and co working
 - an option to inherit the `.bash_profile` configuration would be awesome :)
+
