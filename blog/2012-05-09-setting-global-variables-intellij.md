@@ -30,6 +30,18 @@ inherit these global variables if you want to - in the test configuration.
 __Update:__  
 It turns out I was wrong. Paths Variables is not where global environment variables can be set. If you
 know where, please let me know.
+
+__Update 2:__  
+To set an environment variable visible by applications in Mac OS X, use
+
+    launchctl setenv MYPATH myvar
+
+then restart your IDE (you might need to log out and back in as well).
+
+Thanks [@aagahi](http://twitter.com/aagahi) for the info. This is not great as it's remote from my IDE but at least that works.
+BTW, `launchctl` is supposed to set the data in `/etc/lanuchd.conf` or `$HOME/.launchd.conf`. Not on my
+system. If anyone knows where the data is put, I'm interested.
+
 - - -
 
 Notes to JetBrains:
