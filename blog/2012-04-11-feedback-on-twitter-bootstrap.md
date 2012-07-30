@@ -13,7 +13,7 @@ Twitter Bootstrap is a HTML(5), CSS and JavaScript toolkit offering a grid based
 UI components to quickly get started. And best of all it does not look bad :)
 
 It is not too difficult to get into it. While it will not really revolutionize people already familiar with 
-[Blueprint CSS][blueprint] and CSS in general, it does however brings a set of standardized components
+[Blueprint CSS][blueprint] and CSS in general, it does however bring a set of standardized components
 that tend to bring good practice to your website:
 
 - nice styling for common constructs like code, tables, inputs etc
@@ -43,7 +43,7 @@ examples here and there though.
 It is not exempt of bugs but overall things are working as expected. I stumbled upon several bugs
 but most of them were fixed in their latest version (2.0.3). I am unfortunately stuck on version 2.0.1.
 Does it work on Internet Explorer? Good question, I don't have a IE installed to check it out.
-If my website looks crap and you are using Internet Explorer, then the answer is no.
+If my website looks like crap and you are using Internet Explorer, then the answer is no.
 
 Twitter Bootstrap is built using [Less][less]. I unfortunately use [SCSS][scss] and had to use
 a port that has not upgraded to 2.0.3 yet.
