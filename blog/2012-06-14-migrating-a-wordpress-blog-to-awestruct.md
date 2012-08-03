@@ -139,7 +139,7 @@ And voilà! You have a fully upgraded blog :)
 [awestruct]: http://awestruct.org
 [import]: https://github.com/emmanuelbernard/emmanuelbernard.com/blob/master/_bin/import
 [intense-debate]: http://intensedebate.com/
-[disqus]: http://disqus.comi
+[disqus]: http://disqus.com/
 [source-emmanuel]: https://github.com/emmanuelbernard/emmanuelbernard.com/
 [.htaccess]: https://github.com/emmanuelbernard/emmanuelbernard.com/blob/master/.htaccess
 [htaccess-generator]: https://github.com/emmanuelbernard/emmanuelbernard.com/blob/master/_bin/htaccess-generator.rb
