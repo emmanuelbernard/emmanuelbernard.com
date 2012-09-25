@@ -52,10 +52,10 @@ to learn, you feel that there is something you can gain.
 ## What's bad about _vi_
 
 For beginners or casual users, _vi_ the most horrible piece of user
-experience ever build. There is no visual or otherwise cue in case
+experience ever built. There is no visual or otherwise cue in case
 you don't know how to do something, no way to navigate menus to figure
 what can be done. You even need to be an accomplished _vi_ user and sort
-of already know what you to do to begin to make sense of the help system.
+of already know what you do to begin to make sense of the help system.
 
 But let's pretend you used Google and know enough to play around.
 Let's face it auto completion is very important in Java. Most of the time
@@ -93,11 +93,11 @@ But there are two things that were key to make me understand how to use _vi_:
 
 - stay in insert mode (sort of the normal mode of any other editor) for
   the shortest period of time. Text manipulation is mostly done in command
-  mode. So always come back to comamnd mode.
+  mode. So always come back to command mode.
 - _vi_ is very regular, operations are made of an action and a move.
   The action describes what you want to do, and the move is about
   what the action will influence. On top of that, you can add a multiplier
-  to repeat the operation several time.
+  to repeat the operation several times.
 
 So when you learn a new move or a new action, you can compound them to the
 ones you know already and create new operations for free.
@@ -113,7 +113,7 @@ change down the road.
 
 It has been roughly two weeks of coding and writing in _vi_ mode and I am
 now feeling that when I move back to a classic editor, I don't feel as efficient
-as I though I was. I'm even tempted to say that I feel a bit more efficient now in
+as I thought I was. I'm even tempted to say that I feel a bit more efficient now in
 _vi_.
 
 A lot of the efficiency comes from the powerful search tools. It turns out to be very
@@ -121,7 +121,7 @@ efficient to navigate around text or code using small searches.
 
 ## Resources and conclusion
 
-- a stackoverflow question on [the philosphy of _vi_ commands](http://stackoverflow.com/a/1220118/200911)
+- a stackoverflow question on [the philosophy of _vi_ commands](http://stackoverflow.com/a/1220118/200911)
 - the thought process of someone [moving back to _vi_](http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
 - everything you need to know on [tabulation and indenting in _vi_](http://tedlogan.com/techblog3.html)
 - graphical [cheat sheet](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)

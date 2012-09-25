@@ -10,7 +10,7 @@ about.
 
 ## The problem
 
-The probem appeared when I tried to upgrade git
+The problem appeared when I tried to upgrade git
 
     brew upgrade git
 
@@ -85,8 +85,8 @@ I found the inspiration [here][inspiration].
 
 ## What is homebrew anyways
 
-Homebrew is very easy to use and maintain package manager for 
-Max OS X environments. Anytime you want to install one of those
+Homebrew is a very easy to use and maintain package manager for 
+Mac OS X environments. Anytime you want to install one of those
 unix-y tools, Homebrew is your friend.
 
 Passed the initial installation, Homebrew is as simple to use as
