@@ -54,9 +54,9 @@ binary level.
 If you don't recompile the client code and simply update the API jar,
 you will get a nasty exception
 
-    Exception in thread "main" java.lang.NoSuchMethodError: com.jboss.test.Contract.testMe()Lcom/jboss/test/Contract$Result;
+    Exception in thread "main" java.lang.NoSuchMethodError: com.jboss.test.Contract.testMeMore()Lcom/jboss/test/Contract$Result;
 
-That's because the contract is now `com.jboss.test.Contract.testMe()Lcom/jboss/test/Contract$ResultMore`
+That's because the contract is now `com.jboss.test.Contract.testMeMore()Lcom/jboss/test/Contract$ResultMore`
 and even if `Result` is a super interface, Java does not let go with it.
 
 And since application deployed in Java EE 6 are supposed to work out of the box for
