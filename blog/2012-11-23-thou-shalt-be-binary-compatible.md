@@ -67,7 +67,7 @@ trivial.
 
 The what? It turns out the Java designers already had this problem when they
 introduced the generics type system. You can solve the problem by using
-interception types.
+intersection types.
 
     //API
     public interface Contract {
