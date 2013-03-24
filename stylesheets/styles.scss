@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, strong {
   a {
     padding: 3px;
     text-decoration: none;
-    @include border-radius();
+    @include border-radius(5px);
   }
 }
 
