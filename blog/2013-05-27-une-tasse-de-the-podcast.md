@@ -5,7 +5,7 @@ layout: blog-post
 tags: [podcast, java, francais]
 ---
 [Eric Lefevre-Ardand](http://ericlefevre.net/) vient de lancer un nouveau
-podcast sur Java et en Français: [Une tasse de thé Podcast](http://unetassedethepodcast.com).
+podcast sur la programmation et en Français: [Une tasse de thé Podcast](http://unetassedethepodcast.com).
 
 Comme son nom l'indique, le podcast est une interview sur un sujet précis autour
 d'une tasse de thé. J'aime bien ce format qui limite les interview à 15 minutes
