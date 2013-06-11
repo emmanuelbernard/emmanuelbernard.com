@@ -7,7 +7,7 @@ tab: home
   
 # #{page.title}
 
-If you need my biography for a conference, use the following one (available in English or French). You can also find my picture below.
+If you must my biography for a conference, use the following one (available in English or French). You can also find my picture below.
 
 ## English
 
