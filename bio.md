@@ -12,7 +12,7 @@ If you need my biography for a conference, use the following one (available in E
 ## English
 
 Emmanuel Bernard is data platform architect at JBoss by Red Hat and member of
-the Hibernate team.
+the Hibernate team and just got a kid!
 
 Emmanuel has spent a few years in the retail industry as developer and architect
 where he started to be involved in the ORM space. He joined the Hibernate team
