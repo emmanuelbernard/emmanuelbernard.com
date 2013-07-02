@@ -11,14 +11,12 @@ If you need my biography for a conference, use the following one (available in E
 
 ## English
 
-Emmanuel Bernard is data platform architect at JBoss by Red Hat and member of
-the Hibernate team.
+Emmanuel Bernard is data platform architect for the JBoss portfolio at Red Hat.
+He oversees data related projects and in particular the Hibernate portfolio
+where he came from.
 
-Emmanuel has spent a few years in the retail industry as developer and architect
-where he started to be involved in the ORM space. He joined the Hibernate team
-in 2003 and most of his work is open source since then.
-
-Emmanuel has lead the JPA implementation of Hibernate ORM. He has founded and
+Emmanuel joined the Hibernate team in 2003 and most of his work is open source
+since then.  He has lead the JPA implementation of Hibernate ORM, founded and
 lead Hibernate Search, Hibernate Validator. His latest project endeavour is
 Hibernate OGM but he also contributes to Ceylon, Awestruct and a few other
 projects in his spare time.
@@ -35,18 +33,15 @@ You can follow him on twitter at
 
 ## Français
 
-Emmanuel Bernard est architecte plate-forme données à JBoss by Red Hat et un
-membre de l'équipe Hibernate.
+Emmanuel Bernard est architecte plate-forme données sur le portefeuille JBoss
+chez Red Hat. Il supervise les projets liées aux données et en particulier le
+portefeuille Hibernate d'où il vient.
 
-Emmanuel Bernard a passé quelques années dans le secteur de la grande
-distribution où il a commencé à s'impliquer dans le monde de l'ORM. Il a rejoint
-l'équipe Hibernate en 2003 et depuis, son travail est quasiment 100% open
-source.
-
-Emmanuel a dirigé l'implementation JPA d'Hibernate. Il a fondé et dirigé
-Hibernate Search, Hibernate Validator. Sa dernière aventure est Hibernate OGM
-mais il contribue aussi à Ceylon, Awestruct et quelques autres projects pendant
-son temps libre.
+Emmanuel a rejoint l'équipe Hibernate en 2003 et depuis, son travail est
+quasiment 100% open source. Il a dirigé l'implémentation JPA d'Hibernate, fondé
+et dirigé Hibernate Search, Hibernate Validator. Sa dernière aventure est
+Hibernate OGM mais il contribue aussi à Ceylon, Awestruct et quelques autres
+projets pendant son temps libre.
 
 Emmanuel est membre de l'expert group JPA 2.1 et spec lead de Bean Validation.
 Il intervient régulièrement dans diverses conférences et JUGs, dont JavaOne,
