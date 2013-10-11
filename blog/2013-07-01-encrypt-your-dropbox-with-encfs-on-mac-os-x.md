@@ -77,3 +77,18 @@ To unmount, simply do
     umount ~/Dropbox/Private.enc/
 
 That's it. Happy secure data.
+
+_**Update:**_
+
+I was wrong in assuming a few things:
+
+* Dropbox can do partial sync of a big file, so the whole file is not reuploaded
+  in its entirety. Reference [here](http://serverfault.com/questions/52861/how-does-dropbox-version-upload-large-files).
+* TrueCrypt does encrypt by block so changing one file does not change the whole TrueCrypt container file.
+* Mac OS SpaceBundle does roughly like TrueCrypt and split a bundle into files of 8MB each.
+  Reference [here](http://crucialsecurityblog.harris.com/tag/sparsebundle/).
+
+It remains that encfs is a nice tool but not for the reasons I mentioned :)
+
+Thanks for Renaud and Jekyll for pointing these errors.
+Bad karma for Jekyll for not resisting the urge to express it like a dick.
