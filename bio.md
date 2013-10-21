@@ -57,10 +57,10 @@ Vous pouvez le suivre sur twitter à
 
 Preferred
 
-![Portrait](/images/headshot/EmmanuelBernardConference.jpg)
+![Portrait](/images/headshot/201310EmmanuelBernardHalfBody.jpg)
 
 Squared
 
-![Squared portrait](/images/headshot/EmmanuelBernardConferenceSquare.jpg)
+![Squared portrait](/images/headshot/201310EmmanuelBernardSquare.jpg)
 
     
