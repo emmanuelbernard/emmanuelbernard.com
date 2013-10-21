@@ -55,12 +55,12 @@ Vous pouvez le suivre sur twitter à
 
 ## Pictures
 
-Preferred
+### Preferred
 
-![Portrait](/images/headshot/201310EmmanuelBernardHalfBody.jpg)
+<img width="50%" alt="Portrait" src="/images/headshot/201310EmmanuelBernardHalfBody.jpg"/>
 
-Squared
+### Squared
 
-![Squared portrait](/images/headshot/201310EmmanuelBernardSquare.jpg)
+<img width="50%" alt="Squared portrait" src="/images/headshot/201310EmmanuelBernardSquare.jpg"/>
 
     
