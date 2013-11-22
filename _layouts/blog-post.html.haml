@@ -11,7 +11,7 @@ tab: blog
         - if text.size < 25
           = text
         - else
-          = text.split(//).first(25).to_s  << "..."
+          = text[0..25].to_s << "..."
   - if page.next_post
     %li.next
       %a{:href=>page.next_post.url}
@@ -19,7 +19,7 @@ tab: blog
         - if text.size < 25
           = text
         - else
-          = text.split(//).first(25).to_s << "..."
+          = text[0..25].to_s << "..."
         &rarr;
   
 %hr
