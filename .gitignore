@@ -8,3 +8,4 @@
 /_site
 /_tmp
 /.awestruct
+/publish.sh
