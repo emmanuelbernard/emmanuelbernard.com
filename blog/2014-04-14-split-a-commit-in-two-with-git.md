@@ -77,7 +77,7 @@ when you know how to add to the staging area parts of a file changes
 The magic tool for that is `git add -p myfile` but it is quite arid.
 I recommend you use either [GitX](http://gitx.frim.nl) (Mac OS X, GUI)
 or [tig](http://jonas.nitro.dk/tig/) (CLI).
-They offer a more friendly interactive way to add chunck of changes (up to line by line additions).
+They offer a more friendly interactive way to add chunks of changes (up to line by line additions).
 
 Another interesting tip for people that work on topic branches forked off `master`.
 You can do `git rebase -i master` which will list the commits between master and your branch.
