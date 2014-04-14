@@ -2,7 +2,7 @@
 title: Can you spot the problem?
 author: Emmanuel Bernard
 layout: blog-post
-tags: [Mac OS X, tool]
+tags: [Java]
 ---
 I am working on Hibernate Search's ability to provide
 [field bridge autodiscovery](https://hibernate.atlassian.net/browse/HSEARCH-1552).
