@@ -1,5 +1,5 @@
 ---
-title: Fiscalité globale
+title: Fiscalité globale en France
 author: Emmanuel Bernard
 layout: blog-post
 tags: [francais, economy]
@@ -96,6 +96,8 @@ François Saint-Cast et Bernard  Zimmern appellent cela **l'impôt-risque**.
 Or c'est lui qui lance des idées, monte des boites et génère des emplois.
 
 A noter que certains estiment que la taxation du revenu du capital revient à taxer le même argent plusieurs fois pour la même personne.
+
+Il est loin d'être certain qu'une taxation similaire entre les revenus du travail et du capital soient  une bonne idée.
 
 ## So what ?
 
