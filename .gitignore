@@ -4,6 +4,8 @@
 .DS_Store
 
 #Awestruct
+/.bin
+/.bundle
 /.sass-cache
 /_site
 /_tmp
