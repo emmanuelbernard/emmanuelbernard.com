@@ -71,9 +71,16 @@ task :gen, :profile do |task, args|
   run_awestruct "-P #{profile} -g --force"
 end
 
-desc 'Push local commits to origin/master'
+desc 'Publish website (requires the right SSH key'
+task :publish do
+  Rake::Task["gen"].execute({:profile => 'production'})
+  cmd = "rsync -avz --filter=\"- publish.sh\" --filter=\"- Gemfile\" --filter=\"- Gemfile.lock\" _site/ emmanuelbernard:public_html"
+  system cmd
+end
+
+desc 'Push local commits to upstream/master'
 task :push do
-  system 'git push origin master'
+  system 'git push upstream master'
 end
 
 desc 'Clean out generated site and temporary files, using [all] will also delete local gem files'
