@@ -5,6 +5,16 @@ ErrorDocument 404 /404.html
 
 RewriteEngine on
 
+# redirect book.
+RewriteCond %{HTTP_HOST} ^book\.emmanuelbernard\.com [NC]
+RewriteRule ^(.*)$ http://emmanuelbernard.com/books/hsia/ [R=301,L]
+
+# redirect blog. atom feed to new feed
+# redirect other blog. to /blog
+RewriteCond %{HTTP_HOST} ^blog\.emmanuelbernard\.com [NC]
+RewriteRule ^atom\.xml$ http://emmanuelbernard.com/blog/feed.atom [R=301,L]
+RewriteRule ^(.*)$ http://emmanuelbernard.com/blog/ [R=301,L]
+
 RewriteCond %{HTTP_HOST} ^www.emmanuelbernard.com$ [OR]
 RewriteCond %{HTTP_HOST} ^emmanuelbernard.com$
 
