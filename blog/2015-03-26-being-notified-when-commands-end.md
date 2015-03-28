@@ -48,8 +48,9 @@ This small tool solves that problem.
     fi
     
     $@
+    EXIT_CODE=$?
     
-    if [ $? -eq 0 ]; then
+    if [ $EXIT_CODE -eq 0 ]; then
       RESULT="SUCCESS"
       echo $RESULT    
       say
@@ -57,8 +58,9 @@ This small tool solves that problem.
       RESULT="FAILURE"
       echo $RESULT
       say
-      exit $?
+      exit $EXIT_CODE
     fi
+
 
 When you want to monitor the completion of a command, simply prefix it with `notify`.
 
