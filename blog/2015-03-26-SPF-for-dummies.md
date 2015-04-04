@@ -74,7 +74,7 @@ I use Gmail and Red Hat's SMTP: `"v=spf1 include:_spf.google.com include:redhat.
 
 I use the server hosting example.com and Red Hat's SMTP: `"v=spf1 a include:redhat.com -all"` (this is a short hand for `"v=spf1 a:example.com include:redhat.com -all"`
 
-People sending email as other-example.com use various SMTP servers but for sure 198.51.100.3 and example.com's SMTP servers: `"v=spf1 ip4:198.51.100.3 include:example.com ?all"`
+People sending email as other-example.com use various SMTP servers but for sure 198.51.100.3 and it's corresponding IPv6 2001:db8::df4:cd23 and example.com's SMTP servers: `"v=spf1 ip4:198.51.100.3 ip6:2001:db8::df4:cd23 include:example.com ?all"`
 
 A note on TXT DNS entry, to use (I think) the bind syntax, here is how it looks like
 
@@ -103,6 +103,9 @@ As much as I can, I use `include` and delegate the list to the real guys.
 Google and others use special subdomains like `_spf.google.com` to host their SPF rules.
 This is useful to separate different ruleset but bind them together in your primary domain via an `include` rule.
 If you are one of them, you probably don't need my blog entry in the first place :)
+
+Remember that servers now have IPv6 addresses and that Google and other have already IPv6 infrastructures in place.
+Don't forget them, I had some emails denied because I was missing it and my server communicated with Google from an IPv6.
 
 My take out is simple: if you own a domain and send emails, add a SPF entry.
 It's relatively simple and the examples I gave you should get you a long way already.
