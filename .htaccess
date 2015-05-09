@@ -5,17 +5,21 @@ ErrorDocument 404 /404.html
 
 RewriteEngine on
 
+# Move to HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+
 # redirect book.
 RewriteCond %{HTTP_HOST} ^book\.emmanuelbernard\.com$ [NC]
-RewriteRule ^(.*)$ http://emmanuelbernard.com/books/hsia/ [R=301,L]
+RewriteRule ^(.*)$ https://emmanuelbernard.com/books/hsia/ [R=301,L]
 
 # redirect blog. atom feed to new feed
 # redirect other blog. to /blog
 RewriteCond %{HTTP_HOST} ^blog\.emmanuelbernard\.com$ [NC]
-RewriteRule ^atom\.xml$ http://emmanuelbernard.com/blog/feed.atom [R=301,L]
+RewriteRule ^atom\.xml$ https://emmanuelbernard.com/blog/feed.atom [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^blog\.emmanuelbernard\.com$ [NC]
-RewriteRule ^(.*)$ http://emmanuelbernard.com/blog/ [R=301,L]
+RewriteRule ^(.*)$ https://emmanuelbernard.com/blog/ [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^www.emmanuelbernard.com$ [OR]
 RewriteCond %{HTTP_HOST} ^emmanuelbernard.com$
