@@ -11,7 +11,7 @@ tab: blog
     .blogtagbar
       #{post.date.strftime( '%Y-%m-%d' )}
       &nbsp;|&nbsp;
-      = page.flattr_compact_counter(:url=>"http://emmanuelbernard.com" + post.url, 
+      = page.flattr_compact_counter(:url=>"https://emmanuelbernard.com" + post.url, 
                                     :title=>post.title, 
                                     :tags=>post.tags.join(',')) 
       &nbsp;|&nbsp;

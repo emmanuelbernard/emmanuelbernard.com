@@ -6,7 +6,7 @@ profiles:
     disqus_developer: true
     dev: true
   production:
-    base_url: http://emmanuelbernard.com/
+    base_url: https://emmanuelbernard.com/
 
 google_analytics: UA-3479508-6
 flattr_username: epbernard

@@ -12,7 +12,7 @@ Awestruct::Extensions::Pipeline.new do
     :posts, 
     '/blog/feed-private.atom', 
     :num_entries=>10000,
-    :content_url=>'http://emmanuelbernard.com/blog',
+    :content_url=>'https://emmanuelbernard.com/blog',
     :feed_title=> 'No Relation To' )
   extension Awestruct::Extensions::Flattr.new
   extension Awestruct::Extensions::Disqus.new
