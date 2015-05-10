@@ -1,5 +1,7 @@
 require 'tagger_sanitizer'
 require 'atomizer_custom'
+require 'disqus'
+require 'flattr'
 
 Awestruct::Extensions::Pipeline.new do
   # extension Awestruct::Extensions::Posts.new( '/news' ) 
