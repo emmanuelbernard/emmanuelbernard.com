@@ -7,7 +7,7 @@ RewriteEngine on
 
 # Move to HTTPS
 RewriteCond %{HTTPS} !=on
-RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R=301,L]
 
 # redirect book.
 RewriteCond %{HTTP_HOST} ^book\.emmanuelbernard\.com$ [NC]
