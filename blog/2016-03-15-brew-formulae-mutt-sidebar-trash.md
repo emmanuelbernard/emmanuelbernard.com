@@ -29,3 +29,5 @@ I personally build them with the following options
     brew install emmanuelbernard/mutt/mutt --with-sidebar-patch --with-trash-patch --with-gpgme --with-s-lang
 
 `s-lang` supposedly has better support for color schemes like [Solarized](http://ethanschoonover.com/solarized).
+
+You can find the code at <https://github.com/emmanuelbernard/homebrew-mutt>.
