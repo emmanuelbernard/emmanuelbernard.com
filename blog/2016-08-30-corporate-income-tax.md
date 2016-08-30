@@ -1,5 +1,5 @@
 ---
-title: Why corporate income tax?
+title: Why do we have corporate income tax anyways?
 author: Emmanuel Bernard
 layout: blog-post
 tags: ["economy"]
