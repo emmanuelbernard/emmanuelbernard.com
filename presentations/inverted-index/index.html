@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Emmanuel Bernard" /><title>Inverted index</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/summit.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><script type="text/x-mathjax-config">MathJax.Hub.Config({
+tex2jax: {
+  inlineMath: [["\\(", "\\)"]],
+  displayMath: [["\\[", "\\]"]],
+  ignoreClass: "nostem|nolatexmath"
+},
+asciimath2jax: {
+  delimiters: [["\\$", "\\$"]],
+  ignoreClass: "nostem|noasciimath"
+},
+TeX: { equationNumbers: { autoNumber: "none" } }
+});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script><link rel="stylesheet" type="text/css" href="reveal.js/css/theme/asciinema-player.css" />
+<link rel="stylesheet" type="text/css" href="reveal.js/css/theme/github-gist.css" />
+<script src="reveal.js/css/theme/asciinema-player.js"></script></head><body><div class="reveal"><div class="slides"><section class="title"><h1>Inverted index</h1><p class="author"><small>Emmanuel Bernard</small></p></section><section><section id="what-are-we-here-for"><h2>What are we here for</h2><div class="paragraph"><p>Discuss inverted index technology and fundamentals</p></div></section><section id="emmanuel-bernard"><h2>Emmanuel Bernard</h2><style>
+.asciinema-terminal.font-medium {
+  font-size: 16px;
+}
+</style>
+<div class="paragraph"><p>Consulting Software Engineer, Red Hat<br />
+Platform Architect<br />
+Open Source coder:</p></div>
+<div class="ulist"><ul><li><p>Hibernate {ORM,OGM,Search,Validator}</p></li><li><p>Debezium, Infinispan, Ceylon, &#8230;&#8203;</p></li></ul></div>
+<div class="paragraph"><p>Podcasts: <a href="https://lescastcodeurs.com:">Les Cast Codeurs</a></p></div>
+<div class="paragraph"><p><a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a><br />
+<a href="https://emmanuelbernard.com" class="bare">https://emmanuelbernard.com</a></p></div></section><section id="agenda"><h2>Agenda</h2><div class="paragraph"><p>TODO: TBD</p></div></section></section>
+<section><section id="why-do-we-need-inverted-index"><h2>Why do we need inverted index</h2></section><section id="where-is-it-used"><h2>Where is it used</h2><div class="openblock left"><div class="content"><div class="paragraph"><p>Classical:</p></div>
+<div class="ulist"><ul><li><p>Google, DuckDuckGo</p></li><li><p>Mobile phone search</p></li><li><p>IDE  auto-completion</p></li></ul></div></div></div>
+<div class="openblock right"><div class="content"><div class="paragraph"><p>Less classical</p></div>
+<div class="ulist"><ul><li><p>geolocation</p></li><li><p>suggestion</p></li><li><p>faceting</p></li><li><p>more like this / classification</p></li><li><p>machine learning</p></li></ul></div></div></div></section><section id="let-s-try-on-rdbmses"><h2>Let&#8217;s try on RDBMSes</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE s.bio = 'Open Source'</code></pre></div></div>
+<div class="paragraph"><p>B-Tree index</p></div></section></section>
+<section><section id="a-zoom-on-b-trees" class="fundamental"><h2>A zoom on B-Trees</h2><div class="paragraph"><p>Self-balancing tree data stucture<br />
+Search, insert and delete in <code>O(log n)</code><br />
+Good when access time &gt;&gt; process time</p></div><div class="paragraph"><p>Replace numbers in the example with letters for text.</p></div><div class="imageblock" style=""><img src="./images/b-tree/b-tree-base.png" alt="b tree base" /></div></section><section id="splitting-leaf-nodes" class="fundamental"><h2>Splitting leaf nodes</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-base.png" alt="b tree base" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-1.png" alt="b tree 1" /></div></div></div></section><section id="simple-addition" class="fundamental"><h2>Simple addition</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-1.png" alt="b tree 1" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-2.png" alt="b tree 2" /></div></div></div></section><section id="splitting-nodes" class="fundamental"><h2>Splitting nodes</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-2.png" alt="b tree 2" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-3.png" alt="b tree 3" /></div></div></div></section><section id="filling-up-a-leaf-node" class="fundamental"><h2>Filling up a leaf node</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-3.png" alt="b tree 3" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-4.png" alt="b tree 4" /></div></div></div></section><section id="splitting-nodes-and-filling-up-the-root" class="fundamental"><h2>Splitting nodes and filling up the root</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-4.png" alt="b tree 4" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-5.png" alt="b tree 5" /></div></div></div></section><section id="filling-up-leaves" class="fundamental"><h2>Filling up leaves</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-5.png" alt="b tree 5" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-6.png" alt="b tree 6" /></div></div></div></section><section id="adding-one-level" class="fundamental"><h2>Adding one level</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-6.png" alt="b tree 6" /></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-7.png" alt="b tree 7" /></div></div></div></section><section id="b-tree" class="fundamental"><h2>B+-tree</h2><div class="paragraph"><p>Only keys in the non leaf nodes<br />
+Leaf nodes linked with one another for efficient ascending reading<br />
+Data can be just pointer to the real data</p></div></section></section>
+<section><section id="back-to-our-rdbms-vs-inverted-indices"><h2>Back to our RDBMS vs inverted indices</h2></section><section id="with-like"><h2>With like</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE s.bio LIKE 'Open Source%'</code></pre></div></div>
+<div class="paragraph"><p>With like we can have more text after<br />
+Still using indices</p></div></section><section id="with-like-in-the-middle-of-the-column"><h2>With like in the middle of the column</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE s.bio LIKE '%Open Source%'</code></pre></div></div>
+<div class="paragraph"><p>Find word anywhere in the text</p></div>
+<div class="paragraph"><p>Table or index scan :(</p></div></section><section id="what-about-uppercase-typos-etc"><h2>What about uppercase, typos etc</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE
+    s.bio LIKE '%open source%'
+    OR s.bio LIKE '%Open Source%'
+    OR s.bio LIKE '%opan surce%'</code></pre></div></div>
+<div class="paragraph"><p>Can&#8217;t anticipate the casing<br />
+Can&#8217;t anticipate all typos</p></div></section><section id="what-about-word-ordering-and-priority"><h2>What about word ordering and priority</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM/Speakers s WHERE
+    s.bio LIKE '%source open%'
+    OR s.bio LIKE '%source%'
+    OR s.bio LIKE '%open%'
+    ORDER BY best??</code></pre></div></div>
+<div class="paragraph"><p>Words could be in any order<br />
+I want the most interesting result first</p></div></section></section>
+<section><section id="indexing"><h2>Indexing</h2></section><section id="inverted-index-to-the-rescue"><h2>Inverted index to the rescue</h2><div class="paragraph"><p>Let&#8217;s not index column values but words<br />
+Let&#8217;s not query values but words</p></div></section><section id="at-indexing-time"><h2>At indexing time</h2><div class="openblock left small"><div class="content"><div class="paragraph"><p>doc1: I am your father Luke<br />
+doc2: Yes he is your father<br />
+doc3: I am gonna make him an offer he can not refuse.<br />
+doc4: I love the smell of napalm in the morning.<br />
+doc5: One morning I shot an elephant in my pajamas. How he got in my pajamas, I do not know.</p></div></div></div>
+<div class="openblock right small"><div class="content"><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><thead><tr><th class="tableblock halign-left valign-top">word</th><th class="tableblock halign-left valign-top">documents</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">am</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1,3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">an</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">can</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">do</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">elephant</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">father</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1,2</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">gonna</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">got</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">he</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">2,3,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">him</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">how</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">i</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1,3,4,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">in</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">is</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">know</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">love</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">luke</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">make</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">morning</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">my</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">not</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3,5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">napalm</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">of</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">offer</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">one</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">pajamas</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">refuse</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">shot</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">smell</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">the</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">yes</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">your</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1,2</p></td></tr></tbody></table></div></div></section><section id="at-query-time"><h2>At query time</h2><div class="paragraph"><p><code>query: father napalm</code><br />
+Apply the same word splitting logic<br />
+Matching documents: 1, 2 and 4</p></div>
+<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><thead><tr><th class="tableblock halign-left valign-top">word</th><th class="tableblock halign-left valign-top">documents</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">father</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">1,2</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">napalm</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr></tbody></table></section></section>
+<section><section id="indexing-details"><h2>Indexing details</h2></section><section id="transforming-sentences-into-words"><h2>Transforming sentences into words</h2><div class="olist arabic"><ol class="arabic"><li><p>pre-tokenization</p></li><li><p>tokenization</p></li><li><p>filter</p></li></ol></div>
+<div class="paragraph"><p>Apply the same logic to both document and query content<br />
+Each token is the entry in the inverted index pointing to documents</p></div></section><section id="pre-tokenization"><h2>Pre-tokenization</h2><div class="paragraph"><p>Remove unnecessary characters<br />
+e.g. remove HTML tags</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>&lt;p&gt;This is &lt;string&gt;awesome&lt;/strong&gt;.&lt;/p&gt;
+This is awesome.</code></pre></div></div></section><section id="tokenization"><h2>Tokenization</h2><div class="paragraph"><p>Split sentence into words called <em>tokens</em><br />
+Split at spaces, dots and other punctuations (with exceptions)</p></div>
+<div class="paragraph"><p><code>aujourd&#8217;hui</code>, <code>A.B.C.</code>, and many other rules</p></div>
+<div class="paragraph"><p>One tokenizer per language, but many languages are similar</p></div></section><section id="continuous-scripting" class="aside"><h2>Continuous scripting</h2><div class="paragraph"><p>Didyouknowwritingtextsinwordsseparatedbyspaceisnotthatold<br />
+itstartedinthemiddleage<br />
+Itwasnotaproblemaspeoplewerereadingoutloudwrittentext<br />
+Infactsplittingwordswasaninventionnecessary<br />
+becausemonksshouldremainsilentandlatinwasnolongertheirnativetongue</p></div></section><section id="filtering-where-the-magic-happens"><h2>Filtering: where the magic happens</h2><div class="paragraph"><p>Operate on the stream of tokens<br />
+Change, remove or even add tokens</p></div>
+<div class="paragraph"><p>lowercase, stopwords</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>Sentence: This is AWESOME Peter!
+Tokens: |This|is|AWERSOME|Peter|
+stopwords: |AWESOME|Peter|
+lowercase: |awesome|peter|</code></pre></div></div></section><section id="solving-various-problems-with-filters"><h2>Solving various problems with filters</h2></section><section id="synonyms"><h2>Synonyms</h2><div class="paragraph"><p>When the text mentions a "car" but the research is about "automobile" or "vehicle"<br />
+We need a synonym dictionary.</p></div></section><section id="synonym-solution"><h2>Synonym solution</h2><div class="olist arabic"><ol class="arabic"><li><p>Put all synonyms in the index for each word</p></li><li><p>Use a reference synonym ("automobile" for "car", "compact", "auto", "S.U.V."&#8230;&#8203;)</p></li><li><p>index normally, use synonyms when building the query</p></li></ol></div></section><section id="words-from-the-same-family"><h2>Words from the same family</h2><div class="paragraph"><p>"education", "educates", "educated", &#8230;&#8203;<br />
+That would make for lots of synonyms&#8230;&#8203;<br />
+Let&#8217;s use a stemming algorithm</p></div></section><section id="an-algorithm-to-copy-language-logic-and-exceptions"><h2>An algorithm to copy language logic (and exceptions)</h2><div class="openblock left"><div class="content"><div class="paragraph"><p>Porter stemming algorithm<br />
+Snowball grammar<br />
+<a href="http://snowballstem.org/algorithms/french/stemmer.html">French algorithm explained</a></p></div>
+<div class="paragraph"><p>Index/query the stem when the word in found</p></div></div></div>
+<div class="openblock right"><div class="content"><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><thead><tr><th class="tableblock halign-left valign-top">word</th><th class="tableblock halign-left valign-top">stem</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">mains</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenaient</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenait</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenant</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenir</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenue</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintien</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">maintien</p></td></tr></tbody></table></div></div></section><section id="finding-words-with-typos"><h2>Finding words with typos</h2><div class="paragraph"><p>People make mistakes<br />
+In the text or in the query</p></div>
+<div class="paragraph"><p>They make <em>thaipo</em> and other <em>mystakes</em></p></div></section><section id="phonetic-algorithm"><h2>Phonetic algorithm</h2><div class="paragraph"><p>Same logic as stemming, convert word into phonetic approximation<br />
+Soundex, RefinedSoundex, Metaphone, DoubleMetaphone</p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Soundex most well known and oldest</p></li><li><p>RefinedSoundex more focused on spell checking</p></li><li><p>Metaphone: variable length phonetic approximation</p></li><li><p>Double Metaphone: handles more irregularities from English, German, Greek, French, Chinese</p></li></ul></div>
+<div class="paragraph"><p>Phonetic algorithms relatively costly</p></div></aside></section><section id="n-gram"><h2>n-gram</h2><div class="paragraph"><p>Split a word into a sliding window of n characters<br />
+Index each n-gram</p></div>
+<div class="paragraph"><p>low n means more false positive<br />
+high n means less forgiving</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>// building a 3 gram
+mystake: mys yst sta tak ake
+mistake: mis ist sta tak ake</code></pre></div></div></section><section id="fuzzy-search"><h2>Fuzzy search</h2><div class="paragraph"><p>Based on Damerau-Levenshtein distance</p></div>
+<div class="ulist"><ul><li><p>insert, update, delete and transposition</p></li></ul></div>
+<div class="paragraph"><p>Pure query time operation</p></div></section><section id="fuzzy-search-in-practice"><h2>Fuzzy search in practice</h2><div class="paragraph"><p>Compute distance between word and all words in index</p></div>
+<div class="paragraph"><p>Compute a distance state machine for word<br />
+Use it to check specific terms in the index</p></div>
+<div class="openblock left small"><div class="content"><div class="paragraph"><p>n<sup>e</sup>: n consummed chars, e errors<br />
+horizontal: unmodified chars<br />
+* vertical: addition<br />
+* diagonal: substitution<br />
+ε diagonal: deletion</p></div></div></div>
+<div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/fuzzy/levenstein-nfa-food.png" alt="levenstein nfa food" /></div></div></div>
+<aside class="notes"><div class="paragraph"><p>Read <a href="https://julesjacobs.github.io/2015/06/17/disqus-levenshtein-simple-and-fast.html" class="bare">https://julesjacobs.github.io/2015/06/17/disqus-levenshtein-simple-and-fast.html</a> and <a href="http://blog.notdot.net/2010/07/Damn-Cool-Algorithms-Levenshtein-Automata" class="bare">http://blog.notdot.net/2010/07/Damn-Cool-Algorithms-Levenshtein-Automata</a><br />
+The image is a Non deterministic Finite Automaton</p></div></aside></section><section id="you-can-index-the-same-data-in-different-ways"><h2>You can index the same data in different ways</h2><div class="paragraph"><p>Apply different indexing approach for same data</p></div></section></section>
+<section><section id="querying-time"><h2>Querying time</h2><div class="paragraph"><p>It&#8217;s <em>term</em> query all the way down!<br />
+All queries (synonyms, phonetic, n-gram, fuzzy) are a (set of) term queries</p></div></section><section id="possible-queries"><h2>Possible queries</h2><div class="paragraph"><p>TODO: possible queries?<br />
+Term, wildcard, prefix, fuzzy, phrase, range, boolean, all, spatial, more like this, spell checking</p></div></section></section>
+<section><section id="scoring"><h2>Scoring</h2><div class="paragraph"><p>We want the most relevant results first<br />
+This is relative<br />
+Several approaches, none perfect</p></div></section><section id="main-levers-for-a-scoring-formulae"><h2>Main levers for a scoring formulae</h2><div class="dlist"><dl><dt class="hdlist1">Term frequency</dt><dd><p>How often does the term appear in this document?<br />
+More is better</p></dd><dt class="hdlist1">Inverse document frequency</dt><dd><p>How often does the term appear in all documents in the collection?<br />
+Common words are less important</p></dd><dt class="hdlist1">Field-length norm</dt><dd><p>How long is the field?<br />
+Long documents would be favored otherwise</p></dd><dt class="hdlist1">Coordination factor</dt><dd><p>If document contains multiple terms, it&#8217;s a better fit.</p></dd></dl></div></section><section id="tf-idf-full-formulae"><h2>TF/IDF Full formulae</h2><div class="stemblock small"><div class="content">\$"score"(q,d) =
+    "queryNorm"(q)
+    * "coord"(q,d)
+    * sum_(t in q) (
+        tf(t in d)
+        * idf(t)^2
+        * "t.boost"
+        * "norm"(t,d)
+    )\$</div></div>
+<div class="stemblock small"><div class="content">\$"queryNorm"(q) = 1/sqrt(sum_(t in q) (idf(t)^2))\$</div></div>
+<div class="stemblock small"><div class="content">\$"coord"(q,d) = ("matchingTerm"(q))/("nbrOfTerms"(q))\$</div></div>
+<div class="stemblock small"><div class="content">\$tf(t in d) = sqrt(nbrOfTermAppearance(t in d))\$</div></div>
+<div class="stemblock small"><div class="content">\$idf(t) = 1 + log ( "numDocs" / ("numDocs"(t in d) + 1)) \$</div></div>
+<div class="stemblock small"><div class="content">\$"norm"(d) = 1/sqrt( "nbrOfTerms"(t in d) )\$</div></div></section><section id="other-scoring"><h2>Other scoring</h2><div class="paragraph"><p>Boosting fields<br />
+Okapi BM25<br />
+Your custom scoring function (or a tweak of)</p></div></section></section>
+<section><section id="inverted-index-physical-representation"><h2>Inverted index physical representation</h2><div class="paragraph"><p>A Lucene example</p></div></section><section id="b-tree-s-problems" class="fundamental"><h2>B-tree&#8217;s problems</h2><div class="paragraph"><p>When you need write throughput<br />
+B-tree require lots of update in place<br />
+Sequential reads are much faster than random reads</p></div>
+<div class="ulist"><ul><li><p>in memory</p></li><li><p>on didk</p></li></ul></div></section><section id="append-logs" class="fundamental"><h2>Append logs</h2><div class="paragraph"><p>Append operations in a file<br />
+Reading requires reading all the log</p></div></section><section id="log-structured-merge" class="fundamental"><h2>Log-Structured Merge</h2><div class="paragraph"><p>Per batch of writes, create a file storing the sorted key/value pairs<br />
+On read, check for the key on each file<br />
+Regularly merge files together (e.g. make bigger files)</p></div>
+<div class="imageblock" style=""><img src="./images/lsm/lsm-base.png" alt="Log-Structured Merge Tree" /></div></section><section id="lsm-characteristics" class="fundamental"><h2>LSM characteristics</h2><div class="paragraph"><p>Immutable (lock-free) and file cache friendly<br />
+Fast on write, decent on read<br />
+Sequential read/write friendly<br />
+Read time decays with number of files &#8658; merge</p></div></section><section id="lots-of-ways-to-improve-them" class="fundamental"><h2>Lots of ways to improve them</h2><div class="paragraph"><p>Bloom filter<br />
+Page index in memory<br />
+Levelled compaction</p></div></section><section id="levelled-lsm-tree" class="fundamental"><h2>Levelled LSM tree</h2><div class="imageblock" style=""><img src="./images/lsm/lsm-levelled-compaction.png" alt="Log-Structured Merge Tree" /></div></section><section id="levelled-compaction" class="fundamental"><h2>Levelled compaction</h2><div class="paragraph"><p>Limit the number of files to read<br />
+Compact to the higher levels<br />
+Each file per level has non overlapping key ranges<br />
+One file per level to be consulted</p></div></section><section id="lucene-s-case"><h2>Lucene&#8217;s case</h2><div class="paragraph"><p>LSM<br />
+Everything is computed upfront<br />
+Each <em>segment</em> is a mini index<br />
+Denormalize differently depending on access pattern</p></div></section><section id="a-segment-simplified"><h2>A segment (simplified)</h2><div class="ulist"><ul><li><p>term index (like a ToC for the dictionary)</p></li><li><p>term dictionary (points to posting list offset)</p></li><li><p>posting list (list of matching document id per term)</p></li><li><p>stored field index (sparse doc id + offset)</p></li><li><p>stored field data (list of field values per document id)</p></li><li><p>deleted documents</p></li></ul></div></section><section id="term-index"><h2>Term index</h2><div class="paragraph"><p>Term index provides offset to the dictionary<br />
+Based on <em>finite state transducers</em><br />
+Gives one ordinal per prefix</p></div>
+<div class="paragraph"><p>We know where to look in the term dictionary</p></div>
+<div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/file-structure/FSTExample.png" alt="FSTExample" /></div></div></div>
+<div class="openblock right small"><div class="content"><div class="paragraph"><p>FST for mop, moth, pop, star, stop and top</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>mop=0
+moth=1
+pop=2
+star=3
+stop=4
+top=5</code></pre></div></div></div></div>
+<aside class="notes"><div class="paragraph"><p>Thanks to immutable can be built at merge time<br />
+Thanks to immutable, replace term with it&#8217;s ordinal value and index in a virtual array<br />
+terms are ordered alphabetically and given an ordinal &#8658; alter comparison by ordinal comparison</p></div></aside></section><section id="term-dictionary"><h2>Term dictionary</h2><div class="paragraph"><p>From a given offset (&amp; prefix)<br />
+Sorted list of suffixes<br />
+For each, frequency and offset to posting list</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>[prefix=top]
+_null_, freq=27, offset=234
+ography, freq=1, offset=298
+ology, freq=6, offset=306
+onyms, freq=1, offset=323</code></pre></div></div></section><section id="posting-list"><h2>Posting list</h2><div class="paragraph"><p>List of document ids<br />
+Encoded as delta of ids (good for variable int encoding)</p></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code>4,6,9,30,33,39,45 =&gt; 4,2,3,23,3,6,6</code></pre></div></div>
+<div class="paragraph"><p><a href="http://www2008.org/papers/pdf/p387-zhangA.pdf">PForDelta</a> encoding<br />
+Bigger in size but less CPU branch miss prediction</p></div>
+<aside class="notes"><div class="paragraph"><p>PForDelta<br />
+By batch of 128 integers, find the smallest number of bits for the biggest int<br />
+And use this as fixed encoding.<br />
+Note that, it has a notion of exception for ints bigger than b bits to improve the logic</p></div></aside></section><section id="stored-fields"><h2>Stored fields</h2><div class="paragraph"><p>Stored field index in memory doc id + offset for every 16k of data<br />
+Stored value stored as bocks of 16k and compressed</p></div>
+<div class="imageblock" style=""><img src="./images/file-structure/stored-fields.png" alt="stored fields" /></div></section><section id="deleted-documents"><h2>Deleted documents</h2><div class="paragraph"><p>You said segments are immutable<br />
+What about deleted documents?</p></div>
+<div class="paragraph"><p>Deleted document file</p></div>
+<div class="ulist"><ul><li><p>1 bit per doc</p></li><li><p>sparse list of cleared docs</p></li></ul></div></section><section id="why-oh-why-such-a-mess"><h2>Why oh why such a mess?</h2><div class="paragraph"><p>2 disk seeks per field search (binary search)<br />
+1 disk seek per doc for stored fields</p></div>
+<div class="paragraph"><p>But things likely fit in file system cache</p></div>
+<div class="paragraph"><p>Warning: this is a simplified view :)</p></div></section></section>
+<section><section id="subjects-not-covered"><h2>Subjects not covered</h2></section><section id="uninverted-index"><h2>Uninverted index</h2><div class="paragraph"><p>Columnar storage<br />
+Called doc values<br />
+Used for aggregation or sorting or faceting</p></div></section><section id="faceting"><h2>Faceting</h2></section><section id="position"><h2>Position</h2></section><section id="geospatial-queries"><h2>Geospatial queries</h2></section><section id="term-vector"><h2>Term vector</h2></section><section id="shingles"><h2>Shingles</h2></section><section id="and-many-more-things"><h2>And many more things</h2></section></section>
+<section><section id="thank-you"><h2>Thank you!</h2><div class="ulist"><ul><li><p>Slides <a href="https://emmanuelbernard.com/presentations/inverted-index/" class="bare">https://emmanuelbernard.com/presentations/inverted-index/</a></p></li><li><p>Code <a href="https://github.com/emmanuelbernard/presentation-inverted-index/" class="bare">https://github.com/emmanuelbernard/presentation-inverted-index/</a></p></li><li><p>Blog <a href="https://emmanuelbernard.com">emmanuelbernard.com</a></p></li><li><p>Follow me: <a href="http://twitter.com/emmanuelbernard">@emmanuelbernard</a></p></li></ul></div></section><section id="references"><h2>References</h2><div class="paragraph"><p>TODO: fill up all references</p></div></section><section id="todo"><h2>TODO</h2><div class="paragraph"><p>Put some fun breaks every now and then</p></div></section></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: true,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'summit',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><!-- div id="footer">
+  <div style="width:100%">
+     <div style="display:inline">Extremely fast builds with Gradle 3 - @CedricChampeau</div>
+     <div style="display:inline; position:absolute; right: 50px;"><img src="images/gradle-logo-min.png"></div>
+  </div>
+</div --></body></html>
