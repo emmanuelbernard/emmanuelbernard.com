@@ -82,7 +82,7 @@ becausemonksshouldremainsilentandlatinwasnolongertheirnativetongue</p></div></se
 Change, remove or even add tokens</p></div>
 <div class="paragraph"><p>lowercase, stopwords</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>Sentence: This is AWESOME Peter!
-Tokens: |This|is|AWERSOME|Peter|
+Tokens: |This|is|AWESOME|Peter|
 stopwords: |AWESOME|Peter|
 lowercase: |awesome|peter|</code></pre></div></div></section><section id="solving-various-problems-with-filters"><h2>Solving various problems with filters</h2></section><section id="synonyms"><h2>Synonyms</h2><div class="paragraph"><p>When the text mentions a "car" but the research is about "automobile" or "vehicle"<br />
 We need a synonym dictionary.</p></div></section><section id="synonym-solution"><h2>Synonym solution</h2><div class="olist arabic"><ol class="arabic"><li><p>Put all synonyms in the index for each word</p></li><li><p>Use a reference synonym ("automobile" for "car", "compact", "auto", "S.U.V."&#8230;&#8203;)</p></li><li><p>index normally, use synonyms when building the query</p></li></ol></div></section><section id="words-from-the-same-family"><h2>Words from the same family</h2><div class="paragraph"><p>"education", "educates", "educated", &#8230;&#8203;<br />
@@ -90,7 +90,7 @@ That would make for lots of synonyms&#8230;&#8203;<br />
 Let&#8217;s use a stemming algorithm</p></div></section><section id="an-algorithm-to-copy-language-logic-and-exceptions"><h2>An algorithm to copy language logic (and exceptions)</h2><div class="openblock left"><div class="content"><div class="paragraph"><p>Porter stemming algorithm<br />
 Snowball grammar<br />
 <a href="http://snowballstem.org/algorithms/french/stemmer.html">French algorithm explained</a></p></div>
-<div class="paragraph"><p>Index/query the stem when the word in found</p></div></div></div>
+<div class="paragraph"><p>Index/query the stem when the word is found</p></div></div></div>
 <div class="openblock right"><div class="content"><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><thead><tr><th class="tableblock halign-left valign-top">word</th><th class="tableblock halign-left valign-top">stem</th></tr></thead><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">mains</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">main</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenaient</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenait</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenant</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenir</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintenue</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">mainten</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">maintien</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">maintien</p></td></tr></tbody></table></div></div></section><section id="finding-words-with-typos"><h2>Finding words with typos</h2><div class="paragraph"><p>People make mistakes<br />
 In the text or in the query</p></div>
 <div class="paragraph"><p>They make <em>thaipo</em> and other <em>mystakes</em></p></div></section><section id="phonetic-algorithm"><h2>Phonetic algorithm</h2><div class="paragraph"><p>Same logic as stemming, convert word into phonetic approximation<br />
@@ -98,7 +98,7 @@ Soundex, RefinedSoundex, Metaphone, DoubleMetaphone</p></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Soundex most well known and oldest</p></li><li><p>RefinedSoundex more focused on spell checking</p></li><li><p>Metaphone: variable length phonetic approximation</p></li><li><p>Double Metaphone: handles more irregularities from English, German, Greek, French, Chinese</p></li></ul></div>
 <div class="paragraph"><p>Phonetic algorithms relatively costly</p></div></aside></section><section id="n-gram"><h2>n-gram</h2><div class="paragraph"><p>Split a word into a sliding window of n characters<br />
 Index each n-gram</p></div>
-<div class="paragraph"><p>low n means more false positive<br />
+<div class="paragraph"><p>low n means more false positives<br />
 high n means less forgiving</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>// building a 3 gram
 mystake: mys yst sta tak ake
@@ -107,7 +107,7 @@ mistake: mis ist sta tak ake</code></pre></div></div></section><section id="fuzz
 <div class="paragraph"><p>Pure query time operation</p></div></section><section id="fuzzy-search-in-practice"><h2>Fuzzy search in practice</h2><div class="paragraph"><p>Compute distance between word and all words in index</p></div>
 <div class="paragraph"><p>Compute a distance state machine for word<br />
 Use it to check specific terms in the index</p></div>
-<div class="openblock left small"><div class="content"><div class="paragraph"><p>n<sup>e</sup>: n consummed chars, e errors<br />
+<div class="openblock left small"><div class="content"><div class="paragraph"><p>n<sup>e</sup>: n consumed chars, e errors<br />
 horizontal: unmodified chars<br />
 * vertical: addition<br />
 * diagonal: substitution<br />
@@ -142,7 +142,7 @@ Your custom scoring function (or a tweak of)</p></div></section></section>
 <section><section id="inverted-index-physical-representation"><h2>Inverted index physical representation</h2><div class="paragraph"><p>A Lucene example</p></div></section><section id="b-tree-s-problems" class="fundamental"><h2>B-tree&#8217;s problems</h2><div class="paragraph"><p>When you need write throughput<br />
 B-tree require lots of update in place<br />
 Sequential reads are much faster than random reads</p></div>
-<div class="ulist"><ul><li><p>in memory</p></li><li><p>on didk</p></li></ul></div></section><section id="append-logs" class="fundamental"><h2>Append logs</h2><div class="paragraph"><p>Append operations in a file<br />
+<div class="ulist"><ul><li><p>in memory</p></li><li><p>on disk</p></li></ul></div></section><section id="append-logs" class="fundamental"><h2>Append logs</h2><div class="paragraph"><p>Append operations in a file<br />
 Reading requires reading all the log</p></div></section><section id="log-structured-merge" class="fundamental"><h2>Log-Structured Merge</h2><div class="paragraph"><p>Per batch of writes, create a file storing the sorted key/value pairs<br />
 On read, check for the key on each file<br />
 Regularly merge files together (e.g. make bigger files)</p></div>
@@ -169,9 +169,9 @@ pop=2
 star=3
 stop=4
 top=5</code></pre></div></div></div></div>
-<aside class="notes"><div class="paragraph"><p>Thanks to immutable can be built at merge time<br />
-Thanks to immutable, replace term with it&#8217;s ordinal value and index in a virtual array<br />
-terms are ordered alphabetically and given an ordinal &#8658; alter comparison by ordinal comparison</p></div></aside></section><section id="term-dictionary"><h2>Term dictionary</h2><div class="paragraph"><p>From a given offset (&amp; prefix)<br />
+<aside class="notes"><div class="paragraph"><p>Thanks to immutable, can be built at merge time<br />
+Thanks to immutable, replace term with its ordinal value and index in a virtual array<br />
+Terms are ordered alphabetically and given an ordinal &#8658; alter comparison by ordinal comparison</p></div></aside></section><section id="term-dictionary"><h2>Term dictionary</h2><div class="paragraph"><p>From a given offset (&amp; prefix)<br />
 Sorted list of suffixes<br />
 For each, frequency and offset to posting list</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>[prefix=top]
@@ -186,7 +186,7 @@ Bigger in size but less CPU branch miss prediction</p></div>
 <aside class="notes"><div class="paragraph"><p>PForDelta<br />
 By batch of 128 integers, find the smallest number of bits for the biggest int<br />
 And use this as fixed encoding.<br />
-Note that, it has a notion of exception for ints bigger than b bits to improve the logic</p></div></aside></section><section id="stored-fields"><h2>Stored fields</h2><div class="paragraph"><p>Stored field index in memory doc id + offset for every 16k of data<br />
+Note that it has a notion of exception for ints bigger than b bits to improve the logic</p></div></aside></section><section id="stored-fields"><h2>Stored fields</h2><div class="paragraph"><p>Stored field index in memory doc id + offset for every 16k of data<br />
 Stored value stored as bocks of 16k and compressed</p></div>
 <div class="imageblock" style=""><img src="./images/file-structure/stored-fields.png" alt="stored fields" /></div></section><section id="deleted-documents"><h2>Deleted documents</h2><div class="paragraph"><p>You said segments are immutable<br />
 What about deleted documents?</p></div>
