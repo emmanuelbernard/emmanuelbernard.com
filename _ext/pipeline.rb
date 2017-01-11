@@ -2,6 +2,7 @@ require 'tagger_sanitizer'
 require 'atomizer_custom'
 require 'disqus'
 require 'flattr'
+require 'indexifier'
 
 Awestruct::Extensions::Pipeline.new do
   # extension Awestruct::Extensions::Posts.new( '/news' ) 
@@ -9,7 +10,8 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Paginator.new( :posts, '/blog/index', :per_page=>10 )
   extension Awestruct::Extensions::Tagger.new( :posts, '/blog/index', '/blog/tags', :per_page=>10, :sanitize=>true )
   extension Awestruct::Extensions::TagCloud.new(:posts, '/blog/tags/index.html', :layout=>'tab', :title=>'Tags')
-  extension Awestruct::Extensions::Indexifier.new
+  # need a more up to date indexifier from Awestruct with latter version
+  extension Awestruct::Extensions::Indexifier.new(['/presentations'])
   extension Awestruct::Extensions::Atomizer.new( 
     :posts, 
     '/blog/feed-private.atom', 
