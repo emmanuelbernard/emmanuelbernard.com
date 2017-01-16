@@ -11,7 +11,7 @@ asciimath2jax: {
 TeX: { equationNumbers: { autoNumber: "none" } }
 });</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script><link rel="stylesheet" type="text/css" href="reveal.js/css/theme/asciinema-player.css" />
 <link rel="stylesheet" type="text/css" href="reveal.js/css/theme/github-gist.css" />
-<script src="reveal.js/css/theme/asciinema-player.js"></script></head><body><div class="reveal"><div class="slides"><section class="title"><h1>Inverted index</h1><p class="author"><small>Emmanuel Bernard</small></p></section><section><section id="what-are-we-here-for"><h2>What are we here for</h2><div class="paragraph"><p>Discuss inverted index technology and fundamentals</p></div></section><section id="emmanuel-bernard"><h2>Emmanuel Bernard</h2><style>
+<script src="reveal.js/css/theme/asciinema-player.js"></script></head><body><div class="reveal"><div class="slides"><section class="title"><h1>Inverted index</h1><p class="author"><small>Emmanuel Bernard</small></p></section><section><section id="what-are-we-here-for"><h2>What are we here for</h2><div class="paragraph"><p>Discuss inverted index technology and fundamentals</p></div><div class="paragraph"><p>You can read the speaker notes by pressing <code>s</code></p></div><aside class="notes"><div class="paragraph"><p>There you go you can see the speaker&#8217;s notes</p></div></aside></section><section id="emmanuel-bernard"><h2>Emmanuel Bernard</h2><style>
 .asciinema-terminal.font-medium {
   font-size: 16px;
 }
@@ -188,25 +188,37 @@ Long documents would be favored otherwise</p></dd><dt class="hdlist1">Coordinati
 <div class="stemblock small"><div class="content">\$tf(t in d) = sqrt(nbrOfTermAppearance(t in d))\$</div></div>
 <div class="stemblock small"><div class="content">\$idf(t) = 1 + log ( "numDocs" / ("numDocs"(t in d) + 1))\$</div></div>
 <div class="stemblock small"><div class="content">\$"norm"(d) = 1/sqrt( "nbrOfTerms"(d) )\$</div></div>
-<aside class="notes"><div class="dlist"><dl><dt class="hdlist1">norm</dt><dd><p>is field normalization</p></dd><dt class="hdlist1">t.boost</dt><dd><p>is the term query boost</p></dd><dt class="hdlist1">query normalization factor</dt><dd><p>an attempt to normalize a query so that the results from one query may be compared with the results of another</p></dd><dt class="hdlist1">coord</dt><dd><p>nbr of matching terms in a query present in the document / number of terms</p></dd></dl></div></aside></section><section id="other-scoring"><h2>Other scoring</h2><div class="paragraph"><p>Boosting fields<br />
+<aside class="notes"><div class="dlist"><dl><dt class="hdlist1">norm</dt><dd><p>is field normalization</p></dd><dt class="hdlist1">t.boost</dt><dd><p>is the term query boost</p></dd><dt class="hdlist1">query normalization factor</dt><dd><p>an attempt to normalize a query so that the results from one query may be compared with the results of another</p></dd><dt class="hdlist1">coord</dt><dd><p>nbr of matching terms in a query present in the document / number of terms</p></dd></dl></div></aside></section><section id="lucene-scoring-based-on"><h2>Lucene scoring based on</h2><div class="paragraph"><p>Boolean model<br />
+Vector space model<br />
+Term Frequency / Inverted Document Frequency</p></div></section><section id="other-scoring"><h2>Other scoring</h2><div class="paragraph"><p>Boosting fields<br />
 Positional (phrase query) or similarity (fuzzy) information<br />
 Feedback function (external or internal)</p></div>
 <div class="paragraph"><p>Okapi BM25<br />
 Your custom scoring function (or a tweak of)</p></div></section></section>
 <section><section id="inverted-index-physical-representation"><h2>Inverted index physical representation</h2><div class="paragraph"><p>A Lucene example</p></div></section><section id="what-is-lucene"><h2>What is Lucene</h2><div class="paragraph"><p>Search engine library<br />
 Used by many, including</p></div>
-<div class="ulist"><ul><li><p>Solr</p></li><li><p>Elasticsearch</p></li><li><p>Hibernate Search</p></li></ul></div></section><section id="b-tree-s-problems" class="fundamental"><h2>B-tree&#8217;s problems</h2><div class="paragraph"><p>When you need write throughput<br />
+<div class="ulist"><ul><li><p>Solr</p></li><li><p>Elasticsearch</p></li><li><p>Hibernate Search</p></li></ul></div>
+<aside class="notes"><div class="paragraph"><p>history, Doug cutting<br />
+1997-98<br />
+Open Sourced<br />
+Apache (2001)<br />
+Nutch<br />
+Hadoop</p></div></aside></section><section id="b-tree-s-problems" class="fundamental"><h2>B-tree&#8217;s problems</h2><div class="paragraph"><p>When you need write throughput<br />
 B-tree requires lots of updates in place</p></div>
 <div class="paragraph"><p>Sequential reads are much faster than random reads</p></div>
 <div class="ulist"><ul><li><p>on disk</p></li><li><p>kinda also in memory (L1-3 caches)</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>Updates in place means locking the structure while being updated<br />
 Not ideal for scalability</p></div></aside></section><section id="append-logs" class="fundamental"><h2>Append logs</h2><div class="paragraph"><p>Append operations in a file<br />
-Reading requires reading all the log</p></div></section><section id="log-structured-merge" class="fundamental"><h2>Log-Structured Merge</h2><div class="paragraph"><p>Per batch of writes, create a file storing the sorted key/value pairs<br />
+Reading requires reading all the log</p></div>
+<aside class="notes"><div class="paragraph"><p>Most databases have "transaction" logs<br />
+Append only structure<br />
+then processed</p></div></aside></section><section id="log-structured-merge" class="fundamental"><h2>Log-Structured Merge</h2><div class="paragraph"><p>Per batch of writes, create a file storing the sorted key/value pairs<br />
 On read, check for the key on each file<br />
 Regularly merge files together (e.g. make bigger files)</p></div>
 <div class="imageblock" style=""><img src="./images/lsm/lsm-base.png" alt="Log-Structured Merge Tree" /></div>
 <aside class="notes"><div class="paragraph"><p>Explain how a reads proceeds from in memory to the most recent generation then going back in time<br />
-Mention tombstones for deletes</p></div></aside></section><section id="lsm-characteristics" class="fundamental"><h2>LSM characteristics</h2><div class="paragraph"><p>Immutable (lock-free) and file cache friendly<br />
+Mention tombstones for deletes<br />
+Binary search</p></div></aside></section><section id="lsm-characteristics" class="fundamental"><h2>LSM characteristics</h2><div class="paragraph"><p>Immutable (lock-free) and file cache friendly<br />
 Fast on write, decent on read<br />
 Sequential read/write friendly<br />
 Read time decays with number of files &#8658; merge</p></div></section><section id="lots-of-ways-to-improve-them" class="fundamental"><h2>Lots of ways to improve them</h2><div class="paragraph"><p>Page index in memory<br />
