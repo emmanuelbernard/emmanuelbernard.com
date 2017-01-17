@@ -12,7 +12,7 @@ Amongst other things: b-tree, inverted index, how analyzers and filters do most 
 how fuzzy search work in Lucene (state machine based), scoring, log-structured merge and the actual physical representation of a Lucene index
 and a few of the tricks the Lucene developers came up with. My list of reference link is pretty rich too.
 
-Without further due, [here is the presentation](/presentations/inverted-index/).
+Without further ado, [here is the presentation](/presentations/inverted-index/).
 I tend to be sparse on my slides so make sure to press `s` to see the speaker notes.
 The presentation is released under Creative Commons and sources are [on GitHub](http://github.com/emmanuelbernard/presentation-inverted-index/).
 
