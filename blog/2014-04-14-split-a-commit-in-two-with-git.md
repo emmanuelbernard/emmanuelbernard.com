@@ -21,7 +21,7 @@ While I am relatively versed in Git, I never knew how to efficiently do the oppo
 Let's see the sequence first before explaining it
 
     git rebase -i <oldsha1>
-    # mark the expected commit as `edit` (replace pick in front of the line), save a close
+    # mark the expected commit as `edit` (replace pick in front of the line), save and close
     git reset HEAD^
     git add ...
     git commit -m "First part"
