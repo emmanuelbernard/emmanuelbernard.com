@@ -6,7 +6,7 @@ tags: ["computer science"]
 ---
 It is surprisingly hard to find a good explanation to level-based compaction of a [Log-Structured Merge Tree](https://en.wikipedia.org/wiki/Log-structured_merge-tree).
 It turns out that it is best explained in [LevelDB](https://github.com/google/leveldb)'s documentation.
-You can find the (html) details [here](https://github.com/google/leveldb/blob/master/doc/impl.html).
+You can find the (html) details [here](https://github.com/google/leveldb/blob/master/doc/impl.md).
 
 This blog post is a collection of key concepts I did not grasp initially.
 Sort of a mental note for me.
