@@ -9,7 +9,7 @@ The physical parts of your MacBook (fans, ports etc) behaves erratically? I migh
 ## A story of crashes
 
 My MacBook Pro was getting on my nerves lately.
-When plugged to my Thunderbold dock and thus my **external monitor**, my laptop would **crash randomly**.
+When plugged to my Thunderbolt dock and thus my **external monitor**, my laptop would **crash randomly**.
 Sometimes, once every 2 weeks, sometimes several times a day.
 I tried many things, like not starting all of the utilities one usually uses to verify that they were not involved but I could not find a culprit.
 
