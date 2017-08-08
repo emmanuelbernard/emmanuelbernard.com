@@ -30,11 +30,11 @@ launch `tig`
 ## Select specific lines
 
 (in a chunk on a specific line)  
-`1` to add the specific line to stage  
+`1` (one) to add the specific line to stage  
 `!` and then `y` to delete/reset the specific line ; caution this line will be gone forever  
 
 To undo the staging and remove the line, select the file in the `changes to be committed` section  
-`1` to move the line back to the non-stage area
+`1` (one) to move the line back to the non-stage area
 
 ## Other goodies
 
