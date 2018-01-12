@@ -63,7 +63,9 @@ move the middle up</p></div></aside></section><section id="simple-addition" clas
 <div class="paragraph"><p>Removing: nodes cannot have 1 entry (except top)</p></div></aside></section><section id="b-tree" class="fundamental"><h2>B+-tree</h2><div class="paragraph"><p>Only keys in the non leaf nodes<br />
 Leaf nodes linked with one another for efficient ascending reading<br />
 Data can be just pointer to the real data</p></div></section><section id="xkcd-tree"><h2>XKCD: Tree</h2><div class="imageblock" style=""><img src="./images/b-tree/xkcd-tree.png" alt="link:"https://www.xkcd.com/835/"" /></div>
-<div class="paragraph"><p>Not only is that terrible in general, but you just KNOW Billy&#8217;s going to open the root present first, and then everyone will have to wait while the heap is rebuilt.</p></div></section></section>
+<div class="paragraph"><p>Not only is that terrible in general, but you just KNOW Billy&#8217;s going to open the root present first, and then everyone will have to wait while the heap is rebuilt.</p></div>
+<aside class="notes"><div class="paragraph"><p>Reconstruire l&#8217;arbre suite à la suppression du cadeau "root".<br />
+Heap: structure où parent est &gt; fils (ou l&#8217;inverse) ; veut aussi dire un tas, une tonne.</p></div></aside></section></section>
 <section><section id="back-to-our-b-tree-rdbms-vs-inverted-indices"><h2>Back to our (B-Tree) RDBMS vs inverted indices</h2></section><section id="with-like"><h2>With like</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE s.bio LIKE 'Open Source%'</code></pre></div></div>
 <div class="paragraph"><p>With like we can have more text after<br />
 Still using indices</p></div></section><section id="with-like-in-the-middle-of-the-column"><h2>With like in the middle of the column</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE s.bio LIKE '%Open Source%'</code></pre></div></div>
@@ -162,7 +164,9 @@ horizontal: unmodified chars<br />
 ε diagonal: deletion</p></div></div></div>
 <div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/fuzzy/levenstein-nfa-food.png" alt="levenstein nfa food" /></div></div></div>
 <aside class="notes"><div class="paragraph"><p>Read <a href="https://julesjacobs.github.io/2015/06/17/disqus-levenshtein-simple-and-fast.html" class="bare">https://julesjacobs.github.io/2015/06/17/disqus-levenshtein-simple-and-fast.html</a> and <a href="http://blog.notdot.net/2010/07/Damn-Cool-Algorithms-Levenshtein-Automata" class="bare">http://blog.notdot.net/2010/07/Damn-Cool-Algorithms-Levenshtein-Automata</a><br />
-The image is a Non deterministic Finite Automaton</p></div></aside></section><section id="you-can-index-the-same-data-in-different-ways"><h2>You can index the same data in different ways</h2><div class="paragraph"><p>Apply different indexing approach for same data</p></div></section></section>
+The image is a Non deterministic Finite Automaton showing paths to a word close to food up to 2 errors</p></div>
+<div class="paragraph"><p>Use <a href="http://julesjacobs.github.io/images/levenshtein/trie.png" class="bare">http://julesjacobs.github.io/images/levenshtein/trie.png</a><br />
+To show how to navigate the index tree and eliminate elements</p></div></aside></section><section id="you-can-index-the-same-data-in-different-ways"><h2>You can index the same data in different ways</h2><div class="paragraph"><p>Apply different indexing approach for same data</p></div></section></section>
 <section><section id="querying-time"><h2>Querying time</h2><div class="paragraph"><p>It&#8217;s <em>term</em> query all the way down!<br />
 All queries (synonyms, phonetic, n-gram, fuzzy) are a (set of) term queries</p></div></section><section id="possible-queries"><h2>Possible queries</h2><div class="paragraph"><p>Term, wildcard, prefix, fuzzy, phrase, range, boolean, all, spatial, more like this, spell checking</p></div></section><section id="phrasequery-vs-shingles"><h2>PhraseQuery vs shingles</h2><div class="paragraph"><p>Find exact sentences<br />
 or find words near one another (sloppiness)</p></div>
@@ -198,7 +202,10 @@ Long documents would be favored otherwise</p></dd><dt class="hdlist1">Coordinati
 <div class="stemblock small"><div class="content">\$"norm"(d) = 1/sqrt( "nbrOfTerms"(d) )\$</div></div>
 <aside class="notes"><div class="dlist"><dl><dt class="hdlist1">norm</dt><dd><p>is field normalization</p></dd><dt class="hdlist1">t.boost</dt><dd><p>is the term query boost</p></dd><dt class="hdlist1">query normalization factor</dt><dd><p>an attempt to normalize a query so that the results from one query may be compared with the results of another</p></dd><dt class="hdlist1">coord</dt><dd><p>nbr of matching terms in a query present in the document / number of terms</p></dd></dl></div></aside></section><section id="lucene-scoring-based-on"><h2>Lucene scoring based on</h2><div class="paragraph"><p>Boolean model<br />
 Vector space model<br />
-Term Frequency / Inverted Document Frequency</p></div></section><section id="other-scoring"><h2>Other scoring</h2><div class="paragraph"><p>Boosting fields<br />
+Term Frequency / Inverted Document Frequency</p></div>
+<aside class="notes"><div class="paragraph"><p>Boolean model to narrow down the documents matching some terms of the query<br />
+Vector Space to compute the distance between a query and a document<br />
+tf/idf for the weight of a term vs another in relevance</p></div></aside></section><section id="other-scoring"><h2>Other scoring</h2><div class="paragraph"><p>Boosting fields<br />
 Positional (phrase query) or similarity (fuzzy) information<br />
 Feedback function (external or internal)</p></div>
 <div class="paragraph"><p>Okapi BM25<br />
@@ -236,7 +243,8 @@ Read time decays with number of files &#8658; merge</p></div></section><section 
 Bloom filter<br />
 Level-based compaction</p></div>
 <aside class="notes"><div class="dlist"><dl><dt class="hdlist1">Page index in memory</dt><dd><p>put a memory efficient index for each entries in each LSM file</p></dd><dt class="hdlist1">Bloom filter</dt><dd><p>probabilistic data structure, false positive but no false negative <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="bare">https://en.wikipedia.org/wiki/Bloom_filter</a></p></dd></dl></div></aside></section><section id="level-based-compaction-for-lsm-tree" class="fundamental"><h2>level-based compaction for LSM tree</h2><div class="imageblock" style=""><img src="./images/lsm/lsm-levelled-compaction.png" alt="Log-Structured Merge Tree" /></div>
-<aside class="notes"><div class="paragraph"><p>keep in memory buffer<br />
+<aside class="notes"><div class="paragraph"><p>Advantage, limit number of file read in the worse case<br />
+keep in memory buffer<br />
 First level is like a LSM we discussed<br />
 Other levels are ranged (by key)<br />
 Compaction from one level to the higher will rebuilt<br />
@@ -273,6 +281,7 @@ _null_, freq=27, offset=234
 ography, freq=1, offset=298
 ology, freq=6, offset=306
 onyms, freq=1, offset=323</code></pre></div></div></section><section id="posting-list"><h2>Posting list</h2><div class="paragraph"><p>List of document ids<br />
+Variable int encoding<br />
 Encoded as delta of ids (good for variable int encoding)</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>4,6,9,30,33,39,45 =&gt; 4,2,3,23,3,6,6</code></pre></div></div>
 <div class="paragraph"><p><a href="http://www2008.org/papers/pdf/p387-zhangA.pdf">PForDelta</a> encoding<br />
