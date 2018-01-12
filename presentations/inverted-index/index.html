@@ -17,10 +17,10 @@ TeX: { equationNumbers: { autoNumber: "none" } }
 }
 </style>
 <div class="paragraph"><p>Consulting Software Engineer, Red Hat<br />
-Platform Architect<br />
+Chief Architect<br />
 Open Source coder:</p></div>
-<div class="ulist"><ul><li><p>Hibernate {ORM,OGM,Search,Validator}</p></li><li><p>Debezium, Infinispan, Ceylon, &#8230;&#8203;</p></li></ul></div>
-<div class="paragraph"><p>Podcasts: <a href="https://lescastcodeurs.com:">Les Cast Codeurs</a></p></div>
+<div class="ulist"><ul><li><p>Hibernate {ORM,OGM,Search,Validator}</p></li><li><p>Debezium, Infinispan, &#8230;&#8203;</p></li></ul></div>
+<div class="paragraph"><p>Podcasts: <a href="https://lescastcodeurs.com">Les Cast Codeurs</a></p></div>
 <div class="paragraph"><p><a href="https://twitter.com/emmanuelbernard">@emmanuelbernard</a><br />
 <a href="https://emmanuelbernard.com" class="bare">https://emmanuelbernard.com</a></p></div></section><section id="agenda"><h2>Agenda</h2><div class="paragraph"><p>Why<br />
 B-tree vs inverted index<br />
@@ -42,8 +42,11 @@ Discuss B-tree</p></div></aside></section></section>
 Search, insert and delete in <code>O(log n)</code><br />
 Good when access time &gt;&gt; process time</p></div><div class="paragraph"><p>Replace numbers in the example with letters for text.</p></div><div class="imageblock" style=""><img src="./images/b-tree/b-tree-base.png" alt="b tree base" /></div><aside class="notes"><div class="paragraph"><p>Complexity</p></div>
 <div class="paragraph"><p>Ask when is access time &gt;&gt; process time<br />
-hard drive (spinning and SSD)</p></div>
-<div class="paragraph"><p>Order 5 tree<br />
+hard drive (spinning and SSD)<br />
+<a href="https://gist.github.com/jboner/2841832" class="bare">https://gist.github.com/jboner/2841832</a><br />
+RAM 100 ns ; SSD (4K read random) 150 us ; hard drive 10 ms (disk seek)</p></div>
+<div class="paragraph"><p>Order 5 tree (4 entries and 5 leaves max ; 2 entries min<br />
+<a href="http://cis.stvincent.edu/html/tutorials/swd/btree/btree.html" class="bare">http://cis.stvincent.edu/html/tutorials/swd/btree/btree.html</a><br />
 Explain how to read from the tree<br />
 explain data is where the number is</p></div></aside></section><section id="splitting-leaf-nodes" class="fundamental"><h2>Splitting leaf nodes</h2><div class="openblock left"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-base.png" alt="b tree base" /></div></div></div>
 <div class="openblock right"><div class="content"><div class="imageblock" style=""><img src="./images/b-tree/b-tree-1.png" alt="b tree 1" /></div></div></div>
@@ -70,7 +73,7 @@ Still using indices</p></div></section><section id="with-like-in-the-middle-of-t
     OR s.bio LIKE '%Open Source%'
     OR s.bio LIKE '%opan surce%'</code></pre></div></div>
 <div class="paragraph"><p>Can&#8217;t anticipate the casing<br />
-Can&#8217;t anticipate all typos</p></div></section><section id="what-about-word-ordering-and-priority"><h2>What about word ordering and priority</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM/Speakers s WHERE
+Can&#8217;t anticipate all typos</p></div></section><section id="what-about-word-ordering-and-priority"><h2>What about word ordering and priority</h2><div class="listingblock"><div class="content"><pre class="highlight"><code class="SQL language-SQL">SELECT * FROM Speakers s WHERE
     s.bio LIKE '%source open%'
     OR s.bio LIKE '%source%'
     OR s.bio LIKE '%open%'
@@ -108,7 +111,7 @@ itstartedinthemiddleage<br />
 Itwasnotaproblemaspeoplewerereadingoutloudwrittentext<br />
 Infactsplittingwordswasaninventionnecessary<br />
 becausemonksshouldremainsilentandlatinwasnolongertheirnativetongue</p></div>
-<aside class="notes"><div class="paragraph"><p>Mention that tokenizer does not necesseraly work with the notion of words (Chinese)</p></div></aside></section><section id="filtering-where-the-magic-happens"><h2>Filtering: where the magic happens</h2><div class="paragraph"><p>Operate on the stream of tokens<br />
+<aside class="notes"><div class="paragraph"><p>Mention that tokenizer does not necessarily work with the notion of words (Chinese)</p></div></aside></section><section id="filtering-where-the-magic-happens"><h2>Filtering: where the magic happens</h2><div class="paragraph"><p>Operate on the stream of tokens<br />
 Change, remove or even add tokens</p></div>
 <div class="paragraph"><p>lowercase, stopwords</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>Sentence: This is AWESOME Peter!
@@ -138,7 +141,11 @@ Index each n-gram</p></div>
 mystake: mys yst sta tak ake
 mistake: mis ist sta tak ake</code></pre></div></div>
 <div class="paragraph"><p>Low n means more false positives<br />
-High n means less forgiving</p></div></section><section id="fuzzy-search"><h2>Fuzzy search</h2><div class="paragraph"><p>Based on Damerau-Levenshtein distance</p></div>
+High n means less forgiving</p></div>
+<aside class="notes"><div class="paragraph"><p>Precision = matched true positives / total matched (true and false)<br />
+How many selected items are relevant</p></div>
+<div class="paragraph"><p>Recall = matched true positive / total relevant elements<br />
+How many relevant items are selected?</p></div></aside></section><section id="fuzzy-search"><h2>Fuzzy search</h2><div class="paragraph"><p>Based on Damerau-Levenshtein distance</p></div>
 <div class="ulist"><ul><li><p>insert, update, delete and transposition</p></li></ul></div>
 <div class="paragraph"><p>Pure query time operation</p></div>
 <aside class="notes"><div class="paragraph"><p>Levenshtein: only insert, update, delete<br />
@@ -174,7 +181,8 @@ This is relative<br />
 Several approaches, none perfect</p></div></div></div></section><section id="main-levers-for-a-scoring-formulae"><h2>Main levers for a scoring formulae</h2><div class="dlist"><dl><dt class="hdlist1">Term frequency</dt><dd><p>How often does the term appear in this document?<br />
 More is better</p></dd><dt class="hdlist1">Inverse document frequency</dt><dd><p>How often does the term appear in all documents in the collection?<br />
 Common words are less important</p></dd><dt class="hdlist1">Field-length norm</dt><dd><p>How long is the field?<br />
-Long documents would be favored otherwise</p></dd><dt class="hdlist1">Coordination factor</dt><dd><p>If document contains multiple terms, it&#8217;s a better fit.</p></dd></dl></div></section><section id="tf-idf-full-formulae"><h2>TF/IDF Full formulae</h2><div class="stemblock small"><div class="content">\$"score"(q,d) =
+Long documents would be favored otherwise</p></dd><dt class="hdlist1">Coordination factor</dt><dd><p>If document contains multiple terms, it&#8217;s a better fit.</p></dd></dl></div>
+<aside class="notes"><div class="dlist"><dl><dt class="hdlist1">IDF</dt><dd><p>if a term is present in all documents, it&#8217;s not useful</p></dd><dt class="hdlist1">field-length norm</dt><dd><p>a term present in a short field is more relevant</p></dd></dl></div></aside></section><section id="tf-idf-full-formulae"><h2>TF/IDF Full formulae</h2><div class="stemblock small"><div class="content">\$"score"(q,d) =
     "queryNorm"(q)
     * "coord"(q,d)
     * sum_(t in q) (
@@ -194,7 +202,10 @@ Term Frequency / Inverted Document Frequency</p></div></section><section id="oth
 Positional (phrase query) or similarity (fuzzy) information<br />
 Feedback function (external or internal)</p></div>
 <div class="paragraph"><p>Okapi BM25<br />
-Your custom scoring function (or a tweak of)</p></div></section></section>
+Your custom scoring function (or a tweak of)</p></div>
+<aside class="notes"><div class="paragraph"><p>Feedback function: score based on proximity, or better if within price range, vote, random scoring (to bring randomness to results instead of same order each time)</p></div>
+<div class="paragraph"><p>Okapi BM25:</p></div>
+<div class="ulist"><ul><li><p>deals with stop words better (term frequency saturation): very common terms stop boosting after a while (in tf)</p></li><li><p>per field length normalization (vs a general all field length norm)</p><div class="ulist"><ul><li><p>shorter fields like title are no longer boosted compared to long fields</p></li></ul></div></li><li><p>tunable in saturation and field length normalisation</p></li></ul></div></aside></section></section>
 <section><section id="inverted-index-physical-representation"><h2>Inverted index physical representation</h2><div class="paragraph"><p>A Lucene example</p></div></section><section id="what-is-lucene"><h2>What is Lucene</h2><div class="paragraph"><p>Search engine library<br />
 Used by many, including</p></div>
 <div class="ulist"><ul><li><p>Solr</p></li><li><p>Elasticsearch</p></li><li><p>Hibernate Search</p></li></ul></div>
@@ -225,7 +236,6 @@ Read time decays with number of files &#8658; merge</p></div></section><section 
 Bloom filter<br />
 Level-based compaction</p></div>
 <aside class="notes"><div class="dlist"><dl><dt class="hdlist1">Page index in memory</dt><dd><p>put a memory efficient index for each entries in each LSM file</p></dd><dt class="hdlist1">Bloom filter</dt><dd><p>probabilistic data structure, false positive but no false negative <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="bare">https://en.wikipedia.org/wiki/Bloom_filter</a></p></dd></dl></div></aside></section><section id="level-based-compaction-for-lsm-tree" class="fundamental"><h2>level-based compaction for LSM tree</h2><div class="imageblock" style=""><img src="./images/lsm/lsm-levelled-compaction.png" alt="Log-Structured Merge Tree" /></div>
-<div class="paragraph"><p>TODO: improve image</p></div>
 <aside class="notes"><div class="paragraph"><p>keep in memory buffer<br />
 First level is like a LSM we discussed<br />
 Other levels are ranged (by key)<br />
@@ -253,7 +263,9 @@ top=5</code></pre></div></div></div></div>
 Thanks to immutable, replace term with its ordinal value and index in a virtual array<br />
 Terms are ordered alphabetically and given an ordinal &#8658; alter comparison by ordinal comparison</p></div>
 <div class="paragraph"><p>FST: each arc has a letter and a weight (defaults 0)<br />
-Retrieve the offset in the term dictionary (sparse numbers)</p></div></aside></section><section id="term-dictionary"><h2>Term dictionary</h2><div class="paragraph"><p>From a given offset (&amp; prefix)<br />
+Retrieve the offset in the term dictionary (sparse numbers)<br />
+<a href="http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html" class="bare">http://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html</a><br />
+<a href="https://fr.slideshare.net/LucidImagination/weiss-dawid-finite-state-automata-in-lucene" class="bare">https://fr.slideshare.net/LucidImagination/weiss-dawid-finite-state-automata-in-lucene</a></p></div></aside></section><section id="term-dictionary"><h2>Term dictionary</h2><div class="paragraph"><p>From a given offset (&amp; prefix)<br />
 Sorted list of suffixes<br />
 For each, frequency and offset to posting list</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>[prefix=top]
@@ -264,17 +276,20 @@ onyms, freq=1, offset=323</code></pre></div></div></section><section id="posting
 Encoded as delta of ids (good for variable int encoding)</p></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code>4,6,9,30,33,39,45 =&gt; 4,2,3,23,3,6,6</code></pre></div></div>
 <div class="paragraph"><p><a href="http://www2008.org/papers/pdf/p387-zhangA.pdf">PForDelta</a> encoding<br />
-Bigger in size but less CPU branch miss prediction</p></div>
-<aside class="notes"><div class="paragraph"><p>PForDelta<br />
+Bigger in size but less CPU branch miss prediction<br />
+Also pulse optimization for frequency=1</p></div>
+<aside class="notes"><div class="paragraph"><p><a href="http://blog.mikemccandless.com/2010/08/lucene-performance-with-pfordelta-codec.html" class="bare">http://blog.mikemccandless.com/2010/08/lucene-performance-with-pfordelta-codec.html</a><br />
+PForDelta<br />
 By batch of 128 integers, find the smallest number of bits for the biggest int<br />
 And use this as fixed encoding.<br />
 Note that it has a notion of exception for ints bigger than b bits to improve the logic</p></div>
 <div class="paragraph"><p>Also if you list is not a multiple of 128, they store the extra ones as variable ints (vint) in the end</p></div>
 <div class="paragraph"><p>Most important feature is not too much bigger<br />
-No branch misprediction inthe CPU<br />
+No branch misprediction in the CPU<br />
 Better pipelining!</p></div>
 <div class="paragraph"><p>When practice make you look at other theories<br />
-Measure measure measure</p></div></aside></section><section id="stored-fields"><h2>Stored fields</h2><div class="paragraph"><p>Stored field index in memory doc id + offset for every 16k of data<br />
+Measure measure measure</p></div>
+<div class="paragraph"><p>Pulsing codec, include docid instead of offset in term dictionary if freq=1 (i.e. 1 document matching)</p></div></aside></section><section id="stored-fields"><h2>Stored fields</h2><div class="paragraph"><p>Stored field index in memory doc id + offset for every 16k of data<br />
 Stored value stored as bocks of 16k and compressed</p></div>
 <div class="imageblock" style=""><img src="./images/file-structure/stored-fields.png" alt="stored fields" /></div>
 <aside class="notes"><div class="paragraph"><p>Index is the upper part, all in memory.<br />
