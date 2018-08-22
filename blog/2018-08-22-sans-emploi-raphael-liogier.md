@@ -1,16 +1,16 @@
 ---
-title: Revenu universel via Sans Emploi de Raphaël Loigier
+title: Revenu universel via Sans Emploi de Raphaël Liogier
 author: Emmanuel Bernard
 layout: blog-post
 tags: ["economy", "francais"]
 ---
 On m'a recommandé de lire le livre [Sans Emploi - Condition de l’homme postindustriel](https://livre.fnac.com/a9681404/Raphael-Liogier-Sans-emploi?NUMERICAL=Y#FORMAT=ePub)
-de Raphaël Loigier pour comprendre la notion de revenu universel.
+de Raphaël Liogier pour comprendre la notion de revenu universel.
 De pensée économique plutôt classique,
 j'ai du mal à comprendre comment ce modèle peut fonctionner.
 Sans fixation des prix des biens de consommation bien sur ;)
 
-Loigier amène les arguments en faveur du revenu universel,
+Liogier amène les arguments en faveur du revenu universel,
 notamment pour lui permettant la libération des besoins et l'élimination du
 besoin d'un droit du travail
 (on n'est pas obligé de travailler rappelez vous donc pas besoin d'être protégé).
