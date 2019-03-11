@@ -11,49 +11,39 @@ If you need my biography for a conference, use the following one (available in E
 
 ## English
 
-Emmanuel Bernard is data platform architect for the JBoss portfolio at Red Hat.
-He oversees how data and middleware interact and is particularly involved in
-the Hibernate portfolio as well as Infinispan.
+Emmanuel is Java Champion, Distinguished Engineer and Chief Architect Data at Red Hat (middleware).
+His work is Open Source.
+He is most well known for his contributions and lead of the Hibernate projects
+as well as his contribution to Java standards.
 
-Emmanuel joined the Hibernate team in 2003 and most of his work is open source
-since then. He has lead the JPA implementation of Hibernate ORM, founded and
-lead Hibernate Search, Hibernate Validator. His latest project endeavour is
-Hibernate OGM but he also contributes to Infinispan, Ceylon, Awestruct and a
-few other projects in his spare time.
+His most recent endeavour is [Quarkus](https://quarkus.io) (A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted from the best of breed Java libraries and standards).
 
-Emmanuel is the founder and co-host of two podcasts:
-[JBoss Community Asylum](http://asylum.jboss.org) (English)
-and [Les Cast Codeurs Podcast](http://lescastcodeurs.com) (French).
-He is a member of the JPA expert group and the spec lead of Bean
-Validation. 
 He speaks regularly at various conferences and JUGs, including
 JavaOne, Red Hat Summit and Devoxx.
-He is the co-author of [Hibernate Search in Action](/books/hsia/) published by Manning.
+He hosts several podcasts including [Les Cast Codeurs](https://lescastcodeurs.com).
 
 You can follow him on twitter at
 [@emmanuelbernard](http://twitter.com/emmanuelbernard).
 
+ #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
+
 ## Français
 
-Emmanuel Bernard est architecte plate-forme données sur le portefeuille JBoss chez Red Hat.
-Il supervise comment les données et le middleware interagissent
-et travaille en particulier sur le portefeuille de projets Hibernate ainsi que sur le projet Infinispan.
+Emmanuel est Java Champion, Distinguished Engineer et Chief Architect Données chez Red Hat (middleware).
+Son travail est Open Source.
+Il est connu pour ses contributions et sa direction des projets Hibernate
+ainsi qu'à ses contributions aux standards Java.
 
-Emmanuel a rejoint l'équipe Hibernate en 2003 et depuis, son travail est
-quasiment 100% open source. Il a dirigé l'implémentation JPA d'Hibernate, fondé
-et dirigé Hibernate Search, Hibernate Validator. Sa dernière aventure est
-Hibernate OGM mais il contribue aussi à Infinispan, Ceylon, Awestruct et quelques autres
-projets pendant son temps libre.
+Son aventure la plus récente est [Quarkus](https://quarkus.io) (Une stack Java Native Kubernetes optimisée pour GraalVM & OpenJDK HotSpot, ciselé à partir du meilleurs des librairies et standards Java).
 
-Emmanuel est le fondateur et co-hôte de deux podcasts: [Les Cast Codeurs](http://lescastcodeurs.com) (Français) et
-[JBoss Community Asylum](http://asylum.jboss.org) (Anglais).
-Il est membre du groupe d'expertise JPA et spec lead de Bean Validation.
-Il intervient régulièrement dans diverses conférences et JUGs, dont JavaOne,
-Red Hat Summit et Devoxx.
-Il est le co-auteur d'[Hibernate Search in Action](/books/hsia/) publié par Manning.
+Il parle régulièrement dans des conférences et JUGs notamment
+JavaOne, Red Hat Summit et Devoxx.
+Il est l'hôte de plusieurs podcasts et notamment [Les Cast Codeurs](https://lescastcodeurs.com).
 
 Vous pouvez le suivre sur twitter à
 [@emmanuelbernard](http://twitter.com/emmanuelbernard).
+
+ #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
 
 ## Pictures
 
