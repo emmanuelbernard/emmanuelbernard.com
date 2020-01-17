@@ -74,7 +74,7 @@ end
 desc 'Publish website (requires the right SSH key)'
 task :publish do
   Rake::Task["gen"].execute({:profile => 'production'})
-  cmd = "rsync -avz --filter=\"- publish.sh\" --filter=\"- Gemfile\" --filter=\"- Gemfile.lock\" _site/ lcc:/var/www/emmanuelbernard"
+  cmd = "rsync -avz --filter=\"- publish.sh\" --filter=\"- Gemfile\" --filter=\"- Gemfile.lock\" _site/ lcc-web:/var/www/emmanuelbernard"
   system cmd
 end
 
