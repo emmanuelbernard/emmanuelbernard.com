@@ -3,6 +3,7 @@ require 'atomizer_custom'
 require 'disqus'
 require 'flattr'
 require 'indexifier'
+require 'posts'
 
 Awestruct::Extensions::Pipeline.new do
   # extension Awestruct::Extensions::Posts.new( '/news' ) 
