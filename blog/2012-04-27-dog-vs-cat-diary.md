@@ -3,7 +3,7 @@ title: Dog vs Cat diary
 author: 'Emmanuel Bernard'
 layout: blog-post
 tags: [ fun ]
---- 
+---
 
 This is not new by any means but I recently saw this joke. As a recent dog owner
 I must admit I found it too true to not laugh.

@@ -3,7 +3,7 @@ title: Setting global environment variables in IntelliJ IDEA and other test conf
 author: 'Emmanuel Bernard'
 layout: blog-post
 tags: [ tool, ide ]
---- 
+---
 When you run a test from IntelliJ idea, you can customize some of
 the settings by selecting the list of tests and click `Edit Configurations`.
 From there you can change things like:

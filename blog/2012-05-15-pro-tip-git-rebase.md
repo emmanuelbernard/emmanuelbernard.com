@@ -3,7 +3,7 @@ title: Pro tip on git rebase -i
 author: 'Emmanuel Bernard'
 layout: blog-post
 tags: [ tool, git ]
---- 
+---
 Here is a small tip to improve your efficiency when using dynamic rebasing in Git.
 
 I do my work on topic branches that are forked of `master`. Before I push my work for review
