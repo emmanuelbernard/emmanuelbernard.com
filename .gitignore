@@ -1,13 +1,8 @@
-#Ignored files
+_site
+.sass-cache
+.jekyll-metadata
+.jekyll-cache
+Gemfile.lock
 
 #OS
 .DS_Store
-
-#Awestruct
-/.bin
-/.bundle
-/.sass-cache
-/_site
-/_tmp
-/.awestruct
-/publish.sh
