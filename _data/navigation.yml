@@ -1,9 +1,11 @@
 main:
+  - title: "Blog"
+    url: /blog/
+  - title: "Bio"
+    url: /bio/
   - title: "Projects"
     url: /projects/
   - title: "Book"
     url: /books/hsia/
-  - title: "Blog"
-    url: /blog/
   - title: "Presentations"
     url: /presentations/
