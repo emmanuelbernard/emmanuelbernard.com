@@ -1,7 +1,0 @@
----
-title: 'Hibernate Search talk at JAX &#039;07'
-author: 'Emmanuel Bernard'
-layout: blog-post
-tags: [ hibernate search ]
----
-<p>One feature <a href='http://opensource.atlassian.com/projects/hibernate/browse/HSEARCH-40'>request</a> for Hibernate Search has been surprisingly pretty popular: support for indexed embedded collections and hence correlated queries involving collections.<br/>This is no longer a request and is available in SVN :-)<br/><br/>Imagine a Movie having a list of Actors, the following query is now possible:<br/><blockquote>give me the movie talking about Central Intelligence Agency and having one of the Baldwins in the casting<br/></blockquote>or in Lucene language<br/><blockquote>description:"Central Intelligence Agency" authors.name:Baldwin</blockquote>Of course the drawback is to potentially increase drastically the size of your index. So use it when the collection size is under control.<br/><br/>I am going to talk about Hibernate Search at the <a href='http://jax.de/konferenzen/jax07/index_eng.php'>JAX 07</a> conference in Wiesbaden on Tuesday. Let's have a beer if you are around.<br/><br/>By the way, I think De Niro did a not so great job on this movie, too much is suggested (probably too many details too fast). I know that was the intend, but he went too far in my opinion.</p>

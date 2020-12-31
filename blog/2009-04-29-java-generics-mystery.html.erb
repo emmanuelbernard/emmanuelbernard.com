@@ -1,7 +1,0 @@
----
-title: 'Java generics mystery'
-author: 'Emmanuel Bernard'
-layout: blog-post
-tags: [ java ]
----
-<p>Here is a puzzle for Generics gurus.</p><p>Can somebody explain why</p>  <p/><blockquote><p>Set&lt;Address&gt; addresses = new HashSet&lt;Address&gt;();<br/>Set&lt;?&gt; things = addresses;</p><p/></blockquote><p>compiles but</p><blockquote>  <p>Set&lt;ConstraintValidator&lt;Address&gt;&gt; validatedAddresses = <br/>    new HashSet&lt;ConstraintValidator&lt;Address&gt;&gt;();<br/>Set&lt;ConstraintValidator&lt;?&gt;&gt; validatedThings =<br/>    validatedAddresses;</p></blockquote><p>does not compile?</p><p>More specifically, the assignment on the second line breaks.</p>
