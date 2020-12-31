@@ -1,0 +1,53 @@
+---
+title: 'Configuring VirtualBox guests to access the internet and be accessible from the host'
+author: 'Emmanuel Bernard'
+tags: [ tool ]
+date: 2012-02-28
+---
+<p>I recently had to create a VirtualBox virtual machine hosting Fedora 16. It took me a little while to achieve both</p>
+<ul>
+  <li>access the internet from the Fedora 16 guest</li>
+  <li>reach the Fedora 16 guest from the host (say via SSH).</li>
+</ul>
+<p>It's relatively straightforward if you know the details.</p>
+<p>To get access to the internet from the guest, you need to enable the NAT network adaptor.</p>
+<ul>
+  <li>On your (shutdown) VM, open up settings-&gt;Network</li>
+  <li>In adapter 1, enable network adapter and use attached to NAT</li>
+</ul>
+<p>To get access to the guest VM, we need to give it a static IP and be accessible to the host.</p>
+<ul>
+  <li>On VirtualBox, open up (general) preferences -&gt; network</li>
+  <li>Add a host-only network (if none exist)</li>
+  <li>Configure the host-only network with an IP address (eg <code>192.168.56.1</code>)</li>
+  <li>Optionally enable the DHCP server and make sure to leave room for static addresses (eg by setting lower address bound to <code>192.168.56.101</code></li>
+  <li>On the guest VM settings -&gt; Network, active a second adapter and use attached to Host-only Adapter with the name of the network you have defined globally (usually <code>vboxnet0</code>)</li>
+  <li>Make sure to note down the MAC address (visible in the advanced section)</li>
+  <li>Boot your guest VM and add the network interface</li>
+</ul>
+<p>In Fedora 16, to add a network interface, create a file <code>ifcfg-eth1</code> in <code>/etc/sysconfig/network-scripts</code> (or an alternative ethn name).</p>
+<p>Fill it up with</p>
+<blockquote>
+  <p>DEVICE="eth1"<br/>
+<p>  HWADDR="08:00:27:0B:74:DE"<br/>
+</p>
+<p>  BOOTPROTO="static"<br/>
+</p>
+<p>  IPADDR=192.168.56.100<br/>
+</p>
+<p>  NETMASK=255.255.255.0<br/>
+</p>
+<p>  ONBOOT="yes"<br/>
+</p>
+<p>  NM_CONTROLLED="yes"</p>
+</p>
+</blockquote>
+<p>Make sure to change <code>DEVICE</code> if you use a different ethn name. Make sure to replace <code>HWADDR</code> with the MAC address that you copied from adapter 2. Finally, make sure the static address is not within the range of DHCP addresses. I my example <code>192.168.56.100</code> would do fine. Reboot for good measure, you should be able to access the guest from the host at <code>192.168.56.100</code>. You can even edit your host's <code>/etc/hosts</code> and add the following line</p>
+<blockquote>
+<p>
+<p>192.168.56.100 my-guest
+</p>
+</p>
+</blockquote>
+<p>In my case, I can then SSH into the guest using <code>ssh emmanuel@my-guest</code></p>
+<p>That's pretty much basic stuff but a working example always helps :)</p>

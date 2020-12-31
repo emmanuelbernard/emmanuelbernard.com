@@ -1,0 +1,36 @@
+---
+title: 'Getter / Setter generation in Java'
+author: 'Emmanuel Bernard'
+tags: [ java ]
+date: 2010-03-17
+---
+<p>Eclipse or IntelliJ typically generate getters and setters this way:
+</p>
+<pre>public class Month {
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</pre>
+<p>And we all complain because that consumes a lot of screen space (9 lines). Provided that the trio attribute / getter / setter really represents a unique property, why not generate it that way?
+</p>
+<pre>public class Month {
+
+    public String getName() { return this.name; }
+    public void setName(String name) { this.name = name; }
+    private String name;
+
+}
+</pre>
+<p>That's much more compact (3 lines, ie a third of what we had) and put all related constructs as a single block. You can also mutualize the JavaDoc for free :)
+</p>
+<p>What do you think?
+</p>
+<p>Oh and please don't tell me about Scala, Groovy or Fantom, we all know Java should have had first-class properties. But that's life.</p>

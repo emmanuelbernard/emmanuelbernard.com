@@ -1,0 +1,7 @@
+---
+title: 'How to install Git and git-svn on Mac OS X'
+author: 'Emmanuel Bernard'
+tags: [ git, svn ]
+date: 2009-01-16
+---
+<p>It's hard to find good Google links for installing git-svn on Mac OS X. Here is my piece.</p><ul>  <li>Install port: download it at <a href='http://darwinports.com/'>http://darwinports.com</a> and run the installer</li>  <li>run <em>sudo port install subversion-perlbindings</em> (it takes a while as the installer download the internet)</li>  <li>run <em>sudo port install git-core +svn</em> (don't forget +svn or you will have to uninstall git-core and reinstall it)</li></ul>You are ready to use <em>git svn <span style='font-style: normal;'>command.</span></em> <em>git-svn</em> does not work but <em>git svn</em> does: that's because git-svn is not in your PATH. If you want to make <em>git-svn</em> work, add <em>/opt/local/libexex/git-core</em> to it (thanks Randall for the tip).<br/><br/>From there, have a look at <a href='http://www.viget.com/extend/effectively-using-git-with-subversion/'>http://viget.com/extend/effectively-using-git-with-subversion</a> for a quick tutorial.

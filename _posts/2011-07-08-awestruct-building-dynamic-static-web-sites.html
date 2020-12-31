@@ -1,0 +1,47 @@
+---
+title: 'Awestruct: building dynamic static web sites'
+author: 'Emmanuel Bernard'
+tags: [ git, tool, website ]
+date: 2011-07-08
+---
+<p>I've been wanting to update my personal site for a while as it was done in iWeb and Apple is basically killing the product. Through discussions at Red Hat, I tried <a href='http://awestruct.org/'>Awestruct</a>, a tool to generate static web sites while still benefitting from templating, blog support and other kind of neat automations.
+</p>
+<a href='http://awestruct.org/'>Awestruct</a> is a project started and lead by <a href='http://bob.mcwhirter.org/'>Bob McWhirter</a>, a JBoss fellow known amongst other things for the awesomeness of his project names. Let me tell you this tool is fantastic. It is a ruby based tool that generates a fully static website (.html, .css and resource files) based on:
+<ul>
+	<li>content written in a few available markup languages (Markdown is one, haml is another)</li>
+	<li>layouts letting you template the structure of your website</li>
+	<li>style via Sass, a superset of CSS that ends up generating .css files</li>
+</ul>
+<p>I am not a web savvy guy. I know HTML a bit and CSS half a bit. Actually, I know that the best resource on the web is <a href='http://www.w3schools.com/'>w3Schools.com</a> and that's it. I was able to redo my website in about half a day from downloading Awestruct to deploying the generated site. The beauty is that I can now add pages very easily in an extremely consistent look.
+</p>
+<p>Another useful part is Awestruct extensions and helpers. While the site is a static website, any content you can generate based on some structured data can end up as a part of your website:
+</p>
+<ul>
+	<li>a blog (ie take elements in a directory and render them as blog entries including the rss feed)</li>
+	<li>display a tag cloud and generate the list of pages per tag</li>
+	<li>display the list of your project releases</li>
+	<li>your own extension (if you know some Ruby, you should be good)</li>
+</ul>
+<p>Now add some dust of Javascript and you can add things like
+</p>
+<ul>
+	<li>Google Analytics integration with one line of config</li>
+	<li>Comments support on your static website thanks to the javascript integration with <a href='http://intensedebate.com/'>IntenseDebase</a>.</li>
+</ul>
+<p>What I like about Awestruct is that the good libraries are picked for you (Haml, Compass-style etc) but the killer features are two-fold:
+</p>
+<ul>
+	<li>you can tell it to deploy and it will rsync the new website for you in one simple command (it has profiles too like dev, staging and production)</li>
+	<li>you can store everything in Git</li>
+</ul>
+<p>Now you have a Git stored, simply deployable, easily customizable and templated website. With a bit of scripting you could get people pushing content in Git and get the website automatically generated and published. Heck you can even generate content automatically as part of a project release and script that (my dream!).
+</p>
+<p>Awestruct sites are in the middle between fully dynamic sites reading stuffs from a datasource and purely static pages manually edited. It's kind of a dynamic static website.
+</p>
+<p>The only feature I miss is a search engine but one could imagine:
+</p>
+<ul>
+	<li>generating index pages during the website construction (/index/emmanuel.html, /index/hibernate.html ...)</li>
+	<li>get some piece of Javascript that read queries and do n intersection of the content stored in all matching indexes</li>
+</ul>
+<p>Bob, got some free time?</p>

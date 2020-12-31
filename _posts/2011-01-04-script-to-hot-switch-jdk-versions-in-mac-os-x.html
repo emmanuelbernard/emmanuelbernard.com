@@ -1,0 +1,103 @@
+---
+title: 'Script to hot switch JDK versions in Mac OS X terminals'
+author: 'Emmanuel Bernard'
+tags: [ apple, java ]
+date: 2011-01-04
+---
+<p>Personal note.
+</p>
+<p>Here is a script that lets you switch your JDK version in a terminal window. It also has auto completion.
+</p>
+<p>Put the script in a file and add
+</p>
+<blockquote>source filename</blockquote>
+<p>in ~/.profile or ~/.bash_profile and you will be able to call setjdk and use autocompletion (with &lt;tab&gt;) from the command line.
+</p>
+<blockquote>emmanuel@computer $ setjdk 1.&lt;tab&gt;
+<p>emmanuel@computer $ setjdk 1.5
+</p>
+</blockquote>
+<p>Original version <a href='http://docs.codehaus.org/display/ninja/setjdk'>at codehaus</a>.
+</p>
+<blockquote>#!/bin/bash
+<p>function defaultjdk {
+</p>
+<p>local vmdir=/System/Library/Frameworks/JavaVM.framework/Versions
+</p>
+<p>local ver=${1?Usage: defaultjdk }
+</p>
+<p>[ -z "$2" ] || error="Too many arguments"
+</p>
+<p>[ -d $vmdir/$ver ] || error="Unknown JDK version: $ver"
+</p>
+<p>[ "$(readlink $vmdir/CurrentJDK)" != "$ver" ] || error="JDK already set to $ver"
+</p>
+<p>if [ -n "$error" ]; then
+</p>
+<p>echo $error
+</p>
+<p>return 1
+</p>
+<p>fi
+</p>
+<p>echo -n "Setting default JDK &amp; HotSpot to $ver ... "
+</p>
+<p>if [ "$(/usr/bin/id -u)" != "0" ]; then
+</p>
+<p>SUDO=sudo
+</p>
+<p>fi
+</p>
+<p>$SUDO /bin/rm /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK
+</p>
+<p>$SUDO /bin/ln -s $ver /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK
+</p>
+<p>echo Done.
+</p>
+<p>}
+</p>
+<p>function setjdk {
+</p>
+<p>local vmdir=/System/Library/Frameworks/JavaVM.framework/Versions
+</p>
+<p>local ver=${1?Usage: setjdk }
+</p>
+<p>[ -d $vmdir/$ver ] || {
+</p>
+<p>echo Unknown JDK version: $ver
+</p>
+<p>return 1
+</p>
+<p>}
+</p>
+<p>echo -n "Setting this terminal's JDK to $ver ... "
+</p>
+<p>export JAVA_HOME=$vmdir/$ver/Home
+</p>
+<p>PATH=$(echo $PATH | tr ':' '\n' | grep -v $vmdir | tr '\n' ':')
+</p>
+<p>export PATH=$JAVA_HOME/bin:$PATH
+</p>
+<p>java -version
+</p>
+<p>}
+</p>
+<p>function _setjdk_completion (){
+</p>
+<p>COMPREPLY=()
+</p>
+<p>local vmdir=/System/Library/Frameworks/JavaVM.framework/Versions
+</p>
+<p>local cur=${COMP_WORDS[COMP_CWORD]//\\\\/}
+</p>
+<p>local options=$(cd $vmdir; ls | grep 1. | tr '\n' ' ')
+</p>
+<p>COMPREPLY=($(compgen -W "${options}" ${cur}))
+</p>
+<p>}
+</p>
+<p>complete -F _setjdk_completion -o filenames setjdk
+</p>
+<p>complete -F _setjdk_completion -o filenames defaultjdk
+</p>
+</blockquote>
