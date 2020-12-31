@@ -29,9 +29,8 @@ markdown: kramdown
 theme: minimal-mistakes-jekyll
 #remote_theme: mmistakes/minimal-mistakes
 # Outputting
-permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
-paginate_path: /page:num/
+paginate_path: /blog/page/:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
@@ -95,6 +94,7 @@ defaults:
       type: posts
     values:
       layout: single
+      permalink: /blog/:year/:month/:day/:title/
       author_profile: true
       read_time: true
       comments: true
@@ -113,4 +113,4 @@ category_archive:
   path: /categories/
 tag_archive:
   type: liquid
-  path: /tags/
+  path: /blog/tags/
