@@ -51,7 +51,7 @@ theme: minimal-mistakes-jekyll
 markdown: kramdown
 highlighter: rouge
 lsi: false
-excerpt_separator: "\n\n"
+excerpt_separator: "<!--more-->"
 incremental: false
 #remote_theme: mmistakes/minimal-mistakes
 # Outputting
