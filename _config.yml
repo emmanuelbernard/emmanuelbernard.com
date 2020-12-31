@@ -30,6 +30,11 @@ search: true
 # Build settings
 markdown: kramdown
 theme: minimal-mistakes-jekyll
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
 #remote_theme: mmistakes/minimal-mistakes
 # Outputting
 paginate: 20 # amount of posts to show
