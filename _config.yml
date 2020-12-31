@@ -27,6 +27,24 @@ og_image: /images/headshot/201310EmmanuelBernardSquare1000px.png
 minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 search: true
 
+#feed
+atom_feed:
+  path: /blog/feed.atom
+
+#Analyzers
+analytics:
+  provider: "google-gtag" #"google" # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "UA-3479508-6"
+    anonymize_ip         : false # true, false (default
+
+#Comments
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "emmanuelbernard-com"
+
+
 # Build settings
 markdown: kramdown
 theme: minimal-mistakes-jekyll
