@@ -13,14 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
+title: Emmanuel Bernard
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
+  Emmanuel Bernard is an Open Source software engineer.
+  Java Champion, he is best known for his lead of Hibernate and Quarkus.
+twitter_username: emmanuelbernard
+github_username: emmanuelbernard
 minimal_mistakes_skin: default
 search: true
 
@@ -58,34 +57,28 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Emmanuel Bernard"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "Emmanuel Bernard is an Open Source software engineer. Java Champion, he is best known for his lead of Hibernate and Quarkus."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: "https://emmanuelbernard.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/emmanuelbernard"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/emmanuelbernard"
 
 footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/emmanuelbernard"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/emmanuelbernard"
 
 defaults:
   # _posts
@@ -110,7 +103,7 @@ defaults:
 
 category_archive:
   type: liquid
-  path: /categories/
+  path: /blog/categories/
 tag_archive:
   type: liquid
   path: /blog/tags/
