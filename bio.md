@@ -1,12 +1,10 @@
 ---
 title: Biography
 author: Emmanuel Bernard
-layout: constant-sidebar
-tab: home
+layout: single
+classes: wide
 ---
   
-# #{page.title}
-
 If you need my biography for a conference, use the following one (available in English or French). You can also find my picture below.
 
 ## English

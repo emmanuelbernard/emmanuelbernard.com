@@ -1,8 +1,7 @@
 ---
 title: Read me
 author: Emmanuel Bernard
-layout: constant-sidebar
-tab: home
+layout: single
 ---
 # Acknowledgments
 
