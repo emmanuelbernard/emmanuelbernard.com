@@ -2,7 +2,7 @@
 title: Presentations
 author: Emmanuel Bernard
 header:
-  overlay_image: /images/emmanuel-devoxx-2019-1200px.jpg
+  overlay_image: /images/emmanuel-conf-1200px.jpg
   show_overlay_excerpt: true
 excerpt: Landing page of the various materials I've written for presentations.
 
