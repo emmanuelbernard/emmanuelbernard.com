@@ -22,7 +22,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 twitter_username: emmanuelbernard
 github_username: emmanuelbernard
 #a minimum size of 120px by 120px, and less than 1MB in file size
-og_image: /images/headshot/201310EmmanuelBernardSquare1000px.png
+og_image: /images/headshot/emmanuel-headshot-square-1200px.jpg
 
 minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 search: true
