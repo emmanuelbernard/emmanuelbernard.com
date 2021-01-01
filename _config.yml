@@ -89,15 +89,18 @@ author:
   avatar : "/images/headshot/emmanuel-headshot-square-1200px.jpg"
   bio    : "Emmanuel Bernard is an Open Source software engineer. Java Champion, he is best known for his lead of Hibernate and Quarkus."
   links:
-    - label: "Website"
+    - label: "Bio"
       icon: "fas fa-fw fa-link"
-      url: "https://emmanuelbernard.com"
+      url: "https://emmanuelbernard.com/bio/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/emmanuelbernard"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/emmanuelbernard"
+    - label: "Email"
+      icon: "fas fa-fw fa-at"
+      url: "mailto:contact@mel.emmanuelbernard.com"
 
 social:
   type: Person
