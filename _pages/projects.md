@@ -8,4 +8,4 @@ layout: project
 data: projects
 entries_layout: list
 ---
-I would put my projects in three categories: [code](#Code), [podcasts](#Podcasts) and [specs](#Specifications). 
+I would put my projects in three categories: [code](#code), [podcasts](#podcasts) and [specs](#specifications). 

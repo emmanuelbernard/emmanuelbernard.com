@@ -16,7 +16,7 @@
 
 
 {%- for section in entries -%}
-<section id="{{ section.name }}" class="taxonomy__section">
+<section id="{{ section.name  | slugify | downcase }}" class="taxonomy__section">
 <h1 class="archive__subtitle">{{ section.name }}</h1>
 {%- for post in section.entries -%}
   {%- unless post.hidden -%}
