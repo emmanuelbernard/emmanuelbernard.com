@@ -3,6 +3,8 @@ title: Biography
 author: Emmanuel Bernard
 layout: single
 classes: wide
+header:
+  overlay_image: /images/emmanuel-conf-1200px.jpg
 ---
   
 If you need my biography for a conference, use the following one (available in English or French). You can also find my picture below.
