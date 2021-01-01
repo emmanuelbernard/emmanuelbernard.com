@@ -1,4 +1,6 @@
 main:
+  - title: "/"
+    url: /
   - title: "Blog"
     url: /blog/
   - title: "Bio"
