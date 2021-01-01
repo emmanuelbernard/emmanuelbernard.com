@@ -2,6 +2,44 @@
 # You don't need to edit this file, it's empty on purpose.
 # Edit theme's home layout instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
-author_profile: true
+layout: single
+author_profile: false
+header:
+  overlay_image: /images/emmanuel-conf-1200px.jpg
+  show_overlay_excerpt: true
 ---
+<p>Hello there, I'm a software engineer working at Red Hat on all things middleware.</p>
+
+<h2><a href="/blog/">Blog</a></h2>
+
+<p>If you've landed here, you're mostly interested in my <a href=/blog/>blog entries</a>.
+At least that's where this website value is at 😉.
+These are my thoughts on various subjects.
+I particularly love hacking my work.
+Either by methodology or by improving my tools.</p>
+
+<p>Here is a list of topics I blogged about.</p>
+
+{% assign tags_max = 0 %}
+{% for tag in site.tags %}
+  {% if tag[1].size > tags_max %}
+    {% assign tags_max = tag[1].size %}
+  {% endif %}
+{% endfor %}
+
+<ul class="taxonomy__index">
+  {% for i in (1..tags_max) reversed %}
+    {% for tag in site.tags %}
+      {% if tag[1].size == i %}
+        <li>
+          <a href="/blog/tags/#{{ tag[0] | slugify }}">
+            <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>
+
+<h2>Everything else</h2>
+<p>The rest is some info about me. E.g my <a href="/bio/">bio</a> or the <a href="/projects/">projects</a> I am or have worked on.</p>
