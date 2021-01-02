@@ -67,6 +67,20 @@ timezone: Europe/Paris # https://en.wikipedia.org/wiki/List_of_tz_database_time_
 
 include:
   - _pages
+  - .htaccess
+
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "node_modules"
+  - "vendor/bundle/"
+  - "vendor/cache/"
+  - "vendor/gems/"
+  - "vendor/ruby/"
+  - TODO
+  - readme.md
+  - .rvmrc
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
