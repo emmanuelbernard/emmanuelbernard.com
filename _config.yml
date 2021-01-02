@@ -27,9 +27,15 @@ og_image: /images/headshot/emmanuel-headshot-square-1200px.jpg
 minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 search: true
 
+url: https://emmanuelbernard.com
 #feed
+# URL used by pages
 atom_feed:
   path: /blog/feed.atom
+# config to generate feed with jekyll-feed
+feed:
+  path: /blog/feed.atom
+  posts_limit: 200
 
 #Analyzers
 analytics:
