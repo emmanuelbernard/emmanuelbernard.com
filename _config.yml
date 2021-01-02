@@ -61,7 +61,7 @@ excerpt_separator: "<!--more-->"
 incremental: false
 #remote_theme: mmistakes/minimal-mistakes
 # Outputting
-paginate: 20 # amount of posts to show
+paginate: 5 # amount of posts to show
 paginate_path: /blog/page/:num/
 timezone: Europe/Paris # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
