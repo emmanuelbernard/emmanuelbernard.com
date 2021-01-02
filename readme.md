@@ -1,5 +1,6 @@
 ---
 title: Read me
+permalink: /readme/
 author: Emmanuel Bernard
 layout: single
 ---

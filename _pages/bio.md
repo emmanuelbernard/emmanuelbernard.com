@@ -1,5 +1,6 @@
 ---
 title: Biography
+permalink: /bio/
 author: Emmanuel Bernard
 layout: single
 classes: wide
