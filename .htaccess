@@ -28,7 +28,9 @@ RewriteRule ^books$ /books/hsia$1
 RewriteRule ^books/$ /books/hsia$1
 RewriteRule ^feed$ /blog/feed.atom
 RewriteRule ^feed/$ /blog/feed.atom
-# redirect feed to FeedBurner
-RewriteRule ^blog/feed.atom$ "http\:\/\/feeds\.feedburner\.com\/NoRelationTo" [R=302,L]
+# redirect the feedburner target with the real feed
+RewriteRule ^blog/feed-private.atom/$ /blog/feed.atom
+# OLD redirect feed to FeedBurner
+# RewriteRule ^blog/feed.atom$ "http\:\/\/feeds\.feedburner\.com\/NoRelationTo" [R=302,L]
 RewriteRule ^\@$ "https\:\/\/twitter\.com\/emmanuelbernard" [R=302,L]
-RewriteRule ^\+$ "https\:\/\/plus\.google\.com\/u\/0\/114288822031825705031" [R=302,L]
+#RewriteRule ^\+$ "https\:\/\/plus\.google\.com\/u\/0\/114288822031825705031" [R=302,L]
