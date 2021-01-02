@@ -4,7 +4,7 @@ set -e
 
 bundle install
 bundle exec jekyll clean
-bundle exec jekyll build
+JEKYLL_ENV=production bundle exec jekyll build
 
 while [[ $# -gt 0 ]]
 do
@@ -13,7 +13,7 @@ do
     -p|--publish)
     # publish the website
     shift # shift to next argument
-    rsync -avz --delete --filter="- /video/" --filter="- /cgi-bin/" _site/ lcc-web:/var/www/lescastcodeurs
+    rsync -avz --delete --filter="- publish.sh" --filter="- Gemfile" --filter="- Gemfile.lock" _site/ lcc-web:/var/www/emmanuelbernard
     ;;
   esac
 done
