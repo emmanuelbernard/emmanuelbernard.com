@@ -159,6 +159,10 @@ defaults:
     values:
       layout: single
       author_profile: false
+  - scope:
+      path: "presentations/inverted-index/reveal.js/"
+    values:
+      sitemap: false
 
 category_archive:
   type: liquid
