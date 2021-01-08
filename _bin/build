@@ -13,6 +13,7 @@ do
     -p|--publish)
     # publish the website
     shift # shift to next argument
+    chmod -R go+r _site/
     rsync -avz --delete --filter="- publish.sh" --filter="- Gemfile" --filter="- Gemfile.lock" _site/ lcc-web:/var/www/emmanuelbernard
     ;;
   esac
