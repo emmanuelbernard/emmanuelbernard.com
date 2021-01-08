@@ -3,7 +3,7 @@ title: "Super ultra wide screen"
 author: Emmanuel Bernard
 tags: ["productivity", "tool", "electronics"]
 header:
-  teaser: /images/blog/monitor-49-inch.jpg
+  teaser: /images/blog/monitor/monitor-49-inch.jpg
 ---
 I recently changed my desktop monitor to a super ultra wide 49" and I love it.
 Here is why.
@@ -18,7 +18,7 @@ Comparing two documents, reading one document while writing another, keeping a t
 Usages are plenty for this.
 While 27" is awesome to get lots of space for one app, two vertically split were limiting.
 
-![49" super ultra wide monitor of 32:9 ratio](/images/blog/monitor-49-inch.jpg)
+![49" super ultra wide monitor of 32:9 ratio](/images/blog/monitor/monitor-49-inch.jpg)
 
 ## One monitor vs two
 
@@ -34,7 +34,7 @@ It's mainly a matter of usage and ergonomics.
 
 The recommended position is to have the top of the monitor at or slightly lower than the eye level.
 
-![Monitor ergonomics](/images/blog/monitor-angle.jpg)
+![Monitor ergonomics](/images/blog/monitor/monitor-angle.jpg)
 
 And the head should not be turned (left / right) or it will lead to neck and shoulders tensions.
 
@@ -51,7 +51,7 @@ The main point is that your neck should not be twisted for long periods of time.
 If you plan to equally look at each monitor and swap every minute or so, your neck will not get stiff.
 The symmetric dual monitor option is good for that.
 
-![dual monitor](/images/blog/monitor-dual.jpg)
+![dual monitor](/images/blog/monitor/monitor-dual.jpg)
 
 The main problem with this option is that to look at a single app for long periods, you need to have it span between monitors (if your OS supports that).
 But the borders, while quite thin these days will get in your way.
