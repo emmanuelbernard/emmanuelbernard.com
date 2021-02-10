@@ -28,6 +28,8 @@ I am also quite sensitive to the permanence of communication.
 Having to repeat n times the same things is just inefficient and lossy.
 Being able to talk to your past self (or past self as a team in this case) is quite invaluable.
 
+![](/images/blog/communication.jpg)
+
 ## Approach
 
 ### Some granularity but not atomicity
