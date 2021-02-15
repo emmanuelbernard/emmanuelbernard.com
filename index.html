@@ -18,6 +18,30 @@ These are my thoughts on various subjects.
 I particularly love hacking my work.
 Either by methodology or by improving my tools.</p>
 
+<h3>Latest blog entries</h3>
+
+{% comment %} from single layout {% endcomment %}
+{% if paginator %}
+  {% assign posts = paginator.posts %}
+{% else %}
+  {% assign posts = site.posts %}
+{% endif %}
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% comment %} https://stackoverflow.com/questions/17890493/how-can-i-show-just-the-most-recent-post-on-my-home-page-with-jekyll {% endcomment %}
+<div style='margin: 1em; padding: 1em; border: 1px groove ;'>
+  {% for post in posts limit:2 %}
+    {% comment %} from archive-single layout {% endcomment %}
+    {% include archive-single.html type=entries_layout %}
+  {% endfor %}
+</div>
+</div>
+
+<a href=/blog/>More entries...</a>
+
+
+<h3>Topics I blog about</h3>
+
 <p>Here is a list of topics I blogged about.</p>
 
 {% assign tags_max = 0 %}
@@ -40,6 +64,7 @@ Either by methodology or by improving my tools.</p>
     {% endfor %}
   {% endfor %}
 </ul>
+
 
 <h2>Everything else</h2>
 <p>The rest is some info about me. E.g my <a href="/bio/">bio</a> or the <a href="/projects/">projects</a> I am or have worked on.</p>
