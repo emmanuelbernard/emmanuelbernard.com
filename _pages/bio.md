@@ -30,12 +30,11 @@ You can follow him on twitter at
 
 ## Français
 
-Emmanuel est Java Champion, Distinguished Engineer et Chief Architect Données chez Red Hat (middleware).
+Emmanuel est Java Champion, Distinguished Engineer et Chief Architect services cloud applicatifs chez Red Hat.
 Son travail est Open Source.
-Il est connu pour ses contributions et sa direction des projets Hibernate
-ainsi qu'à ses contributions aux standards Java.
+Il est connu pour ses contributions et sa direction des projets [Quarkus](https:quarkus.io), [Hibernate](https://hibernate.org) ainsi qu'à ses contributions aux standards Java.
 
-Son aventure la plus récente est [Quarkus](https://quarkus.io) (Une stack Java Native Kubernetes optimisée pour GraalVM & OpenJDK HotSpot, ciselé à partir du meilleurs des librairies et standards Java).
+Son aventure la plus récente est un [Kafka as a service managé par les équipes Red Hat](https://red.ht/TryKafka).
 
 Il parle régulièrement dans des conférences et JUGs notamment
 JavaOne, Red Hat Summit et Devoxx.
@@ -44,7 +43,7 @@ Il est l'hôte de plusieurs podcasts et notamment [Les Cast Codeurs](https://les
 Vous pouvez le suivre sur twitter à
 [@emmanuelbernard](http://twitter.com/emmanuelbernard).
 
- #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
+ #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
 
 ## Pictures
 
