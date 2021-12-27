@@ -34,7 +34,7 @@ Emmanuel est Java Champion, Distinguished Engineer et Chief Architect services c
 Son travail est Open Source.
 Il est connu pour ses contributions et sa direction des projets [Quarkus](https:quarkus.io), [Hibernate](https://hibernate.org) ainsi qu'à ses contributions aux standards Java.
 
-Son aventure la plus récente est un [Kafka as a service managé par les équipes Red Hat](https://red.ht/TryKafka).
+Son aventure la plus récente est la construction d'un [Kafka as a service managé par les équipes Red Hat](https://red.ht/TryKafka).
 
 Il parle régulièrement dans des conférences et JUGs notamment
 JavaOne, Red Hat Summit et Devoxx.
