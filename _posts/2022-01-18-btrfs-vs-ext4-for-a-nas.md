@@ -37,4 +37,4 @@ And BRTFS has some really nice features in that area.
 One drawback for BTRFS is that the notion of free space is... complicated but as long as you are not flirting with the disk size limit, things should be fine.
 
 Overall, it feels like a worthwhile bet to go for BTRFS for my data.
-Do you have some thoughts on the subject? [Share them with me]().
+Do you have some thoughts on the subject? [Share them with me](https://twitter.com/emmanuelbernard/status/1483369304712220674?s=20).
