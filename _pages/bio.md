@@ -49,10 +49,10 @@ Vous pouvez le suivre sur twitter à
 
 ### Preferred
 
-<img width="50%" alt="Portrait" src="/images/headshot/201310EmmanuelBernardHalfBody.jpg"/>
+<img width="50%" alt="Portrait" src="/images/headshot/emmanuel-headshot-1200px.jpg"/>
 
 ### Squared
 
-<img width="50%" alt="Squared portrait" src="/images/headshot/201310EmmanuelBernardSquare.jpg"/>
+<img width="50%" alt="Squared portrait" src="/images/headshot/emmanuel-headshot-square-1200px.jpg"/>
 
     
