@@ -37,12 +37,13 @@ feed:
   path: /blog/feed.atom
   posts_limit: 200
 
-#Analyzers
-analytics:
-  provider: "google-gtag" #"google" # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          : "UA-3479508-6"
-    anonymize_ip         : false # true, false (default
+# Removing Google Analytics due to GDPR and CNIL
+# #Analyzers
+# analytics:
+#   provider: "google-gtag" #"google" # false (default), "google", "google-universal", "google-gtag", "custom"
+#   google:
+#     tracking_id          : "UA-3479508-6"
+#     anonymize_ip         : false # true, false (default
 
 #Comments
 comments:
