@@ -12,7 +12,7 @@ If you need my biography for a conference, use the following one (available in E
 
 ## English
 
-Emmanuel is Java Champion, Distinguished Engineer and Chief Architect Application Cloud Services at Red Hat.
+Emmanuel is Java Champion, Senior Distinguished Engineer and Chief Architect Application Cloud Services at Red Hat.
 His work is Open Source.
 He is most well known for his contributions and lead of the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects
 as well as his contribution to Java standards.
@@ -30,7 +30,7 @@ You can follow him on twitter at
 
 ## Français
 
-Emmanuel est Java Champion, Distinguished Engineer et Chief Architect services cloud applicatifs chez Red Hat.
+Emmanuel est Java Champion, Senior Distinguished Engineer et Chief Architect services cloud applicatifs chez Red Hat.
 Son travail est Open Source.
 Il est connu pour ses contributions et sa direction des projets [Quarkus](https:quarkus.io), [Hibernate](https://hibernate.org) ainsi qu'à ses contributions aux standards Java.
 
