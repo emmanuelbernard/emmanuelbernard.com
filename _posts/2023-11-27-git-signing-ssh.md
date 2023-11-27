@@ -1,5 +1,5 @@
 ---
-title: Signing git commits with SSH keys
+title: Signing Git commits with SSH keys
 author: Emmanuel Bernard
 tags: [ "tool" , "git" ]
 #classes: wide
