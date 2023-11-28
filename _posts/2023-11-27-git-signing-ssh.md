@@ -44,6 +44,9 @@ Any command `git config` can be set to `git config --global` if you want to appl
 
 `user.signingkey` is the SSH key you want to use to sign.
 You can use `ssh-agent` to avoid being asked your password for every commit.
+Speaking of, you can point to your public key and [Git will find the private one through ssh-agent](https://stackoverflow.com/questions/75046499/what-is-the-internal-working-of-git-signing-commits-and-the-user-signingkey-opti).
+I was initially puzzled because with the public key, you cannot sign, just verify a signature.
+Thanks Nico for this riddle.
 
 `gpg.format` is where the magic happens, instead of using gpg, it will look for the ssh format.
 
