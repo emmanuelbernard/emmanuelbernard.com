@@ -25,4 +25,4 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 #themes
 #gem "minima"
-gem "minimal-mistakes-jekyll", "~> 4.24.0"
+gem "minimal-mistakes-jekyll", "~> 4.26.2"
