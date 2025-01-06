@@ -113,8 +113,11 @@ author:
     - label: "Bio"
       icon: "fas fa-fw fa-link"
       url: "https://emmanuelbernard.com/bio/"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+    - label: "Bluesky"
+      icon: "fab fa-fw fa-bluesky"
+      url: "https://bsky.app/profile/emmanuelbernard.com"
+    - label: "X/Twitter"
+      icon: "fab fa-fw fa-x-twitter"
       url: "https://twitter.com/emmanuelbernard"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -132,8 +135,11 @@ social:
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
+    - label: "Bluesky"
+      icon: "fab fa-fw fa-bluesky"
+      url: "https://bsky.app/profile/emmanuelbernard.com"
+    - label: "X/Twitter"
+      icon: "fab fa-fw fa-x-twitter"
       url: "https://twitter.com/emmanuelbernard"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
