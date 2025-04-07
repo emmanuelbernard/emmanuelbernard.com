@@ -21,7 +21,7 @@ He speaks regularly at various conferences and JUGs, including
 JavaOne, Red Hat Summit and Devoxx.
 He hosts several podcasts including [Les Cast Codeurs](https://lescastcodeurs.com).
 
-You can follow him on twitter at
+You can follow him on BlueSky at [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com) or twitter at
 [@emmanuelbernard](http://twitter.com/emmanuelbernard).
 
  #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
@@ -36,8 +36,8 @@ Il parle régulièrement dans des conférences et JUGs notamment
 JavaOne, Red Hat Summit et Devoxx.
 Il est l'hôte de plusieurs podcasts et notamment [Les Cast Codeurs](https://lescastcodeurs.com).
 
-Vous pouvez le suivre sur twitter à
-[@emmanuelbernard](http://twitter.com/emmanuelbernard).
+Vous pouvez le suivre sur BlueSky à [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com)
+ou twitter à [@emmanuelbernard](http://twitter.com/emmanuelbernard).
 
  #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
 
