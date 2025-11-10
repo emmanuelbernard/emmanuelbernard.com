@@ -8,4 +8,4 @@ bundle install
 bundle exec jekyll clean
 # future has a bug that removes drafts
 #bundle exec jekyll serve --drafts --livereload --future
-bundle exec jekyll serve --drafts --livereload 
+bundle exec jekyll serve --drafts --livereload --future
