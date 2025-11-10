@@ -16,7 +16,7 @@ If you've ever found yourself wondering why your changes aren't being picked up 
 
 [JBang](https://www.jbang.dev/) is fantastic for writing quick Java scripts (not JavaScript!) without the ceremony of a full project setup.
 I was using it to automate some workflow tasks, and I had [Claude Code](https://www.anthropic.com/code) helping me iterate on the scripts directly in Visual Studio code.
-For that I used [Claude Code for VSCode](https://marketplace.visualstudio.com/items?itemName=Anthropic.claude-code) (wait is that Vistual Studio Code or VSCode, I'm all confused now ;P).
+For that I used [Claude Code for VSCode](https://marketplace.visualstudio.com/items?itemName=Anthropic.claude-code) (wait is that Visual Studio Code or VSCode, I'm all confused now ;P).
 
 Then it's classic AI loop: Claude Code would suggest changes, I'd review them, and then run the script with `jbang MyScript.java`.
 
@@ -26,7 +26,7 @@ Except... JBang wasn't seeing my changes. Well it was but only two third of the 
 And there is nothing worse than a tool that works 75% of the time: this drains your energy.
 
 I'd make an edit in Visual Studio code, save the file (or so I thought), run `jbang MyScript.java`, and get the old behavior.
-I'd check the file in Visual Studio code and could not make heads or tails of the behavior (it it my code or someething else that's causing the trouble).
+I'd check the file in Visual Studio code and could not make heads or tails of the behavior (it it my code or something else that's causing the trouble).
 
 This is the classic Visual Studio code "what the hell" moment, and if you've used Visual Studio code long enough, you've probably hit it before with various tools like test runners, linters, or file watchers.
 
