@@ -1,5 +1,5 @@
 ---
-title: Leaving Red Hat - a 20-years page has been turned
+title: Leaving Red Hat - a 20-year page has been turned
 author: Emmanuel Bernard
 tags: [ "announcements" ]
 classes: wide
@@ -31,7 +31,7 @@ So many thanks to Red Hat, many thanks to JBoss and many, many thanks to this lo
 
 But I felt it was time to try something new, not to rest on my laurels.
 
-### What’s next for me
+## What’s next for me
 
 Well, my future won’t look like sitting on a beach drinking coconut juice, though I am planning to get back to doing more sport than in recent months 😊.
 
