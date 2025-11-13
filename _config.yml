@@ -24,7 +24,8 @@ github_username: emmanuelbernard
 #a minimum size of 120px by 120px, and less than 1MB in file size
 og_image: /images/headshot/emmanuel-headshot-square-1200px.jpg
 
-minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air" # "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+enable_copy_code_button: true
 search: true
 
 url: https://emmanuelbernard.com
@@ -119,6 +120,9 @@ author:
     - label: "X/Twitter"
       icon: "fab fa-fw fa-x-twitter"
       url: "https://twitter.com/emmanuelbernard"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/emmanuelbernard/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/emmanuelbernard"
@@ -141,6 +145,10 @@ footer:
     - label: "X/Twitter"
       icon: "fab fa-fw fa-x-twitter"
       url: "https://twitter.com/emmanuelbernard"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/emmanuelbernard/"
+      style: "color: #000;"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/emmanuelbernard"
