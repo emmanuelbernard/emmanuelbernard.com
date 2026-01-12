@@ -4,7 +4,7 @@ author: Emmanuel Bernard
 tags: [ "Agentic", "AI" ]
 classes: wide
 header:
-  teaser: /images/blog/dog-code.gif
+  teaser: /images/blog/function-calling.jpg
 ---
 If you've used function calling in your agentic apps, you know the challenges:
 
@@ -12,6 +12,8 @@ If you've used function calling in your agentic apps, you know the challenges:
 * Having many tools can confuse the LLM, which might not call the "best one".
 
 Anthropic has added a few interesting features to their API to address this problem.
+ 
+![Function calling](/images/blog/function-calling.jpg)
 
 ## Tool Search Tool
 
@@ -54,4 +56,4 @@ Agentic frameworks could implement this pattern natively, but I can see how it m
 
 ## More info
 
-There is a detailed blog by our Anthropic wizards https://www.anthropic.com/engineering/advanced-tool-use if you want to dig further.
+There is a [detailed blog](https://www.anthropic.com/engineering/advanced-tool-use) by our Anthropic wizards if you want to dig further.
