@@ -12,34 +12,30 @@ If you need my biography for a conference, use the following one (available in E
 
 ## English
 
-Emmanuel is Java Champion, Senior Distinguished Engineer and Chief Architect Application Services and Middleware at Red Hat.
-His work is Open Source.
-He is most well known for his contributions and lead of the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects
-as well as his contribution to Java standards.
+Emmanuel is a Java Champion and founder of [Hexactgon](https://hexactgon.com), a company specializing in agentic applications.
+Former Senior Distinguished Engineer and Chief Architect for Application Services and Middleware at Red Hat, where he led the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects and actively contributed to Java standards.
+He has extensive experience in Open Source and leading technical teams.
 
-He speaks regularly at various conferences and JUGs, including
-JavaOne, Red Hat Summit and Devoxx.
-He hosts several podcasts including [Les Cast Codeurs](https://lescastcodeurs.com).
+He speaks regularly at conferences and JUGs, including Devoxx.
+He hosts several podcasts, most notably [Les Cast Codeurs](https://lescastcodeurs.com) (in French).
 
-You can follow him on BlueSky at [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com) or twitter at
-[@emmanuelbernard](http://twitter.com/emmanuelbernard).
+You can follow him on BlueSky at [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com) or X at [@emmanuelbernard](http://x.com/emmanuelbernard).
 
- #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
+ #agentic #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
 
 ## Français
 
-Emmanuel est Java Champion, Senior Distinguished Engineer et Chief Architect Application Services et Middleware chez Red Hat.
-Son travail est Open Source.
-Il est connu pour ses contributions et sa direction des projets [Quarkus](https:quarkus.io), [Hibernate](https://hibernate.org) ainsi qu'à ses contributions aux standards Java.
+Emmanuel est Java Champion et fondateur de [Hexactgon](https://hexactgon.com), une société spécialisée dans les applications agentiques.
+Ancien Senior Distinguished Engineer et Chief Architect Application Services et Middleware chez Red Hat, il y a notamment dirigé les projets [Quarkus](https://quarkus.io) et [Hibernate](https://hibernate.org) et contribué activement aux standards Java.
+Il a une forte expérience dans l'Open Source et dans la direction d'équipes techniques.
 
-Il parle régulièrement dans des conférences et JUGs notamment
-JavaOne, Red Hat Summit et Devoxx.
+Il parle régulièrement dans des conférences et JUGs notamment Devoxx.
 Il est l'hôte de plusieurs podcasts et notamment [Les Cast Codeurs](https://lescastcodeurs.com).
 
 Vous pouvez le suivre sur BlueSky à [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com)
-ou twitter à [@emmanuelbernard](http://twitter.com/emmanuelbernard).
+ou X à [@emmanuelbernard](http://x.com/emmanuelbernard).
 
- #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
+ #agentic #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
 
 ## Pictures
 
