@@ -82,6 +82,8 @@ exclude:
   - TODO
   - readme.md
   - .rvmrc
+  - CLAUDE.md
+  - .claude
 
 
 # Exclude from processing.
