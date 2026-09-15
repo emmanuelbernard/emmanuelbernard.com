@@ -4,16 +4,23 @@ author: Emmanuel Bernard
 header:
   overlay_image: /images/emmanuel-conf-1200px.jpg
   show_overlay_excerpt: true
-excerpt: Landing page of the various materials I've written for presentations.
+excerpt: The talk materials that stand on their own.
 
 layout: single
 ---
 
-I won't go back in time so only the most recent one is present.
+Most of my talks never land here.
+Slides are a prop for whoever is on stage, and without the talk they are not worth much.
+What I publish is the material that stands on its own: courses and long-form decks you can read without me in the room.
 
 ## Presentation materials
 
-**[3h student course on inverted index](/presentations/inverted-index/)**
+{% comment %} Entries live in _data/presentations.yml — edit them there. {% endcomment %}
+{% for material in site.data.presentations %}
+**[{{ material.title }}]({{ material.url }})** — {{ material.date }}
 
-This presentation covers why inverted index, b-tree, the analyzer stack, concepts of term, fuzzy, phrase queries etc.
-Also covers scoring, log-structured merge and the physical representation of the Lucene index.
+{{ material.description }}
+{% if material.links %}
+{% for link in material.links %}[{{ link.name }}]({{ link.url }}){% unless forloop.last %} · {% endunless %}{% endfor %}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,24 @@
+# ---------------------------------------------------------------------------
+# Presentation materials, rendered by presentations/index.md.
+#
+# What belongs here: material that stands on its own. Someone who was not in
+# the room should get something out of it on their own. Conference decks
+# usually do not qualify, courses and long-form content do.
+#
+# This page makes no claim of being complete or up to date, so leaving it
+# untouched for years is fine. Do not reintroduce a "most recent" promise.
+#
+# Newest first. `date` is shown next to the title: a course dated 2017 is
+# honest, an undated one quietly pretends to be new.
+#
+# Fields: title, url, date, description (Markdown), links (optional list of
+# name/url, for a video or an external copy of the material).
+# ---------------------------------------------------------------------------
+
+- title: 3h student course on inverted index
+  url: /presentations/inverted-index/
+  date: 2017
+  description: >- # this means to ignore newlines until "next property:"
+    Why an inverted index, b-tree, the analyzer stack, concepts of term, fuzzy
+    and phrase queries. Also covers scoring, log-structured merge and the
+    physical representation of the Lucene index.
