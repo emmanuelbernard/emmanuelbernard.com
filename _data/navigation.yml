@@ -5,8 +5,8 @@ main:
     url: /blog/
   - title: "Bio"
     url: /bio/
-  - title: "Projects"
-    url: /projects/
+  - title: "Work"
+    url: /work/
   - title: "Book"
     url: /books/hsia/
   - title: "Presentations"

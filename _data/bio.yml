@@ -11,11 +11,17 @@
 # fails if the copies drift. Run it before publishing (_bin/build calls it).
 # ---------------------------------------------------------------------------
 
-# Where I am now. Change these two and the rest of the file usually follows.
-company:
-  name: Hexactgon
-  url: https://hexactgon.com
-  what: a company specializing in agentic applications
+# Where I am now. Reference only: no template reads this block, it is here so
+# future edits to the copy below start from the same facts.
+companies:
+  - name: Hexactgon
+    url: https://hexactgon.com
+    what: a company specializing in agentic applications
+  # Unnamed and unlinked on purpose: the company has not come out of stealth.
+  # Describe it, never name it, until that changes.
+  - name: ~
+    url: ~
+    what: a company in stealth, AI for the enterprise Java stack
 
 # Site subtitle, shown in the masthead on every page.
 tagline: "Agentic applications & Open Source"
@@ -24,23 +30,30 @@ tagline: "Agentic applications & Open Source"
 # Keep it under ~160 characters so search engines don't truncate it.
 short:
   en: >-
-    Emmanuel Bernard is a Java Champion and the founder of Hexactgon, building
-    agentic applications. He previously led Quarkus and Hibernate at Red Hat.
+    Java Champion, founder of Hexactgon and co-founder of a stealth AI company.
+    Ex Distinguished Engineer at Red Hat, where he led Quarkus and Hibernate.
 
 # Opening paragraph of the home page. Markdown.
+#
+# Block style is `|` (literal), like long.en below: every newline is kept as
+# typed. One sentence per line; a BLANK line starts a new paragraph. With the
+# folded style `>-` a single newline collapses into a space, which is why a
+# line break was impossible to express here before.
 intro:
-  en: >-
-    Hello there, I'm a software engineer and the founder of
-    [Hexactgon](https://hexactgon.com), a company specializing in agentic
-    applications. Before that I spent 20 years at JBoss and Red Hat, where I led
-    the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org)
-    projects.
+  en: |
+    Hello there, I'm a software engineer and architect (ex Senior Distinguished Engineer at Red Hat as Middleware Chief Architect).
+
+    I'm the founder of [Hexactgon](https://hexactgon.com), a company specializing in agentic applications.
+    I'm also co-founder of a company in stealth, making AI a first-class citizen of the enterprise Java stack.
+
+    Before that I spent 20 years in Professional Open Source, where I led the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects.
 
 # The conference biography. Markdown, kept as-is by /bio/.
 # One sentence per line, per .claude/skills/blog-rules.md.
 long:
   en: |
     Emmanuel is a Java Champion and founder of [Hexactgon](https://hexactgon.com), a company specializing in agentic applications.
+    He is also co-founder of a company in stealth, making AI a first-class citizen of the enterprise Java stack, where open source and sovereignty are requirements rather than features.
     Former Senior Distinguished Engineer and Chief Architect for Application Services and Middleware at Red Hat, where he led the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects and actively contributed to Java standards.
     He has extensive experience in Open Source and leading technical teams.
 
@@ -51,6 +64,7 @@ long:
 
   fr: |
     Emmanuel est Java Champion et fondateur de [Hexactgon](https://hexactgon.com), une société spécialisée dans les applications agentiques.
+    Il est également cofondateur d'une société en stealth, qui fait de l'IA un citoyen de première classe de la plateforme Java d'entreprise, où l'open source et la souveraineté sont des exigences, pas des options.
     Ancien Senior Distinguished Engineer et Chief Architect Application Services et Middleware chez Red Hat, il y a notamment dirigé les projets [Quarkus](https://quarkus.io) et [Hibernate](https://hibernate.org) et contribué activement aux standards Java.
     Il a une forte expérience dans l'Open Source et dans la direction d'équipes techniques.
 

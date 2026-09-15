@@ -28,6 +28,8 @@ RewriteRule ^books$ /books/hsia$1
 RewriteRule ^books/$ /books/hsia$1
 RewriteRule ^feed$ /blog/feed.atom
 RewriteRule ^feed/$ /blog/feed.atom
+# /projects/ was renamed /work/
+RewriteRule ^projects/?$ /work/ [R=301,L]
 # redirect the feedburner target with the real feed
 RewriteRule ^blog/feed-private.atom/$ /blog/feed.atom
 # OLD redirect feed to FeedBurner

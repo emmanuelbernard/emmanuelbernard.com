@@ -1,5 +1,5 @@
-## Now
-- name: Now
+## Working at
+- name: Working at
   entries:
 
     # Hexactgon
@@ -14,6 +14,15 @@
       links:
         - name: website
           url: https://hexactgon.com
+
+    # Unnamed on purpose: still in stealth. No name, no link, until that changes.
+    - title: Stealth
+      tags:
+        - co-founder
+      description: >- # this means to ignore newlines until "next property:"
+        A company in stealth, making AI a first-class citizen of the enterprise Java stack.
+
+        Open source and sovereignty are requirements rather than features. More when we surface.
 
 ## Code
 - name: Code
