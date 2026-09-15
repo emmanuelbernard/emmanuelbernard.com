@@ -8,7 +8,8 @@ header:
   overlay_image: /images/emmanuel-conf-1200px.jpg
   show_overlay_excerpt: true
 ---
-<p>Hello there, I'm a software engineer working at Red Hat on all things middleware.</p>
+{% comment %} Bio content lives in _data/bio.yml — edit it there. {% endcomment %}
+{{ site.data.bio.intro.en | markdownify }}
 
 <h2><a href="/blog/">Blog</a></h2>
 

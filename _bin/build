@@ -2,6 +2,8 @@
 
 set -e
 
+"$(dirname "$0")"/check-bio-sync
+
 bundle install
 bundle exec jekyll clean
 JEKYLL_ENV=production bundle exec jekyll build

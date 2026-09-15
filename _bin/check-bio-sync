@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+#
+# _data/bio.yml is the single source of truth for the bio.
+#
+# Three values still have to live in _config.yml, because Jekyll does not run
+# Liquid there: subtitle, description and author.bio. This script checks that
+# those copies still match _data/bio.yml, so the site can't quietly drift into
+# describing two different people. Called by _bin/build; run it by hand with:
+#
+#   _bin/check-bio-sync
+#
+require 'yaml'
+
+root   = File.expand_path('..', __dir__)
+bio    = YAML.load_file(File.join(root, '_data', 'bio.yml'))
+config = YAML.load_file(File.join(root, '_config.yml'))
+
+def squish(text)
+  text.to_s.gsub(/\s+/, ' ').strip
+end
+
+checks = [
+  ['_config.yml: subtitle',    config['subtitle'],           bio['tagline'],       '_data/bio.yml: tagline'],
+  ['_config.yml: description', config['description'],        bio['short']['en'],   '_data/bio.yml: short.en'],
+  ['_config.yml: author.bio',  config['author']['bio'],      bio['short']['en'],   '_data/bio.yml: short.en'],
+]
+
+failures = checks.reject { |_, actual, expected, _| squish(actual) == squish(expected) }
+
+failures.each do |name, actual, expected, source|
+  warn "OUT OF SYNC  #{name}"
+  warn "  is:       #{squish(actual)}"
+  warn "  expected: #{squish(expected)}   (from #{source})"
+  warn ''
+end
+
+if failures.empty?
+  puts "bio in sync (#{checks.size} values checked against _data/bio.yml)"
+else
+  warn "#{failures.size} of #{checks.size} bio values are out of sync. Copy the expected value into _config.yml."
+  exit 1
+end

@@ -14,11 +14,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Emmanuel Bernard
-subtitle: "Builds Open Source Software"
+# SYNC: these three values are duplicated from _data/bio.yml (tagline, short.en,
+# short.en). Jekyll does not run Liquid in _config.yml, so they cannot reference
+# it. `_bin/check-bio-sync` fails if they drift — run it before publishing.
+subtitle: "Agentic applications & Open Source"
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Emmanuel Bernard is an Open Source software engineer.
-  Java Champion, he is best known for his lead of Hibernate and Quarkus.
+  Emmanuel Bernard is a Java Champion and the founder of Hexactgon, building
+  agentic applications. He previously led Quarkus and Hibernate at Red Hat.
 twitter_username: emmanuelbernard
 github_username: emmanuelbernard
 #a minimum size of 120px by 120px, and less than 1MB in file size
@@ -111,8 +114,11 @@ author:
   name   : "Emmanuel Bernard"
   # avatar : "/images/headshot/201310EmmanuelBernardSquare.jpg"
   avatar : "/images/headshot/emmanuel-headshot-square-1200px.jpg"
-  bio    : "Emmanuel Bernard is an Open Source software engineer. Java Champion, he is best known for his lead of Hibernate and Quarkus."
+  bio    : "Emmanuel Bernard is a Java Champion and the founder of Hexactgon, building agentic applications. He previously led Quarkus and Hibernate at Red Hat."
   links:
+    - label: "Hexactgon"
+      icon: "fas fa-fw fa-briefcase"
+      url: "https://hexactgon.com"
     - label: "Bio"
       icon: "fas fa-fw fa-link"
       url: "https://emmanuelbernard.com/bio/"

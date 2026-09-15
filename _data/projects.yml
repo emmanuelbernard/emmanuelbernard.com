@@ -1,3 +1,20 @@
+## Now
+- name: Now
+  entries:
+
+    # Hexactgon
+    - title: Hexactgon
+      tags:
+        - founder
+      description: >- # this means to ignore newlines until "next property:"
+        Strategic advisor in Agentic and Java applications.
+
+
+        Expert guidance in enterprise AI, Open Source strategy, and technical mentoring.
+      links:
+        - name: website
+          url: https://hexactgon.com
+
 ## Code
 - name: Code
   entries:
@@ -5,7 +22,7 @@
     # Quarkus
     - title: Quarkus
       tags:
-        - project lead
+        - ex project lead
         - co-founder
         - committer
       header:
@@ -106,6 +123,16 @@
 ## Podcasts
 - name: Podcasts
   entries:
+
+    # Studio Devoxx France
+    - title: Studio Devoxx France
+      tags:
+        - host
+      description: >- # this means to ignore newlines until "next property:"
+        Le Studio Devoxx France : interviews longues des speakers et de l'équipe de Devoxx France, et les coulisses de la conférence.
+      links:
+        - name: website
+          url: https://www.devoxx.fr/
 
     # Les Cast Codeurs 
     - title: Les Cast Codeurs 
