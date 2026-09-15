@@ -1,36 +1,39 @@
-{% if post.header.teaser %}
-  {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
-  {% assign teaser = site.teaser %}
-{% endif %}
+{% comment %}
+  One entry of /work/ rendered as a card. `post` comes from the calling loop
+  (documents-project.html) and is a node of _data/work.yml.
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
-
-<div class="{{ include.type | default: 'list' }}__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src="{{ teaser | relative_url }}" alt="">
-      </div>
+  post.logo  optional path to the project or company logo. Without it the card
+             falls back to a wordmark built from the title.
+{% endcomment %}
+<article class="work-card" itemscope itemtype="https://schema.org/CreativeWork">
+  <div class="work-card__plate">
+    {% if post.logo %}
+      <img class="work-card__logo" src="{{ post.logo | relative_url }}" alt=""
+           loading="lazy" decoding="async">
+    {% else %}
+      <span class="work-card__wordmark" aria-hidden="true">– {{ post.title | strip }} –</span>
     {% endif %}
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      {{ title }}
-    </h2>
-    <span itemprop="keywords">
-    {%- for tag in post.tags -%}
-      <div class="page__taxonomy-item">{{ tag }}</div>&nbsp;
-    {%- endfor -%}
-    </span>
-    <div class="archive__item-excerpt" itemprop="description">{{ post.description | markdownify }} </div>
-    <div>
-    {%- for link in post.links -%}
-      <a class="btn btn--info btn--large" href="{{ link.url }}">{{ link.name }}</a>&nbsp;
-    {%- endfor -%}
+  </div>
+
+  <div class="work-card__body">
+    <h3 class="work-card__title" itemprop="headline">{{ post.title | strip }}</h3>
+
+    {% if post.tags %}
+      <ul class="work-card__tags" itemprop="keywords">
+        {%- for tag in post.tags -%}
+          <li class="work-card__tag">{{ tag }}</li>
+        {%- endfor -%}
+      </ul>
+    {% endif %}
+
+    <div class="work-card__excerpt" itemprop="description">{{ post.description | markdownify }}</div>
+  </div>
+
+  {% if post.links %}
+    <div class="work-card__links">
+      {%- for link in post.links -%}
+        <a class="work-card__link" href="{{ link.url }}">{{ link.name }}</a>
+      {%- endfor -%}
     </div>
-  </article>
-  <hr/>
-</div>
+  {% endif %}
+</article>

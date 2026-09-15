@@ -6,6 +6,5 @@ header:
 title: "Work"
 layout: project
 data: work
-entries_layout: list
 ---
 Where I am [working now](#working-at), then the rest in three categories: [code](#code), [podcasts](#podcasts) and [specs](#specifications). 

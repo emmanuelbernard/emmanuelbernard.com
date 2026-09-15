@@ -4,6 +4,7 @@
 
     # Hexactgon
     - title: Hexactgon
+      logo: /images/work/hexactgon.png
       tags:
         - founder
       description: >- # this means to ignore newlines until "next property:"
@@ -16,6 +17,7 @@
           url: https://hexactgon.com
 
     # Unnamed on purpose: still in stealth. No name, no link, until that changes.
+    # No logo either — the card falls back to a wordmark built from the title.
     - title: Stealth
       tags:
         - co-founder
@@ -30,13 +32,11 @@
 
     # Quarkus
     - title: Quarkus
+      logo: /images/work/quarkus.png
       tags:
         - ex project lead
         - co-founder
         - committer
-      header:
-        image: https://design.jboss.org/quarkus/logo/final/PNG/quarkus_icon_rgb_1024px_default.png
-        teaser: https://design.jboss.org/quarkus/logo/final/PNG/quarkus_icon_rgb_1024px_default.png
       description: >- # this means to ignore newlines until "next property:"
         Supersonic Subatomic Java
         
@@ -48,32 +48,26 @@
         - name: code
           url: https://github.com/quarkusio/quarkus
 
-    # Hibernate OGM
-    - title: Hibernate OGM
+    # Hibernate ORM
+    - title: Hibernate ORM
+      logo: /images/work/hibernate.png
       tags:
-        - ex project lead
-        - founder
         - committer
-      header:
-        image: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
-        teaser: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
       description: >- # this means to ignore newlines until "next property:"
-        Hibernate OGM is an attempt to make Hibernate ORM work for NoSQL stores like Infinispan, Cassandra, MongoDB etc. 
+        Hibernate ORM is the most popular Object/Relational mapper in Java. 
       links:
         - name: website
-          url: http://hibernate.org/ogm/
+          url: http://hibernate.org/orm/
         - name: code
-          url: https://github.com/hibernate/hibernate-ogm
+          url: https://github.com/hibernate/hibernate-orm
 
     # Hibernate Search
     - title: Hibernate Search
+      logo: /images/work/hibernate.png
       tags:
         - ex project lead
         - founder
         - committer
-      header:
-        image: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
-        teaser: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
       description: >- # this means to ignore newlines until "next property:"
         Hibernate Search is a full-text search engine for objects like Hibernate entities or Infinispan values. 
       links:
@@ -84,13 +78,11 @@
 
     # Hibernate Validator
     - title: Hibernate Validator
+      logo: /images/work/hibernate.png
       tags:
         - ex project lead
         - founder
         - committer
-      header:
-        image: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
-        teaser: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
       description: >- # this means to ignore newlines until "next property:"
         Hibernate Validator validates constraints on object models described via annotations.
       links:
@@ -99,28 +91,26 @@
         - name: code
           url: https://github.com/hibernate/hibernate-validator
 
-    # Hibernate ORM
-    - title: Hibernate ORM
+    # Hibernate OGM
+    - title: Hibernate OGM
+      logo: /images/work/hibernate.png
       tags:
+        - ex project lead
+        - founder
         - committer
-      header:
-        image: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
-        teaser: https://design.jboss.org/hibernate/logo/final/hibernate_icon_whitebkg_256px.png
       description: >- # this means to ignore newlines until "next property:"
-        Hibernate ORM is the most popular Object/Relational mapper in Java. 
+        Hibernate OGM is an attempt to make Hibernate ORM work for NoSQL stores like Infinispan, Cassandra, MongoDB etc. 
       links:
         - name: website
-          url: http://hibernate.org/orm/
+          url: http://hibernate.org/ogm/
         - name: code
-          url: https://github.com/hibernate/hibernate-orm
+          url: https://github.com/hibernate/hibernate-ogm
 
     # Ceylon
     - title: Ceylon
+      logo: /images/work/ceylon.png
       tags:
         - committer
-      header:
-        image: https://design.jboss.org/ceylon/logo/final/ceylon_logo_450px.png
-        teaser: https://design.jboss.org/ceylon/logo/final/ceylon_logo_450px.png
       description: >- # this means to ignore newlines until "next property:"
         Ceylon is a programming language for the JVM. The language is elegant, highly readable, extremely typesafe, and makes it easy to get things done.
       links:
@@ -132,33 +122,45 @@
 ## Podcasts
 - name: Podcasts
   entries:
-
-    # Studio Devoxx France
-    - title: Studio Devoxx France
-      tags:
-        - host
-      description: >- # this means to ignore newlines until "next property:"
-        Le Studio Devoxx France : interviews longues des speakers et de l'équipe de Devoxx France, et les coulisses de la conférence.
-      links:
-        - name: website
-          url: https://www.devoxx.fr/
-
     # Les Cast Codeurs 
     - title: Les Cast Codeurs 
+      logo: /images/work/les-cast-codeurs.png
       tags:
         - co-host
         - founder
-      header:
-        image: https://lescastcodeurs.com/images/logo_carre_transparent_150height.png
-        teaser: https://lescastcodeurs.com/images/logo_carre_transparent_150height.png
       description: >- # this means to ignore newlines until "next property:"
         Les Cast Codeurs est un podcast sur la communauté Java en Français annimée par Emmanuel Bernard, Antonio Goncalves, Guillaume Laforge, Vincent Massol et Audrey Neveu.
       links:
         - name: website
           url: https://lescastcodeurs.com
 
+    # Studio Devoxx France
+    - title: Studio Devoxx France
+      logo: /images/work/studio-devoxx-france.jpg
+      tags:
+        - host
+        - founder
+      description: >- # this means to ignore newlines until "next property:"
+        Le Studio Devoxx France : interviews longues des speakers et de l'équipe de Devoxx France, et les coulisses de la conférence.
+      links:
+        - name: website
+          url: https://www.devoxx.fr/
+
+    # Quarkus Insights
+    - title: Quarkus Insights
+      logo: /images/work/quarkus-insights.png
+      tags:
+        - co-host
+        - founder
+      description: >- # this means to ignore newlines until "next property:"
+        A periodical video podcast hosted by Quarkus Developers about things moving in and around Quarkus ecosystem. View the live podcasts and check out older episodes on the Podcasts.
+      links:
+        - name: website
+          url: https://quarkus.io/insights/
+
     # JBoss Community Asylum
     - title: JBoss Community Asylum
+      logo: /images/work/jboss-community-asylum.jpg
       tags:
         - co-host
         - founder
@@ -166,21 +168,8 @@
         Asylum is a podcast about, for and by the JBoss Community. 
       links:
         - name: website
-          url: http://asylum.jboss.org/
+          url: https://asylum.libsyn.com/
 
-    # Quarkus Insights
-    - title: Quarkus Insights
-      tags:
-        - co-host
-        - founder
-      header:
-        image: https://design.jboss.org/quarkus/logo/final/PNG/quarkus_icon_rgb_1024px_default.png
-        teaser: https://design.jboss.org/quarkus/logo/final/PNG/quarkus_icon_rgb_1024px_default.png
-      description: >- # this means to ignore newlines until "next property:"
-        A periodical video podcast hosted by Quarkus Developers about things moving in and around Quarkus ecosystem. View the live podcasts and check out older episodes on the Podcasts.
-      links:
-        - name: website
-          url: https://quarkus.io/insights/
 
 ## Specifications
 - name: Specifications
@@ -188,12 +177,10 @@
 
     # Bean Validation 
     - title: Bean Validation
+      logo: /images/work/bean-validation.svg
       tags:
         - spec lead
         - spec member
-      header:
-        image: https://beanvalidation.org/logo/logo.svg
-        teaser: https://beanvalidation.org/logo/logo.svg
       description: >- # this means to ignore newlines until "next property:"
          Bean Validation is a Java specification providing a unified way of declaring and defining constraints on an object model. It also defines a runtime engine to validate objects. 
       links:
@@ -201,7 +188,10 @@
           url: http://beanvalidation.org/
 
     # Java Persistence 
+    # No logo of its own: the spec lives on as Jakarta Persistence, so the
+    # Jakarta EE mark stands in for it.
     - title: Java Persistence
+      logo: /images/work/jakarta-ee.svg
       tags:
         - spec member
       description: >- # this means to ignore newlines until "next property:"

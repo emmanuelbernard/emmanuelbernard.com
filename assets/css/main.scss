@@ -1,0 +1,173 @@
+---
+# Overrides the theme's own assets/css/main.scss. Only the main Sass file needs
+# front matter (the dashes are enough).
+search: false
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+/*
+   /work/ — project and company cards
+   ========================================================================== */
+
+/* The project layout carries no author sidebar, so the archive column has no
+   reason to reserve room for one. */
+.layout--project .archive {
+  @include breakpoint($large) {
+    width: 100%;
+    padding-inline-end: 0;
+  }
+}
+
+.work-section {
+  margin-bottom: 2.5em;
+
+  & + .work-section {
+    margin-top: 2.5em;
+  }
+}
+
+.work-section__title {
+  margin: 0 0 1em;
+  padding-bottom: 0.4em;
+  font-family: $sans-serif;
+  font-size: $type-size-5;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $muted-text-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25em;
+
+  @include breakpoint($medium-wide) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius * 2;
+  box-shadow: 0 1px 2px rgba(#000, 0.04);
+  overflow: hidden;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    border-color: mix(#fff, $primary-color, 45%);
+    box-shadow: 0 6px 18px rgba(#000, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+/* The logo sits on its own row so marks and wordmarks can share a card grid
+   without one shape dictating the size of the other. */
+.work-card__plate {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  margin: 1.25em 1.25em 0;
+}
+
+.work-card__logo {
+  width: auto;
+  max-width: 170px;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Fallback for an entry with no logo — the title set as a mark. */
+.work-card__wordmark {
+  font-family: $sans-serif;
+  font-size: 1.125em;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: mix(#fff, $muted-text-color, 45%);
+}
+
+.work-card__body {
+  flex: 1 1 auto;
+  padding: 0.9em 1.25em 1.25em;
+}
+
+.work-card__title {
+  margin: 0;
+  font-size: $type-size-4;
+  line-height: 1.2;
+  color: $text-color;
+}
+
+.work-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  margin: 0.6em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-card__tag {
+  padding: 0.15em 0.6em;
+  font-family: $sans-serif;
+  font-size: 0.6875em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $muted-text-color;
+  background-color: $lighter-gray;
+  border-radius: 2em;
+}
+
+.work-card__excerpt {
+  margin-top: 0.8em;
+  font-size: 0.9em;
+  color: $muted-text-color;
+
+  p {
+    margin: 0 0 0.6em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.work-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: auto;
+  padding: 0 1.25em 1.25em;
+}
+
+.work-card__link {
+  padding: 0.3em 0.9em;
+  font-family: $sans-serif;
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: $primary-color;
+  text-decoration: none;
+  border: 1px solid mix(#fff, $primary-color, 60%);
+  border-radius: 2em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: $primary-color;
+    border-color: $primary-color;
+    text-decoration: none;
+  }
+}
