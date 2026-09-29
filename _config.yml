@@ -20,7 +20,7 @@ title: Emmanuel Bernard
 subtitle: "Agentic applications & Open Source"
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Emmanuel Bernard, Java Champion, founder of Hexactgon and co-founder of a stealth AI company.
+  Emmanuel Bernard, Java Champion, co-founder and CTO of Hadronic.
   Ex Distinguished Engineer at Red Hat, where he led Quarkus and Hibernate.
 twitter_username: emmanuelbernard
 github_username: emmanuelbernard
@@ -114,11 +114,11 @@ author:
   name   : "Emmanuel Bernard"
   # avatar : "/images/headshot/201310EmmanuelBernardSquare.jpg"
   avatar : "/images/headshot/emmanuel-headshot-square-1200px.jpg"
-  bio    : "Emmanuel Bernard, Java Champion, founder of Hexactgon and co-founder of a stealth AI company. Ex Distinguished Engineer at Red Hat, where he led Quarkus and Hibernate."
+  bio    : "Emmanuel Bernard, Java Champion, co-founder and CTO of Hadronic. Ex Distinguished Engineer at Red Hat, where he led Quarkus and Hibernate."
   links:
-    - label: "Hexactgon"
+    - label: "Hadronic"
       icon: "fas fa-fw fa-briefcase"
-      url: "https://hexactgon.com"
+      url: "https://hadronic.com"
     - label: "Bio"
       icon: "fas fa-fw fa-link"
       url: "https://emmanuelbernard.com/bio/"
@@ -127,7 +127,7 @@ author:
       url: "https://bsky.app/profile/emmanuelbernard.com"
     - label: "X/Twitter"
       icon: "fab fa-fw fa-x-twitter"
-      url: "https://twitter.com/emmanuelbernard"
+      url: "https://x.com/emmanuelbernard"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/emmanuelbernard/"
@@ -142,7 +142,7 @@ social:
   type: Person
   name:  "Emmanuel Bernard"
   links:
-    - "https://twitter.com/emmanuelbernard"
+    - "https://x.com/emmanuelbernard"
     - "https://www.linkedin.com/in/emmanuelbernard"
 
 footer:
@@ -152,7 +152,7 @@ footer:
       url: "https://bsky.app/profile/emmanuelbernard.com"
     - label: "X/Twitter"
       icon: "fab fa-fw fa-x-twitter"
-      url: "https://twitter.com/emmanuelbernard"
+      url: "https://x.com/emmanuelbernard"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/emmanuelbernard/"

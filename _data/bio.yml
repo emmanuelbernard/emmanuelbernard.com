@@ -14,14 +14,14 @@
 # Where I am now. Reference only: no template reads this block, it is here so
 # future edits to the copy below start from the same facts.
 companies:
+  - name: Hadronic
+    url: https://hadronic.com
+    role: co-founder and CTO
+    what: making AI a first-class citizen of the enterprise Java stack
   - name: Hexactgon
     url: https://hexactgon.com
-    what: a company specializing in agentic applications
-  # Unnamed and unlinked on purpose: the company has not come out of stealth.
-  # Describe it, never name it, until that changes.
-  - name: ~
-    url: ~
-    what: a company in stealth, AI for the enterprise Java stack
+    role: founder
+    what: advisory practice on agentic and Java applications
 
 # Site subtitle, shown in the masthead on every page.
 tagline: "Agentic applications & Open Source"
@@ -30,7 +30,7 @@ tagline: "Agentic applications & Open Source"
 # Keep it under ~160 characters so search engines don't truncate it.
 short:
   en: >-
-    Emmanuel Bernard, Java Champion, founder of Hexactgon and co-founder of a stealth AI company.
+    Emmanuel Bernard, Java Champion, co-founder and CTO of Hadronic.
     Ex Distinguished Engineer at Red Hat, where he led Quarkus and Hibernate.
 
 # Opening paragraph of the home page. Markdown.
@@ -43,8 +43,10 @@ intro:
   en: |
     Hello there, I'm a software engineer and architect (ex Senior Distinguished Engineer at Red Hat as Middleware Chief Architect).
 
-    I'm the founder of [Hexactgon](https://hexactgon.com), a company specializing in agentic applications.
-    I'm also co-founder of a company in stealth, making AI a first-class citizen of the enterprise Java stack.
+    I'm co-founder and CTO of [Hadronic](https://hadronic.com), where we make AI a first-class citizen of the enterprise Java stack.
+    Open source at the core, sovereignty as a design goal.
+
+    I also run [Hexactgon](https://hexactgon.com), my advisory practice on agentic and Java applications.
 
     Before that I spent 20 years in Professional Open Source, where I led the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects.
 
@@ -52,8 +54,8 @@ intro:
 # One sentence per line, per .claude/skills/blog-rules.md.
 long:
   en: |
-    Emmanuel is a Java Champion and founder of [Hexactgon](https://hexactgon.com), a company specializing in agentic applications.
-    He is also co-founder of a company in stealth, making AI a first-class citizen of the enterprise Java stack, where open source and sovereignty are requirements rather than features.
+    Emmanuel is a Java Champion, co-founder and CTO of [Hadronic](https://hadronic.com), making AI a first-class citizen of the enterprise Java stack, where open source and sovereignty are requirements rather than features.
+    He also founded [Hexactgon](https://hexactgon.com), his advisory practice on agentic and Java applications.
     Former Senior Distinguished Engineer and Chief Architect for Application Services and Middleware at Red Hat, where he led the [Quarkus](https://quarkus.io) and [Hibernate](https://hibernate.org) projects and actively contributed to Java standards.
     He has extensive experience in Open Source and leading technical teams.
 
@@ -63,8 +65,8 @@ long:
     You can follow him on BlueSky at [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com) or X at [@emmanuelbernard](https://x.com/emmanuelbernard).
 
   fr: |
-    Emmanuel est Java Champion et fondateur de [Hexactgon](https://hexactgon.com), une société spécialisée dans les applications agentiques.
-    Il est également cofondateur d'une société en stealth, qui fait de l'IA un citoyen de première classe de la plateforme Java d'entreprise, où l'open source et la souveraineté sont des exigences, pas des options.
+    Emmanuel est Java Champion, cofondateur et CTO de [Hadronic](https://hadronic.com), qui fait de l'IA un citoyen de première classe de la plateforme Java d'entreprise, où l'open source et la souveraineté sont des exigences, pas des options.
+    Il a également fondé [Hexactgon](https://hexactgon.com), son activité de conseil sur les applications agentiques et Java.
     Ancien Senior Distinguished Engineer et Chief Architect Application Services et Middleware chez Red Hat, il y a notamment dirigé les projets [Quarkus](https://quarkus.io) et [Hibernate](https://hibernate.org) et contribué activement aux standards Java.
     Il a une forte expérience dans l'Open Source et dans la direction d'équipes techniques.
 
@@ -72,6 +74,32 @@ long:
     Il est l'hôte de plusieurs podcasts et notamment [Les Cast Codeurs](https://lescastcodeurs.com) et [Le Studio Devoxx France](https://www.devoxx.fr/), où il interviewe les speakers dans les coulisses de la conférence.
 
     Vous pouvez le suivre sur BlueSky à [@emmanuelbernard.com](https://bsky.app/profile/emmanuelbernard.com) ou X à [@emmanuelbernard](https://x.com/emmanuelbernard).
+
+# ---------------------------------------------------------------------------
+# LinkedIn copy. No template reads these keys; they live here so every string
+# the profile needs has one reviewed home instead of being retyped by hand.
+# Hand-flattening long.en is what produced the two defects found in Sept 2026.
+# ---------------------------------------------------------------------------
+
+# The About section. Paste verbatim: LinkedIn renders no markup, so this is
+# long.en with every [text](url) rewritten as text (url). Keep the two in step.
+linkedin:
+  en: |
+    Emmanuel is a Java Champion, co-founder and CTO of Hadronic (https://hadronic.com), making AI a first-class citizen of the enterprise Java stack, where open source and sovereignty are requirements rather than features.
+    He also founded Hexactgon (https://hexactgon.com), his advisory practice on agentic and Java applications.
+    Former Senior Distinguished Engineer and Chief Architect for Application Services and Middleware at Red Hat, where he led the Quarkus (https://quarkus.io) and Hibernate (https://hibernate.org) projects and actively contributed to Java standards.
+    He has extensive experience in Open Source and leading technical teams.
+
+    He speaks regularly at conferences and JUGs, including Devoxx.
+    He hosts several podcasts, most notably Les Cast Codeurs (https://lescastcodeurs.com) and Le Studio Devoxx France (https://www.devoxx.fr/), where he interviews speakers backstage at the conference (both in French).
+
+    You can follow him on BlueSky at @emmanuelbernard.com (https://bsky.app/profile/emmanuelbernard.com) or X at @emmanuelbernard (https://x.com/emmanuelbernard).
+
+# The profile headline. Paste verbatim. LinkedIn caps it at 220 characters;
+# this is 196. Only the first ~60 render in comments, search results and DMs.
+headline:
+  en: >-
+    Co-Founder and CTO of Hadronic · Making AI a first-class citizen of the enterprise Java stack · Java Champion · Quarkus co-founder · ex-Chief Architect and Senior Distinguished Engineer at Red Hat
 
 # Shown under both biographies.
 hashtags: "#agentic #kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs"

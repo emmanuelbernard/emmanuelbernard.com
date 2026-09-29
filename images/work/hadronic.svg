@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="Hadronic">
+  <title>Hadronic</title>
+  <path d="M512.00 48.00L110.16 280.00L110.16 744.00L512.00 976.00L913.84 744.00L913.84 280.00Z" fill="#05080f"/>
+  <path d="M512.00 48.00L110.16 280.00L110.16 744.00L512.00 976.00L913.84 744.00L913.84 280.00Z" fill="none" stroke="#66e0ff" stroke-width="21.00" stroke-linejoin="miter"/>
+  <path d="M613.83 453.21L512.00 512.00L512.00 864.75L613.83 805.96Z" fill="#dff7ff" stroke="#dff7ff" stroke-width="0.5"/>
+  <path d="M512.00 159.25L206.51 335.63L308.34 394.42L613.83 218.04Z" fill="#66e0ff" stroke="#66e0ff" stroke-width="0.5"/>
+  <path d="M512.00 394.42L410.17 453.21L512.00 512.00L613.83 453.21Z" fill="#66e0ff" stroke="#66e0ff" stroke-width="0.5"/>
+  <path d="M715.66 276.83L613.83 335.63L715.66 394.42L817.49 335.63Z" fill="#14506b" stroke="#14506b" stroke-width="0.5"/>
+  <path d="M512.00 276.83L410.17 335.63L613.83 453.21L715.66 394.42Z" fill="#2e97b8" stroke="#2e97b8" stroke-width="0.5"/>
+  <path d="M817.49 335.63L715.66 394.42L715.66 512.00L613.83 570.79L613.83 688.37L715.66 629.58L715.66 747.17L817.49 688.37Z" fill="#2e97b8" stroke="#2e97b8" stroke-width="0.5"/>
+  <path d="M410.17 453.21L410.17 570.79L512.00 629.58L512.00 512.00Z" fill="#2e97b8" stroke="#2e97b8" stroke-width="0.5"/>
+  <path d="M206.51 335.63L206.51 688.37L308.34 747.17L308.34 629.58L410.17 688.37L410.17 805.96L512.00 864.75L512.00 629.58L308.34 512.00L308.34 394.42Z" fill="#14506b" stroke="#14506b" stroke-width="0.5"/>
+</svg>

@@ -2,6 +2,25 @@
 - name: Working at
   entries:
 
+    # Hadronic. Cherenkov badge: the hexagon interior is filled #05080f, so the
+    # mark carries its own ground on the white card. The brand forbids the RAW
+    # cherenkov mark on light, not the badge, which exists for exactly this slot.
+    - title: Hadronic
+      logo: /images/work/hadronic.svg
+      tags:
+        - co-founder
+        - CTO
+      description: >- # this means to ignore newlines until "next property:"
+        Making AI a first-class citizen of the enterprise Java stack.
+
+
+        A platform to develop and run AI-driven applications and agents with the guarantees
+        enterprises expect, starting from the Java they already run.
+        Open source at the core, sovereignty as a design goal.
+      links:
+        - name: website
+          url: https://hadronic.com
+
     # Hexactgon
     - title: Hexactgon
       logo: /images/work/hexactgon.png
@@ -15,16 +34,6 @@
       links:
         - name: website
           url: https://hexactgon.com
-
-    # Unnamed on purpose: still in stealth. No name, no link, until that changes.
-    # No logo either — the card falls back to a wordmark built from the title.
-    - title: Stealth
-      tags:
-        - co-founder
-      description: >- # this means to ignore newlines until "next property:"
-        A company in stealth, making AI a first-class citizen of the enterprise Java stack.
-
-        Open source and sovereignty are requirements rather than features. More when we surface.
 
 ## Code
 - name: Code
