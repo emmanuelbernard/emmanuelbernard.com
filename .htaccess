@@ -24,6 +24,8 @@ RewriteRule ^(.*)$ https://emmanuelbernard.com/blog/ [R=301,L]
 RewriteCond %{HTTP_HOST} ^www.emmanuelbernard.com$ [OR]
 RewriteCond %{HTTP_HOST} ^emmanuelbernard.com$
 
+RewriteRule ^blog/2026/09/17/hadronic/$ /blog/2026/09/29/hadronic/
+
 RewriteRule ^books$ /books/hsia$1
 RewriteRule ^books/$ /books/hsia$1
 RewriteRule ^feed$ /blog/feed.atom
